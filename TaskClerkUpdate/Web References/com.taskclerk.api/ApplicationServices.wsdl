@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://api.taskclerk.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://api.taskclerk.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This set of operations provides the TaskClerk application with an extended feature set like current available version, some monitoring and logging features and user comunication features.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://api.taskclerk.com/">
+      <s:element name="LatestVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="LatestVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LatestVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LatestVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:LatestVersion" />
+  </wsdl:message>
+  <wsdl:message name="LatestVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:LatestVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="LatestVersionHttpPostIn" />
+  <wsdl:message name="LatestVersionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="TaskClerk_x0020_Application_x0020_ServicesSoap">
+    <wsdl:operation name="LatestVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the latest available version number for the TaskClerk Client.</wsdl:documentation>
+      <wsdl:input message="tns:LatestVersionSoapIn" />
+      <wsdl:output message="tns:LatestVersionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TaskClerk_x0020_Application_x0020_ServicesHttpPost">
+    <wsdl:operation name="LatestVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns the latest available version number for the TaskClerk Client.</wsdl:documentation>
+      <wsdl:input message="tns:LatestVersionHttpPostIn" />
+      <wsdl:output message="tns:LatestVersionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaskClerk_x0020_Application_x0020_ServicesSoap" type="tns:TaskClerk_x0020_Application_x0020_ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LatestVersion">
+      <soap:operation soapAction="http://api.taskclerk.com/LatestVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TaskClerk_x0020_Application_x0020_ServicesSoap12" type="tns:TaskClerk_x0020_Application_x0020_ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LatestVersion">
+      <soap12:operation soapAction="http://api.taskclerk.com/LatestVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TaskClerk_x0020_Application_x0020_ServicesHttpPost" type="tns:TaskClerk_x0020_Application_x0020_ServicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="LatestVersion">
+      <http:operation location="/LatestVersion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaskClerk_x0020_Application_x0020_Services">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This set of operations provides the TaskClerk application with an extended feature set like current available version, some monitoring and logging features and user comunication features.</wsdl:documentation>
+    <wsdl:port name="TaskClerk_x0020_Application_x0020_ServicesSoap" binding="tns:TaskClerk_x0020_Application_x0020_ServicesSoap">
+      <soap:address location="http://api.taskclerk.com/1/ApplicationServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TaskClerk_x0020_Application_x0020_ServicesSoap12" binding="tns:TaskClerk_x0020_Application_x0020_ServicesSoap12">
+      <soap12:address location="http://api.taskclerk.com/1/ApplicationServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TaskClerk_x0020_Application_x0020_ServicesHttpPost" binding="tns:TaskClerk_x0020_Application_x0020_ServicesHttpPost">
+      <http:address location="http://api.taskclerk.com/1/ApplicationServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

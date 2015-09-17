@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivitySummaryString" xml:space="preserve">
+    <value>The activity '{0}' was started @ {1:HH:mm} 
+on the {1:dd MMM yyyy}, 
+Running for {2:####.0} minutes</value>
+  </data>
+  <data name="CannotMergeEvents" xml:space="preserve">
+    <value>Event type activities cannot be merged.</value>
+  </data>
+  <data name="CompareToTypeError" xml:space="preserve">
+    <value>This CompareTo method expects type [TaskActivity]</value>
+  </data>
+  <data name="DefaultTaskDescriptions" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;ArrayOfTaskDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;136f6c6f-ef59-4568-ad07-a7fa1120b7ca&lt;/Id&gt;
+    &lt;Name&gt;Default&lt;/Name&gt;
+    &lt;Description&gt;Not for general use.&lt;/Description&gt;
+    &lt;NoNagMinutes&gt;1&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;NAME:Black&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;0&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;true&lt;/IsCategory&gt;
+    &lt;Url /&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;0f5c233a-fae1-4ddc-8d37-097a0e679b29&lt;/Id&gt;
+        &lt;Name&gt;Start of work&lt;/Name&gt;
+        &lt;Description&gt;This event reports when you started work for the day.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Black&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;true&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;a9bb7c12-d14e-4c10-b4c2-1f9bc0e7a164&lt;/Id&gt;
+        &lt;Name&gt;End of work&lt;/Name&gt;
+        &lt;Description&gt;This event records when you end work for the day.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Black&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;true&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;5512afd0-2eee-4ea9-ad9b-cd1f9ab026b6&lt;/Id&gt;
+        &lt;Name&gt;Stop recording time&lt;/Name&gt;
+        &lt;Description&gt;Use this event to stop recording time.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Black&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;true&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+    &lt;/Children&gt;
+  &lt;/TaskDescription&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;5c02c475-7024-437e-9d32-73d8450550bf&lt;/Id&gt;
+    &lt;Name&gt;Personal&lt;/Name&gt;
+    &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;ARGB:255:255:255:50&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;1&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;true&lt;/IsCategory&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;1e6de275-6a07-4751-926c-b8fcaba3e2d0&lt;/Id&gt;
+        &lt;Name&gt;Sick&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:255:255:60&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;1bca41ac-b169-4d2f-a033-cb1d0b4e06cd&lt;/Id&gt;
+        &lt;Name&gt;Holiday&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:255:255:70&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;d394fc08-31f9-4155-aa31-4beefdbf8f0c&lt;/Id&gt;
+        &lt;Name&gt;Personal meeting&lt;/Name&gt;
+        &lt;Description&gt;A personal meeting that would not be regarded as an organisation activity.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;120&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:255:255:80&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;6b11c742-c5ee-43fb-ab79-43a1b7a4c8d4&lt;/Id&gt;
+        &lt;Name&gt;Personal study break&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:255:255:90&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;e9e1c0c3-e7cf-42f1-a227-a05d022b8a48&lt;/Id&gt;
+        &lt;Name&gt;Personal telephone call&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Black&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+    &lt;/Children&gt;
+  &lt;/TaskDescription&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;4e4b9c8b-00e3-4d99-bf4e-74e4c070a637&lt;/Id&gt;
+    &lt;Name&gt;Work Breaks&lt;/Name&gt;
+    &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;NAME:Blue&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;2&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;true&lt;/IsCategory&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;9ab8df7e-44c8-4eb6-b4a9-f4db1269a492&lt;/Id&gt;
+        &lt;Name&gt;Break&lt;/Name&gt;
+        &lt;Description&gt;This activity is used to record break times.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;5&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:0:0:100&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;ec6ffffe-d4ff-4d13-a209-cf9a357c34fc&lt;/Id&gt;
+        &lt;Name&gt;Lunch&lt;/Name&gt;
+        &lt;Description&gt;This activity is used to record lunch breaks.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;60&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:0:0:200&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;06703db8-eaac-479b-be59-beee05075e7d&lt;/Id&gt;
+        &lt;Name&gt;Dinner&lt;/Name&gt;
+        &lt;Description&gt;This activity is used to record dinner times.&lt;/Description&gt;
+        &lt;NoNagMinutes&gt;60&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;ARGB:255:0:0:200&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;true&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+    &lt;/Children&gt;
+  &lt;/TaskDescription&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;bf23f189-62d3-4177-87ae-1dad578775b9&lt;/Id&gt;
+    &lt;Name&gt;Work General&lt;/Name&gt;
+    &lt;Description /&gt;
+    &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;NAME:Green&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;3&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;true&lt;/IsCategory&gt;
+    &lt;Url /&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;0fdca821-fe8c-4af5-a5b8-a46540ef3fae&lt;/Id&gt;
+        &lt;Name&gt;General management&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;60&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:OliveDrab&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;547d0e5c-fc26-423d-8acd-311ddabb760e&lt;/Id&gt;
+        &lt;Name&gt;General administration&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;45&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:OliveDrab&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;8cdd3d24-9605-442a-b044-a1761a516be3&lt;/Id&gt;
+            &lt;Name&gt;Filing&lt;/Name&gt;
+            &lt;Description /&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:MediumAquamarine&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;Url /&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;191f6289-a1f2-41a5-a309-a3c6fb33579e&lt;/Id&gt;
+            &lt;Name&gt;Purchasing&lt;/Name&gt;
+            &lt;Description /&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Aquamarine&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;Url /&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+        &lt;/Children&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;4a00b079-8a10-40a0-a6a4-302e6774e9ff&lt;/Id&gt;
+        &lt;Name&gt;Email&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:DarkGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;261c2f93-35c4-41bf-b7e2-11701e439e1d&lt;/Id&gt;
+        &lt;Name&gt;Training&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:GreenYellow&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;3&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;fcc7c738-88c9-47a4-a846-1dd38a2471a2&lt;/Id&gt;
+        &lt;Name&gt;Research&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:ForestGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;6&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;d8a4a378-6969-4b80-b6fb-a58ff6a8f086&lt;/Id&gt;
+        &lt;Name&gt;Support and troubleshooting&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:SpringGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;2&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;ee0b4b7a-a5c7-438b-9a47-7245c26fc8de&lt;/Id&gt;
+        &lt;Name&gt;Telephone call&lt;/Name&gt;
+        &lt;Description /&gt;
+        &lt;NoNagMinutes&gt;5&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:DarkSeaGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;7&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;Url /&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;4202ae30-f683-4b1f-a44c-318c83b7478b&lt;/Id&gt;
+        &lt;Name&gt;Meetings&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Gray&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;1&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;ced18d3c-bbee-49c1-a553-c3fe83b73a2a&lt;/Id&gt;
+            &lt;Name&gt;General meeting&lt;/Name&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Gray&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;20886936-9c55-489e-9026-f2d28016e716&lt;/Id&gt;
+            &lt;Name&gt;Briefing&lt;/Name&gt;
+            &lt;Description /&gt;
+            &lt;NoNagMinutes&gt;45&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Gray&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;Url /&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;b3297a66-2a56-4126-8182-8e9f8d0e81c9&lt;/Id&gt;
+            &lt;Name&gt;Planning meeting&lt;/Name&gt;
+            &lt;Description /&gt;
+            &lt;NoNagMinutes&gt;45&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Gray&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;Url /&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;dfbbd964-f939-4507-854c-f7faae2cec2e&lt;/Id&gt;
+            &lt;Name&gt;Brainstorming&lt;/Name&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:LimeGreen&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;a2a6bed6-e593-4a0f-bd64-621ece37de56&lt;/Id&gt;
+            &lt;Name&gt;Discussion&lt;/Name&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:SeaGreen&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+        &lt;/Children&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;0b1c6f7b-9133-4b8e-b8d8-62a69ac05dda&lt;/Id&gt;
+        &lt;Name&gt;Report writing&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:DarkSeaGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;8e57e2c7-828d-46e8-81d3-df1ffd591d3b&lt;/Id&gt;
+        &lt;Name&gt;Investigation&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:ForestGreen&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+    &lt;/Children&gt;
+  &lt;/TaskDescription&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;b6194245-414e-44d8-856c-9c928124d526&lt;/Id&gt;
+    &lt;Name&gt;Project Work&lt;/Name&gt;
+    &lt;Description /&gt;
+    &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;NAME:Red&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;4&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+    &lt;Url /&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;c13d8162-6fa7-4522-a4b1-ec1960d8fc35&lt;/Id&gt;
+        &lt;Name&gt;Project kick off meeting&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Gray&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;4fe20d8f-ed72-4a5d-8eee-0b08038c2ad5&lt;/Id&gt;
+        &lt;Name&gt;Project 1&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:Brown&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;9c4c038f-48ed-4343-8577-2bef89f0f49b&lt;/Id&gt;
+            &lt;Name&gt;Task 1&lt;/Name&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Brown&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+          &lt;TaskDescription&gt;
+            &lt;Id&gt;dd458ba0-d70f-48f5-b64d-d440b8718c4b&lt;/Id&gt;
+            &lt;Name&gt;Task 2&lt;/Name&gt;
+            &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+            &lt;Colour&gt;NAME:Brown&lt;/Colour&gt;
+            &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+            &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+            &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+            &lt;Sequence&gt;0&lt;/Sequence&gt;
+            &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+            &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+            &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+            &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+            &lt;Enabled&gt;true&lt;/Enabled&gt;
+            &lt;Children /&gt;
+          &lt;/TaskDescription&gt;
+        &lt;/Children&gt;
+      &lt;/TaskDescription&gt;
+      &lt;TaskDescription&gt;
+        &lt;Id&gt;04b7bc62-dff9-49c0-b759-196500214c07&lt;/Id&gt;
+        &lt;Name&gt;Project 2&lt;/Name&gt;
+        &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+        &lt;Colour&gt;NAME:IndianRed&lt;/Colour&gt;
+        &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+        &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+        &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+        &lt;Sequence&gt;0&lt;/Sequence&gt;
+        &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+        &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+        &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+        &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+        &lt;Enabled&gt;true&lt;/Enabled&gt;
+        &lt;Children /&gt;
+      &lt;/TaskDescription&gt;
+    &lt;/Children&gt;
+  &lt;/TaskDescription&gt;
+  &lt;TaskDescription&gt;
+    &lt;Id&gt;a894a3ac-85b4-4ec4-81c3-193482ecc942&lt;/Id&gt;
+    &lt;Name&gt;Work for customers&lt;/Name&gt;
+    &lt;Description /&gt;
+    &lt;NoNagMinutes&gt;0&lt;/NoNagMinutes&gt;
+    &lt;Colour&gt;NAME:Purple&lt;/Colour&gt;
+    &lt;CustomFlags&gt;0&lt;/CustomFlags&gt;
+    &lt;IsPrivate&gt;false&lt;/IsPrivate&gt;
+    &lt;MenuColumn&gt;0&lt;/MenuColumn&gt;
+    &lt;Sequence&gt;5&lt;/Sequence&gt;
+    &lt;IsEvent&gt;false&lt;/IsEvent&gt;
+    &lt;IsCategory&gt;false&lt;/IsCategory&gt;
+    &lt;ValidFromDate&gt;0001-01-01T00:00:00&lt;/ValidFromDate&gt;
+    &lt;ValidToDate&gt;0001-01-01T00:00:00&lt;/ValidToDate&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+    &lt;Children /&gt;
+  &lt;/TaskDescription&gt;
+&lt;/ArrayOfTaskDescription&gt;</value>
+  </data>
+  <data name="EventSummaryString" xml:space="preserve">
+    <value>The event '{0}' occurred @ {1:HH:mm} on the {1:dd MMM yyyy}</value>
+  </data>
+  <data name="InvalidExporterState" xml:space="preserve">
+    <value>The Exporter is in an Invalid state.</value>
+  </data>
+  <data name="ActivityCannotBeSetToNull" xml:space="preserve">
+    <value>Task activity cannot be set to null.</value>
+  </data>
+  <data name="DescriptionCannotBeSetToNull" xml:space="preserve">
+    <value>Task description cannot be set to null.</value>
+  </data>
+  <data name="TypeNameAndAssemblyRegEx" xml:space="preserve">
+    <value>(?&lt;TypeName&gt;[^,]+)[\s]*[,][\s]*(?&lt;AssemblyName&gt;\S+).*$</value>
+  </data>
+  <data name="SdkName" xml:space="preserve">
+    <value>TaskClerk</value>
+  </data>
+  <data name="UnableToFindConfigurationFile" xml:space="preserve">
+    <value>Unable to find {0} in the configuration file.</value>
+  </data>
+  <data name="NoProvidersFoundInConfigurationFile" xml:space="preserve">
+    <value>No providers found in configuration file</value>
+  </data>
+  <data name="TheContainerCannotBeNull" xml:space="preserve">
+    <value>The container cannot be null.</value>
+  </data>
+  <data name="RoleCannotBeSetToNull" xml:space="preserve">
+    <value>role cannot be set to null.</value>
+  </data>
+  <data name="ConfigurationFileInvalid" xml:space="preserve">
+    <value>The TaskClerk configuration file is invalid.</value>
+  </data>
+  <data name="ConfigurationFileIsInvalid" xml:space="preserve">
+    <value>TaskClerk requires a valid configuration file. You may need to reinstall the application.</value>
+  </data>
+  <data name="HeartbeatInterval" xml:space="preserve">
+    <value>60000</value>
+  </data>
+  <data name="DefaultLicense" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;License key=""&gt;
+&lt;Owner type="Person" name="Anonymous" email="" /&gt;
+&lt;Application name="TaskClerk" version="1"&gt;
+&lt;Capabilities&gt;
+&lt;WindowSize type="Period" unit="days" value="35" /&gt;	
+&lt;/Capabilities&gt;
+&lt;/Application&gt;
+&lt;/License&gt;</value>
+  </data>
+  <data name="IdentityCouldNotBeEstablished" xml:space="preserve">
+    <value>TaskClerk could not establish your identity, IdentityProvider code problem.</value>
+  </data>
+</root>

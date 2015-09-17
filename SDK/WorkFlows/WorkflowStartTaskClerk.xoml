@@ -1,0 +1,13 @@
+﻿<SequentialWorkflowActivity x:Class="BritishMicro.TaskClerk.WorkflowStartTaskClerk" x:Name="WorkflowStartTaskClerk" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<SequenceActivity x:Name="PreInitialise" Description="Create and Initalise the providers.">
+		<CodeActivity x:Name="initialiseProviders" Description="Create and Initalise the providers." />
+		<CodeActivity x:Name="checkRegistration" Description="Check the registration information." />
+	</SequenceActivity>
+	<SequenceActivity x:Name="startEngine">
+		<CodeActivity x:Name="runBackup" />
+		<CodeActivity x:Name="createTheStopTask" Description="If the heartbeat was not reset at last shutdown." />
+		<CodeActivity x:Name="createStartTask" />
+		<CodeActivity x:Name="startThePluginServices" />
+		<CodeActivity x:Name="startTheHeartBeat" />
+	</SequenceActivity>
+</SequentialWorkflowActivity>

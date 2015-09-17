@@ -1,0 +1,10 @@
+﻿<SequentialWorkflowActivity x:Class="BritishMicro.TaskClerk.WorkflowStartTaskClerk" x:Name="WorkflowStartTaskClerk" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<SequenceActivity x:Name="handleNewTaskActivity">
+		<CodeActivity x:Name="checkTaskDescription" ExecuteCode="checkTaskDescription_ExecuteCode" Description="check the task description been handled is not empty" />
+		<CodeActivity x:Name="storeCurrentDescription" ExecuteCode="storeCurrentDescription_ExecuteCode" />
+		<CodeActivity x:Name="closeCurrentActivity" />
+		<CodeActivity x:Name="createNewActivity" />
+		<CodeActivity x:Name="closeIfCurrentIsEventActivity" />
+		<CodeActivity x:Name="closeProviders" />
+	</SequenceActivity>
+</SequentialWorkflowActivity>

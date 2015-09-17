@@ -1,0 +1,54 @@
+C:\Users\JPowell\Documents\Visual Studio 2005\Projects\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\JPowell\Documents\Visual Studio 2005\Projects\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\JPowell\Documents\Visual Studio 2005\Projects\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\JPowell\Documents\Visual Studio 2005\Projects\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+D:\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+D:\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+D:\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+D:\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+D:\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jpowell\Documents\Visual Studio 2008\Projects\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\jpowell\Documents\Visual Studio 2008\Projects\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\jpowell\Documents\Visual Studio 2008\Projects\BritishMicro\TaskClerk\Collateral\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jpowell\Documents\Visual Studio 2008\Projects\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\jpowell\Documents\Visual Studio 2008\Projects\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\jpowell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\john_powell\Dropbox\Source Code\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.csprojResolveAssemblyReference.cache
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\john_powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.csprojResolveAssemblyReference.cache
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\John\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.pdb
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.csprojResolveAssemblyReference.cache
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
+C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb

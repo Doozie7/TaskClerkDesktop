@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.britishmicro.com/2006/03/RegistrationService/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.britishmicro.com/2006/03/RegistrationService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RegistrationService provides the operations 
+for registring BritishMicro applications. 
+This service is part of the BritishMicro Web Toolkit. © BritishMicro 2006</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.britishmicro.com/2006/03/RegistrationService/">
+      <s:element name="registrationRequest" type="tns:RegistrationRequest" />
+      <s:complexType name="RegistrationRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Organisation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VersionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppInstanceKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppInstanceCreateDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrationKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="registrationResponse" type="tns:RegistrationResponse" />
+      <s:complexType name="RegistrationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Success" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FailReason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="verifyRequest" type="tns:RegistrationRequest" />
+      <s:element name="verifyResponse" type="tns:RegistrationResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateRegistrationSoapIn">
+    <wsdl:part name="registrationRequest" element="tns:registrationRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateRegistrationSoapOut">
+    <wsdl:part name="CreateRegistrationResult" element="tns:registrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyRegistrationSoapIn">
+    <wsdl:part name="registrationRequest" element="tns:verifyRequest" />
+  </wsdl:message>
+  <wsdl:message name="VerifyRegistrationSoapOut">
+    <wsdl:part name="VerifyRegistrationResult" element="tns:verifyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RegistrationServiceSoap">
+    <wsdl:operation name="CreateRegistration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the supplied RegistrationRequest message create a new RegistrationKey. Returns a RegistrationResponse.</wsdl:documentation>
+      <wsdl:input message="tns:CreateRegistrationSoapIn" />
+      <wsdl:output message="tns:CreateRegistrationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRegistration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the supplied RegistrationRequest message to verify a RegistrationKey. Returns a RegistrationResponse.</wsdl:documentation>
+      <wsdl:input message="tns:VerifyRegistrationSoapIn" />
+      <wsdl:output message="tns:VerifyRegistrationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="RegistrationServiceHttpGet" />
+  <wsdl:portType name="RegistrationServiceHttpPost" />
+  <wsdl:binding name="RegistrationServiceSoap" type="tns:RegistrationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateRegistration">
+      <soap:operation soapAction="http://www.britishmicro.com/2006/03/RegistrationService/CreateRegistration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRegistration">
+      <soap:operation soapAction="http://www.britishmicro.com/2006/03/RegistrationService/VerifyRegistration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RegistrationServiceSoap12" type="tns:RegistrationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateRegistration">
+      <soap12:operation soapAction="http://www.britishmicro.com/2006/03/RegistrationService/CreateRegistration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyRegistration">
+      <soap12:operation soapAction="http://www.britishmicro.com/2006/03/RegistrationService/VerifyRegistration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RegistrationServiceHttpGet" type="tns:RegistrationServiceHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="RegistrationServiceHttpPost" type="tns:RegistrationServiceHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="RegistrationService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">The RegistrationService provides the operations 
+for registring BritishMicro applications. 
+This service is part of the BritishMicro Web Toolkit. © BritishMicro 2006</wsdl:documentation>
+    <wsdl:port name="RegistrationServiceSoap" binding="tns:RegistrationServiceSoap">
+      <soap:address location="http://www.blogitup.com/BritishMicro/RegistrationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RegistrationServiceSoap12" binding="tns:RegistrationServiceSoap12">
+      <soap12:address location="http://www.blogitup.com/BritishMicro/RegistrationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RegistrationServiceHttpGet" binding="tns:RegistrationServiceHttpGet">
+      <http:address location="http://www.blogitup.com/BritishMicro/RegistrationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RegistrationServiceHttpPost" binding="tns:RegistrationServiceHttpPost">
+      <http:address location="http://www.blogitup.com/BritishMicro/RegistrationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

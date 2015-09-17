@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PrivateDataSet" targetNamespace="http://tempuri.org/PrivateDataSet.xsd" xmlns:mstns="http://tempuri.org/PrivateDataSet.xsd" xmlns="http://tempuri.org/PrivateDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CEConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CEConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BritishMicro.TaskClerk.Properties.Settings.GlobalReference.Default.CEConnectionString" Provider="Microsoft.SqlServerCe.Client.4.0" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PrivateDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PrivateDataSet" msprop:Generator_UserDSName="PrivateDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tc_Identity" msprop:Generator_TableClassName="tc_IdentityDataTable" msprop:Generator_TableVarName="tabletc_Identity" msprop:Generator_TablePropName="tc_Identity" msprop:Generator_RowDeletingName="tc_IdentityRowDeleting" msprop:Generator_UserTableName="tc_Identity" msprop:Generator_RowChangingName="tc_IdentityRowChanging" msprop:Generator_RowEvHandlerName="tc_IdentityRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_IdentityRowDeleted" msprop:Generator_RowEvArgName="tc_IdentityRowChangeEvent" msprop:Generator_RowChangedName="tc_IdentityRowChanged" msprop:Generator_RowClassName="tc_IdentityRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Identity" msprop:Generator_ColumnVarNameInTable="columnIdentity" msprop:Generator_ColumnPropNameInRow="Identity" msprop:Generator_ColumnPropNameInTable="IdentityColumn" msprop:Generator_UserColumnName="Identity" type="xs:string" />
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName" type="xs:string" minOccurs="0" />
+              <xs:element name="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_UserColumnName="Password" type="xs:string" minOccurs="0" />
+              <xs:element name="LastSuccessfulLogin" msprop:Generator_ColumnVarNameInTable="columnLastSuccessfulLogin" msprop:Generator_ColumnPropNameInRow="LastSuccessfulLogin" msprop:Generator_ColumnPropNameInTable="LastSuccessfulLoginColumn" msprop:Generator_UserColumnName="LastSuccessfulLogin" type="xs:string" minOccurs="0" />
+              <xs:element name="LastPasswordChange" msprop:Generator_ColumnVarNameInTable="columnLastPasswordChange" msprop:Generator_ColumnPropNameInRow="LastPasswordChange" msprop:Generator_ColumnPropNameInTable="LastPasswordChangeColumn" msprop:Generator_UserColumnName="LastPasswordChange" type="xs:string" minOccurs="0" />
+              <xs:element name="MustChangePassword" msprop:Generator_ColumnVarNameInTable="columnMustChangePassword" msprop:Generator_ColumnPropNameInRow="MustChangePassword" msprop:Generator_ColumnPropNameInTable="MustChangePasswordColumn" msprop:Generator_UserColumnName="MustChangePassword" type="xs:string" minOccurs="0" />
+              <xs:element name="FailedLoginAttempts" msprop:Generator_ColumnVarNameInTable="columnFailedLoginAttempts" msprop:Generator_ColumnPropNameInRow="FailedLoginAttempts" msprop:Generator_ColumnPropNameInTable="FailedLoginAttemptsColumn" msprop:Generator_UserColumnName="FailedLoginAttempts" type="xs:string" minOccurs="0" />
+              <xs:element name="LockedByUserAction" msprop:Generator_ColumnVarNameInTable="columnLockedByUserAction" msprop:Generator_ColumnPropNameInRow="LockedByUserAction" msprop:Generator_ColumnPropNameInTable="LockedByUserActionColumn" msprop:Generator_UserColumnName="LockedByUserAction" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_Activity" msprop:Generator_TableClassName="tc_ActivityDataTable" msprop:Generator_TableVarName="tabletc_Activity" msprop:Generator_TablePropName="tc_Activity" msprop:Generator_RowDeletingName="tc_ActivityRowDeleting" msprop:Generator_UserTableName="tc_Activity" msprop:Generator_RowChangingName="tc_ActivityRowChanging" msprop:Generator_RowEvHandlerName="tc_ActivityRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_ActivityRowDeleted" msprop:Generator_RowEvArgName="tc_ActivityRowChangeEvent" msprop:Generator_RowChangedName="tc_ActivityRowChanged" msprop:Generator_RowClassName="tc_ActivityRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" />
+              <xs:element name="DescriptionId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnDescriptionId" msprop:Generator_ColumnPropNameInRow="DescriptionId" msprop:Generator_ColumnPropNameInTable="DescriptionIdColumn" msprop:Generator_UserColumnName="DescriptionId" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" msprop:Generator_ColumnVarNameInTable="columnRemarks" msprop:Generator_ColumnPropNameInRow="Remarks" msprop:Generator_ColumnPropNameInTable="RemarksColumn" msprop:Generator_UserColumnName="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="StartDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnStartDate" msprop:Generator_ColumnPropNameInRow="StartDate" msprop:Generator_ColumnPropNameInTable="StartDateColumn" msprop:Generator_UserColumnName="StartDate" type="xs:anyType" minOccurs="0" />
+              <xs:element name="EndDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" msprop:Generator_UserColumnName="EndDate" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Duration" msprop:Generator_ColumnVarNameInTable="columnDuration" msprop:Generator_ColumnPropNameInRow="Duration" msprop:Generator_ColumnPropNameInTable="DurationColumn" msprop:Generator_UserColumnName="Duration" type="xs:int" minOccurs="0" />
+              <xs:element name="CrossTabDescriptionId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnCrossTabDescriptionId" msprop:Generator_ColumnPropNameInRow="CrossTabDescriptionId" msprop:Generator_ColumnPropNameInTable="CrossTabDescriptionIdColumn" msprop:Generator_UserColumnName="CrossTabDescriptionId" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomFlags" msprop:Generator_ColumnVarNameInTable="columnCustomFlags" msprop:Generator_ColumnPropNameInRow="CustomFlags" msprop:Generator_ColumnPropNameInTable="CustomFlagsColumn" msprop:Generator_UserColumnName="CustomFlags" type="xs:int" minOccurs="0" />
+              <xs:element name="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:string" minOccurs="0" />
+              <xs:element name="SourceMachine" msprop:Generator_ColumnVarNameInTable="columnSourceMachine" msprop:Generator_ColumnPropNameInRow="SourceMachine" msprop:Generator_ColumnPropNameInTable="SourceMachineColumn" msprop:Generator_UserColumnName="SourceMachine" type="xs:string" minOccurs="0" />
+              <xs:element name="OriginalDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnOriginalDate" msprop:Generator_ColumnPropNameInRow="OriginalDate" msprop:Generator_ColumnPropNameInTable="OriginalDateColumn" msprop:Generator_UserColumnName="OriginalDate" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_UserMemory" msprop:Generator_TableClassName="tc_UserMemoryDataTable" msprop:Generator_TableVarName="tabletc_UserMemory" msprop:Generator_TablePropName="tc_UserMemory" msprop:Generator_RowDeletingName="tc_UserMemoryRowDeleting" msprop:Generator_UserTableName="tc_UserMemory" msprop:Generator_RowChangingName="tc_UserMemoryRowChanging" msprop:Generator_RowEvHandlerName="tc_UserMemoryRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_UserMemoryRowDeleted" msprop:Generator_RowEvArgName="tc_UserMemoryRowChangeEvent" msprop:Generator_RowChangedName="tc_UserMemoryRowChanged" msprop:Generator_RowClassName="tc_UserMemoryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SettingKey" msprop:Generator_ColumnVarNameInTable="columnSettingKey" msprop:Generator_ColumnPropNameInRow="SettingKey" msprop:Generator_ColumnPropNameInTable="SettingKeyColumn" msprop:Generator_UserColumnName="SettingKey" type="xs:string" minOccurs="0" />
+              <xs:element name="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:string" minOccurs="0" />
+              <xs:element name="SettingValue" msprop:Generator_ColumnVarNameInTable="columnSettingValue" msprop:Generator_ColumnPropNameInRow="SettingValue" msprop:Generator_ColumnPropNameInTable="SettingValueColumn" msprop:Generator_UserColumnName="SettingValue" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_ServerSettings" msprop:Generator_TableClassName="tc_ServerSettingsDataTable" msprop:Generator_TableVarName="tabletc_ServerSettings" msprop:Generator_TablePropName="tc_ServerSettings" msprop:Generator_RowDeletingName="tc_ServerSettingsRowDeleting" msprop:Generator_UserTableName="tc_ServerSettings" msprop:Generator_RowChangingName="tc_ServerSettingsRowChanging" msprop:Generator_RowEvHandlerName="tc_ServerSettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_ServerSettingsRowDeleted" msprop:Generator_RowEvArgName="tc_ServerSettingsRowChangeEvent" msprop:Generator_RowChangedName="tc_ServerSettingsRowChanged" msprop:Generator_RowClassName="tc_ServerSettingsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Key" msprop:Generator_ColumnVarNameInTable="columnKey" msprop:Generator_ColumnPropNameInRow="Key" msprop:Generator_ColumnPropNameInTable="KeyColumn" msprop:Generator_UserColumnName="Key" type="xs:string" minOccurs="0" />
+              <xs:element name="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnPropNameInTable="ValueColumn" msprop:Generator_UserColumnName="Value" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_Log" msprop:Generator_TableClassName="tc_LogDataTable" msprop:Generator_TableVarName="tabletc_Log" msprop:Generator_TablePropName="tc_Log" msprop:Generator_RowDeletingName="tc_LogRowDeleting" msprop:Generator_UserTableName="tc_Log" msprop:Generator_RowChangingName="tc_LogRowChanging" msprop:Generator_RowEvHandlerName="tc_LogRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_LogRowDeleted" msprop:Generator_RowEvArgName="tc_LogRowChangeEvent" msprop:Generator_RowChangedName="tc_LogRowChanged" msprop:Generator_RowClassName="tc_LogRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_UserColumnName="UserId" type="xs:string" minOccurs="0" />
+              <xs:element name="ActionDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnActionDate" msprop:Generator_ColumnPropNameInRow="ActionDate" msprop:Generator_ColumnPropNameInTable="ActionDateColumn" msprop:Generator_UserColumnName="ActionDate" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Action" msprop:Generator_ColumnVarNameInTable="columnAction" msprop:Generator_ColumnPropNameInRow="Action" msprop:Generator_ColumnPropNameInTable="ActionColumn" msprop:Generator_UserColumnName="Action" type="xs:string" minOccurs="0" />
+              <xs:element name="ExtraInformation" msprop:Generator_ColumnVarNameInTable="columnExtraInformation" msprop:Generator_ColumnPropNameInRow="ExtraInformation" msprop:Generator_ColumnPropNameInTable="ExtraInformationColumn" msprop:Generator_UserColumnName="ExtraInformation" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_Role" msprop:Generator_TableClassName="tc_RoleDataTable" msprop:Generator_TableVarName="tabletc_Role" msprop:Generator_TablePropName="tc_Role" msprop:Generator_RowDeletingName="tc_RoleRowDeleting" msprop:Generator_UserTableName="tc_Role" msprop:Generator_RowChangingName="tc_RoleRowChanging" msprop:Generator_RowEvHandlerName="tc_RoleRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_RoleRowDeleted" msprop:Generator_RowEvArgName="tc_RoleRowChangeEvent" msprop:Generator_RowChangedName="tc_RoleRowChanged" msprop:Generator_RowClassName="tc_RoleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RoleId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnRoleId" msprop:Generator_ColumnPropNameInRow="RoleId" msprop:Generator_ColumnPropNameInTable="RoleIdColumn" msprop:Generator_UserColumnName="RoleId" type="xs:string" minOccurs="0" />
+              <xs:element name="Role" msprop:Generator_ColumnVarNameInTable="columnRole" msprop:Generator_ColumnPropNameInRow="Role" msprop:Generator_ColumnPropNameInTable="RoleColumn" msprop:Generator_UserColumnName="Role" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tc_Description" msprop:Generator_TableClassName="tc_DescriptionDataTable" msprop:Generator_TableVarName="tabletc_Description" msprop:Generator_TablePropName="tc_Description" msprop:Generator_RowDeletingName="tc_DescriptionRowDeleting" msprop:Generator_UserTableName="tc_Description" msprop:Generator_RowChangingName="tc_DescriptionRowChanging" msprop:Generator_RowEvHandlerName="tc_DescriptionRowChangeEventHandler" msprop:Generator_RowDeletedName="tc_DescriptionRowDeleted" msprop:Generator_RowEvArgName="tc_DescriptionRowChangeEvent" msprop:Generator_RowChangedName="tc_DescriptionRowChanged" msprop:Generator_RowClassName="tc_DescriptionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" />
+              <xs:element name="ParentId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnParentId" msprop:Generator_ColumnPropNameInRow="ParentId" msprop:Generator_ColumnPropNameInTable="ParentIdColumn" msprop:Generator_UserColumnName="ParentId" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="NoNagMinutes" msprop:Generator_ColumnVarNameInTable="columnNoNagMinutes" msprop:Generator_ColumnPropNameInRow="NoNagMinutes" msprop:Generator_ColumnPropNameInTable="NoNagMinutesColumn" msprop:Generator_UserColumnName="NoNagMinutes" type="xs:int" minOccurs="0" />
+              <xs:element name="Colour" msprop:Generator_ColumnVarNameInTable="columnColour" msprop:Generator_ColumnPropNameInRow="Colour" msprop:Generator_ColumnPropNameInTable="ColourColumn" msprop:Generator_UserColumnName="Colour" type="xs:string" minOccurs="0" />
+              <xs:element name="Sequence" msprop:Generator_ColumnVarNameInTable="columnSequence" msprop:Generator_ColumnPropNameInRow="Sequence" msprop:Generator_ColumnPropNameInTable="SequenceColumn" msprop:Generator_UserColumnName="Sequence" type="xs:int" minOccurs="0" />
+              <xs:element name="CustomFlags" msprop:Generator_ColumnVarNameInTable="columnCustomFlags" msprop:Generator_ColumnPropNameInRow="CustomFlags" msprop:Generator_ColumnPropNameInTable="CustomFlagsColumn" msprop:Generator_UserColumnName="CustomFlags" type="xs:int" minOccurs="0" />
+              <xs:element name="IsPrivate" msprop:Generator_ColumnVarNameInTable="columnIsPrivate" msprop:Generator_ColumnPropNameInRow="IsPrivate" msprop:Generator_ColumnPropNameInTable="IsPrivateColumn" msprop:Generator_UserColumnName="IsPrivate" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsCategory" msprop:Generator_ColumnVarNameInTable="columnIsCategory" msprop:Generator_ColumnPropNameInRow="IsCategory" msprop:Generator_ColumnPropNameInTable="IsCategoryColumn" msprop:Generator_UserColumnName="IsCategory" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsEvent" msprop:Generator_ColumnVarNameInTable="columnIsEvent" msprop:Generator_ColumnPropNameInRow="IsEvent" msprop:Generator_ColumnPropNameInTable="IsEventColumn" msprop:Generator_UserColumnName="IsEvent" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName" type="xs:string" minOccurs="0" />
+              <xs:element name="MenuColumn" msprop:Generator_ColumnVarNameInTable="columnMenuColumn" msprop:Generator_ColumnPropNameInRow="MenuColumn" msprop:Generator_ColumnPropNameInTable="MenuColumnColumn" msprop:Generator_UserColumnName="MenuColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl" msprop:Generator_ColumnPropNameInRow="Url" msprop:Generator_ColumnPropNameInTable="UrlColumn" msprop:Generator_UserColumnName="Url" type="xs:string" minOccurs="0" />
+              <xs:element name="Server" msprop:Generator_ColumnVarNameInTable="columnServer" msprop:Generator_ColumnPropNameInRow="Server" msprop:Generator_ColumnPropNameInTable="ServerColumn" msprop:Generator_UserColumnName="Server" type="xs:string" minOccurs="0" />
+              <xs:element name="ValidFromDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnValidFromDate" msprop:Generator_ColumnPropNameInRow="ValidFromDate" msprop:Generator_ColumnPropNameInTable="ValidFromDateColumn" msprop:Generator_UserColumnName="ValidFromDate" type="xs:anyType" minOccurs="0" />
+              <xs:element name="ValidToDate" msdata:DataType="System.DateTimeOffset" msprop:Generator_ColumnVarNameInTable="columnValidToDate" msprop:Generator_ColumnPropNameInRow="ValidToDate" msprop:Generator_ColumnPropNameInTable="ValidToDateColumn" msprop:Generator_UserColumnName="ValidToDate" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Enabled" msprop:Generator_ColumnVarNameInTable="columnEnabled" msprop:Generator_ColumnPropNameInRow="Enabled" msprop:Generator_ColumnPropNameInTable="EnabledColumn" msprop:Generator_UserColumnName="Enabled" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tc_Identity" />
+      <xs:field xpath="mstns:Identity" />
+    </xs:unique>
+    <xs:unique name="tc_Activity_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tc_Activity" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="tc_Description_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tc_Description" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="tc_Activity_tc_Description" msdata:parent="tc_Activity" msdata:child="tc_Description" msdata:parentkey="DescriptionId" msdata:childkey="Id" msprop:Generator_UserChildTable="tc_Description" msprop:Generator_ChildPropName="Gettc_DescriptionRows" msprop:Generator_ParentPropName="tc_ActivityRow" msprop:Generator_UserRelationName="tc_Activity_tc_Description" msprop:Generator_RelationVarName="relationtc_Activity_tc_Description" msprop:Generator_UserParentTable="tc_Activity" />
+      <msdata:Relationship name="tc_Identity_tc_Activity" msdata:parent="tc_Identity" msdata:child="tc_Activity" msdata:parentkey="Identity" msdata:childkey="UserId" msprop:Generator_UserChildTable="tc_Activity" msprop:Generator_ChildPropName="Gettc_ActivityRows" msprop:Generator_ParentPropName="tc_IdentityRow" msprop:Generator_UserRelationName="tc_Identity_tc_Activity" msprop:Generator_RelationVarName="relationtc_Identity_tc_Activity" msprop:Generator_UserParentTable="tc_Identity" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

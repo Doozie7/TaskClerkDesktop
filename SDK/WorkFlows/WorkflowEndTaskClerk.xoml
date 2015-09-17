@@ -1,0 +1,9 @@
+﻿<SequentialWorkflowActivity x:Class="BritishMicro.TaskClerk.WorkflowStartTaskClerk" x:Name="WorkflowStartTaskClerk" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<SequenceActivity x:Name="endEngine">
+		<CodeActivity x:Name="stopServicePlugins" ExecuteCode="StartThePluginServices_ExecuteCode" />
+		<CodeActivity x:Name="createStopTask" Description="If the heartbeat was not reset at &#xD;&#xA;last shutdown." />
+		<CodeActivity x:Name="stopHeartBeat" />
+		<CodeActivity x:Name="storeEnginEndTime" />
+		<CodeActivity x:Name="closeProviders" />
+	</SequenceActivity>
+</SequentialWorkflowActivity>

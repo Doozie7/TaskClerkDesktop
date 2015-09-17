@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Comment CommentText="Plugin extensability components, extending one of these objects provides a developer with access to the engine providers and the unique features of each component">
+    <Position X="3.094" Y="0.5" Height="1.01" Width="2.669" />
+  </Comment>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginComponent" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginComponent.cs</FileName>
+      <HashCode>AAAAAABAACAgAAAAAFiAAAACAAAAYBAIBAAASAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginExporter" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginExporter.cs</FileName>
+      <HashCode>AAAAgEAAgAAgIAYAAAAYAAAgAAAAAAAAAAAAAECAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginNotifyMenuItem" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginNotifyMenuItem.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAACQAAACAAAAAEAAAAAACAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginOptionControl" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginOptionControl.cs</FileName>
+      <HashCode>EIAAUAAAACAAAgAAEgCCAAQCAAAQQAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginToolMenuItem" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginToolMenuItem.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginUserControl" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Plugins\PluginUserControl.cs</FileName>
+      <HashCode>AAAAAAAAAEAAAIAAAFAAAAACgAAAIAAIBAAAQEAAEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BritishMicro.TaskClerk.Plugins.PluginService" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+</ClassDiagram>

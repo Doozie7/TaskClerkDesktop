@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.SDK", "SDK\TaskClerk.SDK.csproj", "{C5694696-5D82-4F4D-8662-41686BFF74BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.Windows.Foundation", "Windows.Foundation\TaskClerk.Windows.Foundation.csproj", "{DD2B4CB3-B530-46A4-9445-F99B47456512}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.WindowsClient", "Windows.Client\TaskClerk.WindowsClient.csproj", "{BB5273B7-BFA3-490B-B5B1-CC42BB9347EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantAccess", "InstantAccess\InstantAccess.csproj", "{4FDAF5EC-D85B-4C12-9012-7A4CE4FBCBFA}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccProjectUniqueName0 = SDK\\TaskClerk.SDK.csproj
+		SccProjectName0 = \u0022$/TaskClerk_v1/SDK\u0022,\u0020JLAAAAAA
+		SccLocalPath0 = SDK
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName1 = Windows.Foundation\\TaskClerk.Windows.Foundation.csproj
+		SccProjectName1 = \u0022$/TaskClerk_v1/Windows.Foundation\u0022,\u0020RLAAAAAA
+		SccLocalPath1 = Windows.Foundation
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName2 = Windows.Client\\TaskClerk.WindowsClient.csproj
+		SccProjectName2 = \u0022$/TaskClerk_v1/Windows.Client_v1\u0022,\u0020YLAAAAAA
+		SccLocalPath2 = Windows.Client
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccProjectUniqueName3 = InstantAccess\\InstantAccess.csproj
+		SccProjectName3 = \u0022$/TaskClerk_v1/InstantAccess\u0022,\u0020ONAAAAAA
+		SccLocalPath3 = InstantAccess
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5694696-5D82-4F4D-8662-41686BFF74BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5694696-5D82-4F4D-8662-41686BFF74BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5694696-5D82-4F4D-8662-41686BFF74BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5694696-5D82-4F4D-8662-41686BFF74BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2B4CB3-B530-46A4-9445-F99B47456512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2B4CB3-B530-46A4-9445-F99B47456512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2B4CB3-B530-46A4-9445-F99B47456512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2B4CB3-B530-46A4-9445-F99B47456512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB5273B7-BFA3-490B-B5B1-CC42BB9347EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB5273B7-BFA3-490B-B5B1-CC42BB9347EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB5273B7-BFA3-490B-B5B1-CC42BB9347EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB5273B7-BFA3-490B-B5B1-CC42BB9347EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDAF5EC-D85B-4C12-9012-7A4CE4FBCBFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDAF5EC-D85B-4C12-9012-7A4CE4FBCBFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDAF5EC-D85B-4C12-9012-7A4CE4FBCBFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDAF5EC-D85B-4C12-9012-7A4CE4FBCBFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

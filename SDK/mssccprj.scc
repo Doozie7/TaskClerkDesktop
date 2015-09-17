@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[TaskClerk.SDK.csproj]
+SCC_Aux_Path = "\\bm-webserver1\vss"
+SCC_Project_Name = "$/TaskClerk_v1/SDK", JLAAAAAA

@@ -1,0 +1,9 @@
+D:\Source\BritishMicro\TaskClerk\Collateral\bin\Release\Collateral.dll
+D:\Source\BritishMicro\TaskClerk\Collateral\bin\Release\Collateral.pdb
+D:\Source\BritishMicro\TaskClerk\Collateral\obj\Release\Collateral.dll
+D:\Source\BritishMicro\TaskClerk\Collateral\obj\Release\Collateral.pdb
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\bin\Release\Collateral.dll
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\bin\Release\Collateral.pdb
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Release\ResolveAssemblyReference.cache
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Release\Collateral.dll
+C:\Users\jpowell\Documents\Source Code\BritishMicro\TaskClerk\Collateral\obj\Release\Collateral.pdb

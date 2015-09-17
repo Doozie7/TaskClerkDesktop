@@ -1,0 +1,8 @@
+bin\Debug\Collateral.dll
+bin\Debug\Collateral.pdb
+obj\Debug\Collateral.dll
+obj\Debug\Collateral.pdb
+bin\Release\Collateral.dll
+bin\Release\Collateral.pdb
+obj\Release\Collateral.dll
+obj\Release\Collateral.pdb
