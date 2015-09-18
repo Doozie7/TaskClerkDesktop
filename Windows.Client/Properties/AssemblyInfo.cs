@@ -10,7 +10,7 @@ using System.Security.Permissions;
     AssemblyDescription(@"Clerk : A person employed to keep records or accounts or to perform general office work. TaskClerk records your tasks at your request. Right click on the icon in the notify section of the taskbar to change task.")]
 [assembly : AssemblyCompany("BritishMicro")]
 [assembly : AssemblyProduct("TaskClerk")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2008-2015")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

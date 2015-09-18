@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly : AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BritishMicro")]
 [assembly : AssemblyProduct("SqlExpressProviders")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2008")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 [assembly : AssemblyTrademark("")]
 [assembly : AssemblyCulture("")]
 

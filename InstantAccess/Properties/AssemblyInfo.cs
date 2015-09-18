@@ -10,7 +10,7 @@ using System.Security.Permissions;
 [assembly : AssemblyDescription("Alt-F12 Plug-in for the Windows TaskClerk client.")]
 [assembly : AssemblyCompany("BritishMicro")]
 [assembly : AssemblyProduct("TaskClerk.Plugin.InstantAccess")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2008")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

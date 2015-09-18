@@ -95,7 +95,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         {
             if (reader == null)
             {
-                throw new ArgumentNullException("reader");
+                throw new ArgumentNullException(nameof(reader));
             }
 
             TaskDescriptionsProvider provider = AppContext.Current.TaskDescriptionsProvider;
@@ -124,7 +124,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         {
             if (writer == null)
             {
-                throw new ArgumentNullException("writer");
+                throw new ArgumentNullException(nameof(writer));
             }
 
             //<?xml version="1.0" encoding="utf-8"?>

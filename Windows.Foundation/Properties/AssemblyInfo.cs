@@ -10,7 +10,7 @@ using System.Security.Permissions;
 [assembly : AssemblyDescription("Providers the Windows abstraction layer on the TaskClerkSDK")]
 [assembly : AssemblyCompany("BritishMicro")]
 [assembly : AssemblyProduct("BritishMicro.TaskClerk.Windows.Foundation")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2008")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

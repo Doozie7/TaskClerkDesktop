@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Provides some basic exporters for the Windows TaskClerk client.")]
 [assembly: AssemblyCompany("BritishMicro")]
 [assembly: AssemblyProduct("ExportPack1")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2008")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

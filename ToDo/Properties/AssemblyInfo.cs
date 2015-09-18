@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BritishMicro")]
 [assembly: AssemblyProduct("ToDo TaskClerk plugin.")]
-[assembly: AssemblyCopyright("Copyright © BritishMicro 2007")]
+[assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
