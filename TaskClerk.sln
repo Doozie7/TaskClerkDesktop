@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CF77252-7A57-444F-A92D-1F8FD28A0FBB}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,8 +33,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantNotes", "InstantNotes\InstantNotes.csproj", "{F6151815-A6F5-43F5-9C20-0C2A53E77224}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.UnitTests", "TaskClerkUnitTests\TaskClerk.UnitTests.csproj", "{70B99ACC-BB79-401E-86AF-765D4721D726}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.WpfClient", "TaskClerk.WpfClient\TaskClerk.WpfClient.csproj", "{BC692F24-F8C1-4BDB-B179-4D6064A5A789}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginPack2011", "PluginPack2011\PluginPack2011.csproj", "{28BF145B-775E-4971-8DB9-A6E50D2EB587}"
 EndProject
@@ -170,16 +168,6 @@ Global
 		{70B99ACC-BB79-401E-86AF-765D4721D726}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{70B99ACC-BB79-401E-86AF-765D4721D726}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{70B99ACC-BB79-401E-86AF-765D4721D726}.Release|x86.ActiveCfg = Release|Any CPU
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Debug|x86.ActiveCfg = Debug|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Debug|x86.Build.0 = Debug|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Release|Any CPU.ActiveCfg = Release|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Release|Mixed Platforms.Build.0 = Release|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Release|x86.ActiveCfg = Release|x86
-		{BC692F24-F8C1-4BDB-B179-4D6064A5A789}.Release|x86.Build.0 = Release|x86
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
