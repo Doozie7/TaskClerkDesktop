@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk;
 using System.Threading;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
@@ -232,16 +228,14 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
         private void GetFormSizeAndLocation()
         {
             this.ClientSize = (Size)_engine.SettingsProvider.Get(
-                                         string.Format("{0}ClientSize",
-                                         this.GetType().Name),
+                $"{this.GetType().Name} ClientSize",
                                          this.Size);
         }
 
         private void SetFormSizeAndLocation()
         {
             _engine.SettingsProvider.Set(
-                string.Format("{0}ClientSize",
-                this.GetType().Name),
+                $"{this.GetType().Name} ClientSize",
                 this.ClientSize,
                 PersistHint.AcrossSessions);
         }
