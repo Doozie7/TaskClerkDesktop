@@ -754,7 +754,7 @@ namespace BritishMicro.TaskClerk.UI
         ///// <returns></returns>
         //private PrintDocument GetCurrentPrintFormatter()
         //{
-        //    foreach(LoadableItem li in _engine.PluginsProvider.GetPlugisOfSubcalss(typeof(PluginPrintFormatter)))
+        //    foreach(LoadableItem li in _engine.PluginsProvider.GetPluginsOfSubclass(typeof(PluginPrintFormatter)))
         //    {
         //        string printFormatter = null;
         //        if(!_engine.SettingsProvider.TryGet("CurrentPrintFormatter", out printFormatter))

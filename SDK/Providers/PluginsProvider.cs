@@ -63,7 +63,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public int CountOfType(Type type)
         {
-            return GetPlugisOfSubcalss(type).Count;
+            return GetPluginsOfSubclass(type).Count;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public Collection<LoadableItem> GetPlugisOfSubcalss(Type type)
+        public Collection<LoadableItem> GetPluginsOfSubclass(Type type)
         {
             Collection<LoadableItem> typedCollection
                 = new Collection<LoadableItem>();
@@ -108,9 +108,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         private static string PluginToString(Type plugin)
         {
-            return string.Format("Plugin {0} loaded from {1}",
-                            plugin.AssemblyQualifiedName,
-                            plugin.Module.FullyQualifiedName);
+            return $"Plugin {plugin.AssemblyQualifiedName} loaded from {plugin.Module.FullyQualifiedName}";
         }
 
         #region Discovered Plugins Event

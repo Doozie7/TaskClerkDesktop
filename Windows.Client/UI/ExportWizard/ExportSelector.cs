@@ -20,7 +20,7 @@ namespace BritishMicro.TaskClerk.UI
         private void RebuildList()
         {
             listView.Items.Clear();
-            foreach (LoadableItem loadableItem in AppContext.Current.PluginsProvider.GetPlugisOfSubcalss(typeof(PluginExporter)))
+            foreach (LoadableItem loadableItem in AppContext.Current.PluginsProvider.GetPluginsOfSubclass(typeof(PluginExporter)))
             {
                 PluginExporter eb = loadableItem.CreateInstance() as PluginExporter;
                 if (eb != null)

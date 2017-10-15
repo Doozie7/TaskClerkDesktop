@@ -306,7 +306,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <summary>
         /// This event is fired when activities are being backed up
         /// </summary>
-        public event EventHandler<EventArgs> BackinUpTaskActivities;
+        public event EventHandler<EventArgs> BackingUpTaskActivities;
 
         /// <summary>
         /// Raises the <see cref="E:BackingUpTaskActivitiesEvent"/> event.
@@ -314,7 +314,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void OnBackingUpTaskActivitiesEvent(EventArgs e)
         {
-            EventHandler<EventArgs> handler = BackinUpTaskActivities;
+            EventHandler<EventArgs> handler = BackingUpTaskActivities;
             if (handler != null)
             {
                 handler(this, e);
