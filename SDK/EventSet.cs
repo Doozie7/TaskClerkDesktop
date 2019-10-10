@@ -9,7 +9,7 @@ namespace BritishMicro.TaskClerk
     public sealed class EventSet
     {
         // The private dictionary used to maintain EventKey -> Delegate mappings
-        private Dictionary<object, Delegate> m_events =
+        private readonly Dictionary<object, Delegate> m_events =
             new Dictionary<object, Delegate>();
 
         // Adds an EventKey -> Delegate mapping if it doesn't exist or 
@@ -23,8 +23,7 @@ namespace BritishMicro.TaskClerk
         {
             lock (m_events)
             {
-                Delegate d;
-                m_events.TryGetValue(eventKey, out d);
+                m_events.TryGetValue(eventKey, out Delegate d);
                 m_events[eventKey] = Delegate.Combine(d, handler);
             }
         }
@@ -42,8 +41,7 @@ namespace BritishMicro.TaskClerk
             {
                 // Do not throw an exception if attempting to remove 
                 // a delegate from an EventKey not in the set
-                Delegate d;
-                if (m_events.TryGetValue(eventKey, out d))
+                if (m_events.TryGetValue(eventKey, out Delegate d))
                 {
                     d = Delegate.Remove(d, handler);
 
@@ -78,7 +76,7 @@ namespace BritishMicro.TaskClerk
                 // objects. Internally, DynamicInvoke will check the type safety of the 
                 // parameters with the callback method being called and call the method.
                 // If there is a type mismatch, then DynamicInvoke will throw an exception.
-                d.DynamicInvoke(new Object[] {sender, e});
+                d.DynamicInvoke(new Object[] { sender, e });
             }
         }
     }

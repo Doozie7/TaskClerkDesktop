@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using BritishMicro.TaskClerk;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
 {
@@ -14,7 +11,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
 
         private string _description;
         private int _priority;
-        private int _progress; 
+        private int _progress;
         private string _remindType;
         private DateTime _remindDate;
         private bool _popupAlarm;

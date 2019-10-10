@@ -5,20 +5,20 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("SqlProviders")]
 [assembly: AssemblyDescription("A set of SQL providers for TaskClerk")]
-[assembly : AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("BritishMicro")]
-[assembly : AssemblyProduct("SqlExpressProviders")]
+[assembly: AssemblyProduct("SqlExpressProviders")]
 [assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
-[assembly : AssemblyTrademark("")]
-[assembly : AssemblyCulture("")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly : ComVisible(false)]
+[assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly : Guid("5e7ea757-98f0-49df-98ee-bb16be918c2c")]
+[assembly: Guid("5e7ea757-98f0-49df-98ee-bb16be918c2c")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -5,12 +5,12 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Properties;
 
 namespace BritishMicro.TaskClerk
 {
@@ -35,7 +35,7 @@ namespace BritishMicro.TaskClerk
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    
+
                     AppContext.Current.StartEngine();
                     Application.Run(new HiddenForm(args));
                     AppContext.Current.StopEngine();
@@ -72,8 +72,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="e">The <see cref="System.UnhandledExceptionEventArgs"/> instance containing the event data.</param>
         static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Exception ex = e.ExceptionObject as Exception;
-            if(ex != null)
+            if (e.ExceptionObject is Exception ex)
                 Trace.TraceError(ex.ToString());
         }
     }

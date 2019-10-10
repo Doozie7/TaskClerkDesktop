@@ -6,7 +6,6 @@
 //----------------------------------------------------------------------
 
 using System;
-using BritishMicro.TaskClerk.Properties;
 using System.Collections.ObjectModel;
 
 namespace BritishMicro.TaskClerk
@@ -17,13 +16,8 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class TaskDescriptionsEventArgs : EventArgs
     {
-        private Collection<TaskDescription> _items;
+        private readonly Collection<TaskDescription> _items;
         private bool _cancel;
-
-        /// <summary>
-        /// The Empty TaskDescription event Arg
-        /// </summary>
-        public new static TaskDescriptionsEventArgs Empty = new TaskDescriptionsEventArgs();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDescriptionEventArgs"/> class.
@@ -38,12 +32,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="items">The items.</param>
         public TaskDescriptionsEventArgs(Collection<TaskDescription> items)
         {
-            if (items == null)
-            {
-                throw new ArgumentNullException("items");
-            }
-
-            _items = items;
+            _items = items ?? throw new ArgumentNullException("items");
         }
 
         /// <summary>

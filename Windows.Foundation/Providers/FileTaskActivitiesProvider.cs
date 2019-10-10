@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Xml.Serialization;
-using System.Windows.Forms;
 using System.Security;
-using System.Diagnostics;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace BritishMicro.TaskClerk.Providers
 {
@@ -16,7 +15,6 @@ namespace BritishMicro.TaskClerk.Providers
     public class FileTaskActivitiesProvider : TaskActivitiesProvider
     {
         private const string STRING_FILEPATTERN = ".tc*.xml";
-        private const string STRING_FILESTORE_PATTERN = "{0:yyyy-MM-dd}" + STRING_FILEPATTERN;
         private DirectoryInfo _dataFolder;
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace BritishMicro.TaskClerk.Providers
         {
             base.OnInit();
             _dataFolder = new DirectoryInfo(
-                TryGetFromSettings(this, 
+                TryGetFromSettings(this,
                 "defaultDataFolder",
                 System.Windows.Forms.Application.UserAppDataPath));
         }
@@ -53,14 +51,13 @@ namespace BritishMicro.TaskClerk.Providers
             // where data has been stored.
 
             Collection<DateTime> dateMetrics = new Collection<DateTime>();
-            string message = "Hackers change this code.";
-            message += " I loose.";
-            bool registered =
+            //string message = "Hackers change this code.";
+            _ =
                 (Engine.SettingsProvider.Get("CurrentUserRegistrationKey", "").ToString().Length == 50
                      ?
                  true
                      : false);
-            bool purchased = (bool) Engine.SettingsProvider.Get("CurrentUserRegistrationKeyPurchased", false);
+            _ = (bool)Engine.SettingsProvider.Get("CurrentUserRegistrationKeyPurchased", false);
 
             List<DateTime> storedDays = new List<DateTime>();
             FileInfo[] files = _dataFolder.GetFiles("*" + STRING_FILEPATTERN);
@@ -76,8 +73,8 @@ namespace BritishMicro.TaskClerk.Providers
                 // process the file
                 using (FileStream fileStream = fileInfo.Open(FileMode.Open, FileAccess.Read))
                 {
-                    XmlSerializer s = new XmlSerializer(typeof (List<TaskActivity>));
-                    foreach (TaskActivity ta in (List<TaskActivity>) s.Deserialize(fileStream))
+                    XmlSerializer s = new XmlSerializer(typeof(List<TaskActivity>));
+                    foreach (TaskActivity ta in (List<TaskActivity>)s.Deserialize(fileStream))
                     {
                         if (storedDays.Contains(ta.StartDate) == false)
                         {
@@ -86,7 +83,7 @@ namespace BritishMicro.TaskClerk.Providers
                     }
                 }
             }
-            
+
             foreach (DateTime dt in storedDays)
             {
                 dateMetrics.Add(dt);
@@ -150,7 +147,7 @@ namespace BritishMicro.TaskClerk.Providers
                 {
                     using (FileStream fileStream = fileInfo.Open(FileMode.Create, FileAccess.Write))
                     {
-                        XmlSerializer s = new XmlSerializer(typeof (List<TaskActivity>));
+                        XmlSerializer s = new XmlSerializer(typeof(List<TaskActivity>));
                         s.Serialize(fileStream, localActivities);
                     }
                 }
@@ -177,7 +174,7 @@ namespace BritishMicro.TaskClerk.Providers
                 activities.Remove(activity);
             }
             activities.Add(activity);
-            SaveActivities(activities);   
+            SaveActivities(activities);
         }
 
         /// <summary>
@@ -228,20 +225,19 @@ namespace BritishMicro.TaskClerk.Providers
         {
             const string STRING_FILEPATTERN = ".tc*.xml";
             const string STRING_FILESTORE_PATTERN = "{0:yyyy-MM-dd}" + STRING_FILEPATTERN;
-
-            FileInfo result = null;
             string filename = string.Format(STRING_FILESTORE_PATTERN, date);
             FileInfo[] files = _dataFolder.GetFiles(filename);
+
+            FileInfo result;
             if (files.Length > 0)
             {
                 result = files[0];
             }
             else
             {
-                FileInfo fileInfo = null;
                 filename = string.Format(_dataFolder.FullName + "\\" + STRING_FILESTORE_PATTERN, date);
                 filename = filename.Replace("*", "");
-                fileInfo = new FileInfo(filename);
+                FileInfo fileInfo = new FileInfo(filename);
                 fileInfo.Refresh();
                 result = fileInfo;
             }

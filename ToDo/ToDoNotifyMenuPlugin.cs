@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using BritishMicro.TaskClerk.Plugins;
+using System;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
 {

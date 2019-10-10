@@ -1,14 +1,14 @@
-using System;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
 using BritishMicro.Windows;
+using System;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
     internal partial class ExportSelector : WizardUserControl
     {
 
-        private ExportForm _mainForm;
+        private readonly ExportForm _mainForm;
 
         public ExportSelector(ExportForm mainForm)
         {
@@ -22,12 +22,13 @@ namespace BritishMicro.TaskClerk.UI
             listView.Items.Clear();
             foreach (LoadableItem loadableItem in AppContext.Current.PluginsProvider.GetPluginsOfSubclass(typeof(PluginExporter)))
             {
-                PluginExporter eb = loadableItem.CreateInstance() as PluginExporter;
-                if (eb != null)
+                if (loadableItem.CreateInstance() is PluginExporter eb)
                 {
-                    ListViewItem lvi = new ListViewItem(loadableItem.DisplayName);
-                    lvi.Tag = loadableItem;
-                    lvi.ToolTipText = loadableItem.Description;
+                    ListViewItem lvi = new ListViewItem(loadableItem.DisplayName)
+                    {
+                        Tag = loadableItem,
+                        ToolTipText = loadableItem.Description
+                    };
                     listView.Items.Add(lvi);
                 }
             }

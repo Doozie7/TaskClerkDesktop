@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
@@ -47,7 +48,7 @@ namespace BritishMicro.TaskClerk.UI
             }
         }
 
-        private void panel_MouseDown(object sender, MouseEventArgs e)
+        private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -56,7 +57,7 @@ namespace BritishMicro.TaskClerk.UI
             }
         }
 
-        private void panelRight_MouseMove(object sender, MouseEventArgs e)
+        private void PanelRight_MouseMove(object sender, MouseEventArgs e)
         {
             if (InMoveMode)
             {
@@ -64,7 +65,7 @@ namespace BritishMicro.TaskClerk.UI
             }
         }
 
-        private void panelLeft_MouseMove(object sender, MouseEventArgs e)
+        private void PanelLeft_MouseMove(object sender, MouseEventArgs e)
         {
             if (InMoveMode)
             {
@@ -72,15 +73,15 @@ namespace BritishMicro.TaskClerk.UI
             }
         }
 
-        private void panel_MouseUp(object sender, MouseEventArgs e)
+        private void Panel_MouseUp(object sender, MouseEventArgs e)
         {
             InMoveMode = false;
-            DateTime startDate = DateTime.Parse(Activity.StartDate.ToShortDateString());
+            DateTime startDate = DateTime.Parse(Activity.StartDate.ToShortDateString(), CultureInfo.InvariantCulture);
             DateTime endDate = startDate;
-            float start = (((float) Location.X)/_step) + 1;
-            float end = (((float) (Location.X + Width))/_step) + 1;
-            DateTime newStartTime = TaskActivity.StripSeconds(startDate.AddMinutes((double) start));
-            DateTime newEndTime = TaskActivity.StripSeconds(endDate.AddMinutes((double) end));
+            float start = (((float)Location.X) / _step) + 1;
+            float end = (((float)(Location.X + Width)) / _step) + 1;
+            DateTime newStartTime = TaskActivity.StripSeconds(startDate.AddMinutes((double)start));
+            DateTime newEndTime = TaskActivity.StripSeconds(endDate.AddMinutes((double)end));
             if ((Activity.StartDate != newStartTime) || (Activity.EndDate != newEndTime))
             {
                 Activity.StartDate = newStartTime;

@@ -52,3 +52,10 @@ C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\bin\Debu
 C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.csprojResolveAssemblyReference.cache
 C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.dll
 C:\Users\john.powell\Documents\Source\BritishMicro\TaskClerk\Collateral\obj\Debug\Collateral.pdb
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\bin\Debug\Collateral.pdb
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.dll
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.pdb
+C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.csprojAssemblyReference.cache

@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
 {
     public partial class ToDoExplorer : Form
     {
-        private TaskClerkEngine _engine;
-        private List<ToDoTask> _todoTasks;
+        private readonly TaskClerkEngine _engine;
+        private readonly List<ToDoTask> _todoTasks;
         private ToDoOptions _options;
 
         public ToDoExplorer(TaskClerkEngine engine)
@@ -25,9 +25,9 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             CreateGroupsInListView();
             PopulateListView();
 
-            this.monthCalendar.DateSelected += 
+            this.monthCalendar.DateSelected +=
                 new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
-            this.listView.ItemSelectionChanged += 
+            this.listView.ItemSelectionChanged +=
                 new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
         }
 
@@ -51,22 +51,24 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             {
                 if ((task != null) && (task.TaskDescription != null))
                 {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Tag = task;
+                    ListViewItem lvi = new ListViewItem
+                    {
+                        Tag = task
+                    };
                     if (task.Progress == 100)
                     {
                         lvi.Font = new Font(this.listView.Font, FontStyle.Strikeout);
-                    }                    
+                    }
                     lvi.SubItems.AddRange(
-                        new string[] { 
-                        task.Description, 
-                        task.TaskDescription.Name, 
-                        task.RemindType.ToString(), 
-                        task.RemindDate.ToString(), 
+                        new string[] {
+                        task.Description,
+                        task.TaskDescription.Name,
+                        task.RemindType.ToString(),
+                        task.RemindDate.ToString(),
                         task.PopupAlarm.ToString() });
 
                     lvi.Group = SetGroup(task);
-                    
+
                     this.listView.Items.Add(lvi);
                     dates.Add(task.RemindDate);
                 }
@@ -110,32 +112,30 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
 
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            this.monthCalendar.DateSelected -= 
+            this.monthCalendar.DateSelected -=
                 new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
-            ToDoTask task = e.Item.Tag as ToDoTask;
-            if (task != null)
+            if (e.Item.Tag is ToDoTask task)
             {
                 monthCalendar.SelectionStart = task.RemindDate;
                 monthCalendar.SelectionEnd = task.RemindDate;
             }
-            this.monthCalendar.DateSelected += 
+            this.monthCalendar.DateSelected +=
                 new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            this.listView.ItemSelectionChanged -= 
+            this.listView.ItemSelectionChanged -=
                 new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
             foreach (ListViewItem lvi in listView.Items)
             {
                 lvi.Selected = false;
-                ToDoTask task = lvi.Tag as ToDoTask;
-                if ((task != null) && (task.RemindDate.Date == e.Start.Date))
+                if ((lvi.Tag is ToDoTask task) && (task.RemindDate.Date == e.Start.Date))
                 {
                     lvi.Selected = true;
                 }
             }
-            this.listView.ItemSelectionChanged += 
+            this.listView.ItemSelectionChanged +=
                 new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
         }
 
@@ -150,8 +150,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             {
                 if (lvi.Selected)
                 {
-                    ToDoTask t = lvi.Tag as ToDoTask;
-                    if (t != null)
+                    if (lvi.Tag is ToDoTask t)
                     {
                         _todoTasks.Remove(t);
                         lvi.Remove();
@@ -182,8 +181,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             {
                 if (lvi.Selected == true)
                 {
-                    ToDoTask task = lvi.Tag as ToDoTask;
-                    if (task != null)
+                    if (lvi.Tag is ToDoTask task)
                     {
                         task.Progress = 100;
                         lvi.Font = new Font(lvi.Font, FontStyle.Strikeout);
@@ -196,7 +194,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
         {
             using (ToDoOptionsDialog dialog = new ToDoOptionsDialog(new ToDoOptions(_options)))
             {
-                if(dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     _options = dialog.Options;
                     _engine.SettingsProvider.Set("ToDoOptions", _options, PersistHint.AcrossSessions);

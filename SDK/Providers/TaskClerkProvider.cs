@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------
 
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -18,7 +19,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using System.Configuration;
 
 namespace BritishMicro.TaskClerk.Providers
 {
@@ -181,11 +181,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.Providers.TimingEventArgs"/> instance containing the event data.</param>
         private void OnTimingDone(TimingEventArgs e)
         {
-            EventHandler<TimingEventArgs> handler = ProviderTimer;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            ProviderTimer?.Invoke(this, e);
         }
 
         #endregion
@@ -197,9 +193,9 @@ namespace BritishMicro.TaskClerk.Providers
         /// </summary>
         public static ConnectionStringSettings DiscoverConnectionStringSettings(TaskClerkProvider provider)
         {
-            if(provider == null)
+            if (provider == null)
                 throw new ArgumentNullException("provider");
-            
+
             string connectionStringName = "BritishMicro.TaskClerk.Properties.Settings.DefaultDataStore";
             if (provider.HasMetaData)
             {
@@ -217,7 +213,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public static string TryGetFromSettings(TaskClerkProvider provider, string key, string defaultValue)
         {
-            if(provider == null)
+            if (provider == null)
                 throw new ArgumentNullException("provider");
 
             string foundValue = null;
@@ -239,23 +235,23 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         protected static Assembly AssemblyResolve(ResolveEventArgs args)
         {
-            if(args == null)
+            if (args == null)
                 throw new ArgumentNullException("args");
-            
+
             try
             {
                 string[] assemblyName = args.Name.Split(',');
                 string pluginPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
                 string assemblyPath = Path.Combine(pluginPath, assemblyName[0] + ".dll");
 
-                if(File.Exists(assemblyPath))
+                if (File.Exists(assemblyPath))
                 {
                     Assembly targetAssembly = Assembly.LoadFile(assemblyPath);
-                    if(targetAssembly != null)
+                    if (targetAssembly != null)
                         return targetAssembly;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.TraceError(ex.ToString());
             }

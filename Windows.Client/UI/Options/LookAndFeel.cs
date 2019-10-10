@@ -1,8 +1,8 @@
+using BritishMicro.TaskClerk.Plugins;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Plugins;
-using System.ComponentModel;
 
 namespace BritishMicro.TaskClerk.UI.Options
 {
@@ -29,12 +29,12 @@ namespace BritishMicro.TaskClerk.UI.Options
             base.OnTaskClerkInit();
 
             Font font = new Font("Arial", 9);
-            font = (Font) Engine.SettingsProvider.Get("GeneralFont", font);
+            font = (Font)Engine.SettingsProvider.Get("GeneralFont", font);
             textBox1.Text = font.ToString();
 
             for (int i = 0; i < checkedListBox.Items.Count; i++)
             {
-                bool set = (bool) Engine.SettingsProvider.Get(checkedListBox.Items[i], true);
+                bool set = (bool)Engine.SettingsProvider.Get(checkedListBox.Items[i], true);
                 checkedListBox.SetItemChecked(i, set);
             }
 
@@ -52,7 +52,7 @@ namespace BritishMicro.TaskClerk.UI.Options
 
         private void button1_Click(object sender, EventArgs e)
         {
-            fontDialog.Font = (Font) Engine.SettingsProvider.Get("GeneralFont", Font);
+            fontDialog.Font = (Font)Engine.SettingsProvider.Get("GeneralFont", Font);
             fontDialog.ShowDialog(this);
             textBox1.Text = fontDialog.Font.ToString();
             Engine.SettingsProvider.Set("GeneralFont", fontDialog.Font, PersistHint.AcrossSessions);

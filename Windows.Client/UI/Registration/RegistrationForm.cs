@@ -1,6 +1,6 @@
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Properties;
 
 namespace BritishMicro.TaskClerk.UI
 {

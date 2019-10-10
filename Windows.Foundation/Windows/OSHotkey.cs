@@ -85,11 +85,7 @@ namespace BritishMicro.Windows
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected virtual void OnHotkeyPress(EventArgs e)
         {
-            EventHandler handler = HotkeyPress;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            HotkeyPress?.Invoke(this, e);
         }
 
         /// <summary>

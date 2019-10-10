@@ -15,7 +15,7 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class TaskActivityDiscoverDateMetricsEventArgs : EventArgs
     {
-        private Collection<DateTime> _storedDays;
+        private readonly Collection<DateTime> _storedDays;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskActivityDiscoverDateMetricsEventArgs"/> class.

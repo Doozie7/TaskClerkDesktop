@@ -1,7 +1,7 @@
-﻿using System;
-using BritishMicro.TaskClerk.Plugins;
-using System.IO;
+﻿using BritishMicro.TaskClerk.Plugins;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace MetaTaskPlugin
@@ -10,7 +10,7 @@ namespace MetaTaskPlugin
     public class TaskExpanderService : PluginService
     {
 
-        private List<DescriptionToExpand> activitiesToExpand = new List<DescriptionToExpand>();
+        private readonly List<DescriptionToExpand> activitiesToExpand = new List<DescriptionToExpand>();
 
         protected override void OnStartup()
         {

@@ -15,7 +15,7 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class TaskActivitySaveEventArgs : EventArgs
     {
-        private Collection<TaskActivity> _activities;
+        private readonly Collection<TaskActivity> _activities;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskActivitySaveEventArgs"/> class.

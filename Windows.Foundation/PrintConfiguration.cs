@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 
 namespace BritishMicro.TaskClerk
@@ -74,6 +72,6 @@ namespace BritishMicro.TaskClerk
             get { return _activities; }
             set { _activities = value; }
         }
-	
+
     }
 }

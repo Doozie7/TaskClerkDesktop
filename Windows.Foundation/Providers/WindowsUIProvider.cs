@@ -22,7 +22,7 @@ namespace BritishMicro.TaskClerk.Providers
             if (_activityExplorerVisible == false)
             {
                 _activityExplorerVisible = true;
-                Type type = (Type) Engine.SettingsProvider.Get("TaskActivitiesExplorer");
+                Type type = (Type)Engine.SettingsProvider.Get("TaskActivitiesExplorer");
                 dResult = ShowForm(type);
                 if (dResult == DialogResult.Abort)
                 {
@@ -42,11 +42,11 @@ namespace BritishMicro.TaskClerk.Providers
             if (_descriptionExplorerVisible == false)
             {
                 _descriptionExplorerVisible = true;
-                Type type = (Type) Engine.SettingsProvider.Get("TaskDescriptionsExplorer");
+                Type type = (Type)Engine.SettingsProvider.Get("TaskDescriptionsExplorer");
                 ShowForm(type);
                 _descriptionExplorerVisible = false;
             }
-            return (TaskDescription) Engine.SettingsProvider.Get("SelectedTaskDescription", TaskDescription.Empty);
+            return (TaskDescription)Engine.SettingsProvider.Get("SelectedTaskDescription", TaskDescription.Empty);
         }
 
         /// <summary>
@@ -62,8 +62,7 @@ namespace BritishMicro.TaskClerk.Providers
             }
 
             DialogResult dr = DialogResult.Ignore;
-            Form form = (Form) Activator.CreateInstance(formType) as Form;
-            if (form != null)
+            if ((Form)Activator.CreateInstance(formType) is Form form)
             {
                 SetFormSizeAndLocation(form);
                 dr = form.ShowDialog();
@@ -101,8 +100,8 @@ namespace BritishMicro.TaskClerk.Providers
         {
             form.WindowState = FormWindowState.Normal;
             form.ClientSize = (Size)Engine.SettingsProvider.Get(
-                                         string.Format("{0}ClientSize", 
-                                         form.GetType().Name), 
+                                         string.Format("{0}ClientSize",
+                                         form.GetType().Name),
                                          form.Size);
             if (form.Width <= 0)
             {
@@ -114,8 +113,8 @@ namespace BritishMicro.TaskClerk.Providers
             }
 
             form.Location = (Point)Engine.SettingsProvider.Get(
-                                        string.Format("{0}Location", 
-                                        form.GetType().Name), 
+                                        string.Format("{0}Location",
+                                        form.GetType().Name),
                                         form.Location);
             if (form.Left < 0)
             {
@@ -151,7 +150,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public override DialogResult ShowOptionsExplorer()
         {
-            Type type = (Type) Engine.SettingsProvider.Get("OptionsExplorer");
+            Type type = (Type)Engine.SettingsProvider.Get("OptionsExplorer");
             return ShowForm(type);
         }
 

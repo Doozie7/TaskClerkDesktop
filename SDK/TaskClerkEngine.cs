@@ -5,19 +5,19 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Plugins;
+using BritishMicro.TaskClerk.Providers;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using BritishMicro.TaskClerk.Providers;
-using ConfigurationSection=BritishMicro.TaskClerk.Settings.ConfigurationSection;
-using System.Diagnostics;
-using BritishMicro.TaskClerk.Plugins;
 using System.Timers;
-using System.ComponentModel;
-using System.Collections.Generic;
+using ConfigurationSection = BritishMicro.TaskClerk.Settings.ConfigurationSection;
 
 namespace BritishMicro.TaskClerk
 {
@@ -26,8 +26,9 @@ namespace BritishMicro.TaskClerk
     /// application logic. It also contains the providers for the rest of the 
     /// application to use.
     /// </summary>
+    /// 
+    /// [DebuggerStepThroughAttribute]
     [LicenseProvider(typeof(TaskClerkLicenseProvider))]
-    [DebuggerStepThroughAttribute]
     public abstract class TaskClerkEngine
     {
         private License _license;
@@ -38,7 +39,7 @@ namespace BritishMicro.TaskClerk
 
         private DirectoryInfo _dataFolder;
         private DirectoryInfo _appFolder;
-        
+
         private List<PluginService> _services;
 
         private IdentityProvider _identityProvider;
@@ -47,7 +48,7 @@ namespace BritishMicro.TaskClerk
         private TaskActivitiesProvider _taskActivitiesProvider;
         private PluginsProvider _pluginsProvider;
         private UIProvider _uiProvider;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:TaskClerkEngine"/> class.
         /// </summary>
@@ -63,12 +64,16 @@ namespace BritishMicro.TaskClerk
         {
             LicenseManagement();
 
-            _heartbeatTimer = new System.Timers.Timer();
-            _heartbeatTimer.Enabled = false;
-            _heartbeatTimer.Interval = int.Parse(Properties.Resources.HeartbeatInterval);
+            _heartbeatTimer = new System.Timers.Timer
+            {
+                Enabled = false,
+                Interval = int.Parse(Properties.Resources.HeartbeatInterval)
+            };
             _heartbeatTimer.Elapsed += InternalHeartbeatTimerElapsed;
-            _nagTimer = new System.Timers.Timer();
-            _nagTimer.Enabled = false;
+            _nagTimer = new System.Timers.Timer
+            {
+                Enabled = false
+            };
             _nagTimer.Elapsed += InternalNagTimerElapsed;
 
             _appFolder = (new FileInfo(Assembly.GetExecutingAssembly().Location)).Directory;
@@ -81,12 +86,9 @@ namespace BritishMicro.TaskClerk
             }
 
             //Read Provider Configuration
-            ConfigurationSection config =
-                ConfigurationManager.GetSection(ConfigurationSection.SectionName)
-                as ConfigurationSection;
-            if (config != null)
+            if (ConfigurationManager.GetSection(ConfigurationSection.SectionName) is ConfigurationSection config)
             {
-                if (config.Providers.Count == 0)
+                if (config.Providers == null || config.Providers.Count == 0)
                 {
                     Trace.TraceError(Properties.Resources.NoProvidersFoundInConfigurationFile);
                     throw new InvalidOperationException(Properties.Resources.NoProvidersFoundInConfigurationFile);
@@ -98,7 +100,7 @@ namespace BritishMicro.TaskClerk
                 _identityProvider =
                     InitializeProvider(config, "IdentityProvider") as IdentityProvider;
                 _identityProvider.DiscoverIdentity();
-                if(!_identityProvider.Principal.Identity.IsAuthenticated)
+                if (!_identityProvider.Principal.Identity.IsAuthenticated)
                 {
                     Trace.TraceError(Properties.Resources.IdentityCouldNotBeEstablished);
                     throw new InvalidOperationException(Properties.Resources.IdentityCouldNotBeEstablished);
@@ -126,7 +128,7 @@ namespace BritishMicro.TaskClerk
                 Trace.TraceError(Properties.Resources.ConfigurationFileInvalid);
                 throw new InvalidOperationException(Properties.Resources.ConfigurationFileInvalid);
             }
-            
+
             Trace.TraceInformation("TaskClerkSDK:InitaliseEngine");
         }
 
@@ -160,13 +162,9 @@ namespace BritishMicro.TaskClerk
                 this._nagTimer.Stop();
                 return;
             }
-            
+
             //RaiseNag Event
-            EventHandler<TaskActivityEventArgs> temp = Nag;
-            if (temp != null)
-            {
-                temp(this, new TaskActivityEventArgs(this.CurrentActivity));
-            }
+            Nag?.Invoke(this, new TaskActivityEventArgs(this.CurrentActivity));
         }
 
         /// <summary>
@@ -182,13 +180,9 @@ namespace BritishMicro.TaskClerk
         private void InternalHeartbeatTimerElapsed(object sender, ElapsedEventArgs e)
         {
             this._userMemoryProvider.Set("HeartBeat", DateTime.Now, PersistHint.AcrossSessions);
-            
+
             //RaiseHeartBeat Event
-            EventHandler<EventArgs> temp = HeartBeat;
-            if (temp != null)
-            {
-                temp(this, EventArgs.Empty);
-            }
+            HeartBeat?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -378,9 +372,8 @@ namespace BritishMicro.TaskClerk
         {
             for (int i = _services.Count; i > 0; i--)
             {
-                PluginService ps = _services[(i-1)];
+                PluginService ps = _services[(i - 1)];
                 ps.CallShutdown();
-                ps = null;
             }
             Trace.TraceInformation("TaskClerkSDK:EndServices");
         }
@@ -405,7 +398,7 @@ namespace BritishMicro.TaskClerk
             providers[0] = ProviderToString("IdentityProvider", _identityProvider);
             providers[1] = ProviderToString("PluginsProvider", _pluginsProvider);
             providers[2] = ProviderToString("TaskDescriptionsProvider", _taskDescriptionsProvider);
-            providers[3] = ProviderToString("TaskActivitiesProvider",_taskActivitiesProvider);
+            providers[3] = ProviderToString("TaskActivitiesProvider", _taskActivitiesProvider);
             providers[4] = ProviderToString("UIProvider", _uiProvider);
             providers[5] = ProviderToString("UserMemoryProvider", _userMemoryProvider);
             return providers;
@@ -419,7 +412,7 @@ namespace BritishMicro.TaskClerk
         /// <returns></returns>
         private static string ProviderToString(string providerName, object provider)
         {
-            return string.Format("The {0} is an instance of {1} loaded from {2}",
+            return string.Format(CultureInfo.InvariantCulture, "The {0} is an instance of {1} loaded from {2}",
                             providerName,
                             provider.GetType().AssemblyQualifiedName,
                             provider.GetType().Module.FullyQualifiedName);

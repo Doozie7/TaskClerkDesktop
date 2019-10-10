@@ -53,19 +53,19 @@ namespace BritishMicro.TaskClerk.UI
                 if (activity.Duration > 0)
                 {
                     DataPoint dp = new DataPoint()
-                        {
-                            Label = activity.TaskDescription.Name,
-                            YValues = new double[] { double.Parse(activity.Duration.ToString()) },
-                            Color =  activity.TaskDescription.Color,
-                            LabelForeColor = System.Drawing.Color.Black,
-                            LabelBackColor = System.Drawing.Color.WhiteSmoke,
-                            LabelToolTip = activity.Duration.ToString() + " mins"
+                    {
+                        Label = activity.TaskDescription.Name,
+                        YValues = new double[] { double.Parse(activity.Duration.ToString()) },
+                        Color = activity.TaskDescription.Color,
+                        LabelForeColor = System.Drawing.Color.Black,
+                        LabelBackColor = System.Drawing.Color.WhiteSmoke,
+                        LabelToolTip = activity.Duration.ToString() + " mins"
                     };
 
                     bool dpFound = false;
-                    foreach(DataPoint dpItem in chart1.Series[0].Points)
+                    foreach (DataPoint dpItem in chart1.Series[0].Points)
                     {
-                        if(dpItem.Label == dp.Label)
+                        if (dpItem.Label == dp.Label)
                         {
                             dpItem.YValues[0] = dpItem.YValues[0] + double.Parse(activity.Duration.ToString());
                             dpFound = true;

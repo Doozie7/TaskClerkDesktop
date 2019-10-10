@@ -127,7 +127,7 @@ namespace BritishMicro.Windows
                 panelContainer.Controls.Clear();
                 panelContainer.Controls.Add(Items[CurrentPage]);
                 Items[CurrentPage].PrepareContents();
-                labelHeading.Text = ((WizardUserControl) Items[CurrentPage]).Description;
+                labelHeading.Text = ((WizardUserControl)Items[CurrentPage]).Description;
                 panelContainer.Controls[0].Dock = DockStyle.Fill;
 
                 if ((CurrentPage == 0) && (Items.Count == 1))
@@ -184,11 +184,7 @@ namespace BritishMicro.Windows
         private void buttonNext_Click(object sender, EventArgs e)
         {
             WizardEventArgs w = new WizardEventArgs("next", CurrentPage, CurrentPage + 1);
-            EventHandler<WizardEventArgs> handler = WizardHostActionEvent;
-            if (handler != null)
-            {
-                handler(this, w);
-            }
+            WizardHostActionEvent?.Invoke(this, w);
             if (w.Cancel == false)
             {
                 CurrentPage++;
@@ -198,11 +194,7 @@ namespace BritishMicro.Windows
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
             WizardEventArgs w = new WizardEventArgs("previous", CurrentPage, CurrentPage - 1);
-            EventHandler<WizardEventArgs> handler = WizardHostActionEvent;
-            if (handler != null)
-            {
-                handler(this, w);
-            }
+            WizardHostActionEvent?.Invoke(this, w);
             if (w.Cancel == false)
             {
                 CurrentPage--;

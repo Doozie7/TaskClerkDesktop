@@ -70,7 +70,7 @@ namespace BritishMicro.TaskClerk.Providers
             {
                 _usersSessionMemory[key] = defaultValue;
                 InternalGetComplete(key, _usersSessionMemory[key]);
-            }           
+            }
 
             return _usersSessionMemory[key];
         }
@@ -107,11 +107,11 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool TryGet<T>(object key, out T value) where T: class
+        public bool TryGet<T>(object key, out T value) where T : class
         {
             value = null;
 
-            if(key == null || !_usersSessionMemory.ContainsKey(key))
+            if (key == null || !_usersSessionMemory.ContainsKey(key))
             {
                 return false;
             }
@@ -134,11 +134,7 @@ namespace BritishMicro.TaskClerk.Providers
         private void InternalGetComplete(object key, object keyValue)
         {
             //GetComplete Event
-            EventHandler<InformationEventArgs> temp = GetComplete;
-            if (temp != null)
-            {
-                temp(this, new InformationEventArgs("Information", key.ToString(), keyValue));
-            }
+            GetComplete?.Invoke(this, new InformationEventArgs("Information", key.ToString(), keyValue));
         }
 
         /// <summary>
@@ -188,11 +184,7 @@ namespace BritishMicro.TaskClerk.Providers
         private void InternalSetBegin(object key, object keyValue)
         {
             //SetCommence Event
-            EventHandler<InformationEventArgs> temp = SetBegin;
-            if (temp != null)
-            {
-                temp(this, new InformationEventArgs("Information", key.ToString(), keyValue));
-            }
+            SetBegin?.Invoke(this, new InformationEventArgs("Information", key.ToString(), keyValue));
         }
 
         /// <summary>

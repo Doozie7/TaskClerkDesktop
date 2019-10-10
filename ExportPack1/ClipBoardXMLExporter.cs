@@ -1,12 +1,10 @@
-using System;
 using BritishMicro.TaskClerk.Plugins;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace BritishMicro.TaskClerk.ExportPack1
 {

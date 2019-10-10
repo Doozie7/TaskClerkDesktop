@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using BritishMicro.TaskClerk.Plugins;
-using System.Windows.Forms;
-using System.IO;
-using System.Threading;
+using System;
 using System.ComponentModel;
+using System.IO;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.ExportPack1
 {
@@ -21,10 +18,12 @@ namespace BritishMicro.TaskClerk.ExportPack1
         /// </summary>
         public override void Execute()
         {
-            SaveFileDialog fd = new SaveFileDialog();
-            fd.Filter = "iCal files (*.ics)|*.ics|All files (*.*)|*.*";
-            fd.FilterIndex = 1;
-            fd.RestoreDirectory = true;
+            SaveFileDialog fd = new SaveFileDialog
+            {
+                Filter = "iCal files (*.ics)|*.ics|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
 
             if (DialogResult.OK == fd.ShowDialog())
             {

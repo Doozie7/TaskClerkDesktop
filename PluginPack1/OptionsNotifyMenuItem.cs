@@ -10,8 +10,8 @@
 //          Architect
 //----------------------------------------------------------------------
 
-using System;
 using BritishMicro.TaskClerk.Plugins;
+using System;
 
 namespace BritishMicro.TaskClerk
 {

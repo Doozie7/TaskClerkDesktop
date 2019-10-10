@@ -5,10 +5,10 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using System;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Collections.ObjectModel;
-using System;
 namespace BritishMicro.TaskClerk.Providers.Sql
 {
     /// <summary>
@@ -17,14 +17,14 @@ namespace BritishMicro.TaskClerk.Providers.Sql
     public class SqlTaskActivitiesProvider : TaskActivitiesProvider
     {
 
-        private static string discoverDateMetricsStatement = "up_DiscoverActivities";
-        private static string saveActivityStatement = "up_WriteActivity";
-        private static string loadActivitiesStatement = "up_ReadActivities";
-        private static string removeActivityStatement = "up_DeleteActivity";
-        private static string archiveActivitiesStatement = "up_ArchiveActivities";
+        private const string discoverDateMetricsStatement = "up_DiscoverActivities";
+        private const string saveActivityStatement = "up_WriteActivity";
+        private const string loadActivitiesStatement = "up_ReadActivities";
+        private const string removeActivityStatement = "up_DeleteActivity";
+        private const string archiveActivitiesStatement = "up_ArchiveActivities";
 
         private string _connectionString;
-        private string _machineName;
+        private readonly string _machineName;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SqlTaskActivitiesProvider"/> class.
@@ -56,15 +56,19 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(discoverDateMetricsStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                command.Parameters.AddWithValue("@Question", question.ToString());
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(discoverDateMetricsStatement, connection)
                 {
-                    DateTime date = reader.GetDateTime(0);
-                    dates.Add(date);
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    command.Parameters.AddWithValue("@Question", question.ToString());
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        DateTime date = reader.GetDateTime(0);
+                        dates.Add(date);
+                    }
                 }
             }
             return dates;
@@ -84,16 +88,20 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(loadActivitiesStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                command.Parameters.AddWithValue("@StartDate", start);
-                command.Parameters.AddWithValue("@EndDate", end);
-                
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(loadActivitiesStatement, connection)
                 {
-                    activities.Add(ReadFromDatabase(reader));
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    command.Parameters.AddWithValue("@StartDate", start);
+                    command.Parameters.AddWithValue("@EndDate", end);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        activities.Add(ReadFromDatabase(reader));
+                    }
                 }
             }
             return activities;
@@ -150,11 +158,15 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(removeActivityStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Id", activity.Id);
-                command.Parameters.AddWithValue("@UserId", activity.UserId);
-                command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(removeActivityStatement, connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@Id", activity.Id);
+                    command.Parameters.AddWithValue("@UserId", activity.UserId);
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -166,10 +178,14 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(archiveActivitiesStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                command.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(archiveActivitiesStatement, connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    command.ExecuteNonQuery();
+                }
             }
         }
 
@@ -181,26 +197,29 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         /// <param name="activity">The activity.</param>
         private void WriteToDatabase(SqlConnection connection, TaskActivity activity)
         {
-            SqlCommand command = new SqlCommand(saveActivityStatement, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.AddWithValue("@Id", activity.Id);
-            command.Parameters.AddWithValue("@DescriptionId", activity.TaskDescription.Id);
-            command.Parameters.AddWithValue("@Remarks", activity.Remarks);
-            command.Parameters.AddWithValue("@StartDate", activity.StartDate);
-            if (activity.EndDate != DateTime.MinValue)
+            using (SqlCommand command = new SqlCommand(saveActivityStatement, connection)
             {
-                command.Parameters.AddWithValue("@EndDate", activity.EndDate);
-            }
-            command.Parameters.AddWithValue("@Duration", activity.Duration);
-            if (activity.CrosstabTaskDescription != null)
+                CommandType = System.Data.CommandType.StoredProcedure
+            })
             {
-                command.Parameters.AddWithValue("@CrossTabDescriptionId", activity.CrosstabTaskDescription.Id);
+                command.Parameters.AddWithValue("@Id", activity.Id);
+                command.Parameters.AddWithValue("@DescriptionId", activity.TaskDescription.Id);
+                command.Parameters.AddWithValue("@Remarks", activity.Remarks);
+                command.Parameters.AddWithValue("@StartDate", activity.StartDate);
+                if (activity.EndDate != DateTime.MinValue)
+                {
+                    command.Parameters.AddWithValue("@EndDate", activity.EndDate);
+                }
+                command.Parameters.AddWithValue("@Duration", activity.Duration);
+                if (activity.CrosstabTaskDescription != null)
+                {
+                    command.Parameters.AddWithValue("@CrossTabDescriptionId", activity.CrosstabTaskDescription.Id);
+                }
+                command.Parameters.AddWithValue("@CustomFlags", activity.CustomFlags);
+                command.Parameters.AddWithValue("@UserId", activity.UserId);
+                command.Parameters.AddWithValue("@SourceMachine", _machineName);
+                command.ExecuteNonQuery();
             }
-            command.Parameters.AddWithValue("@CustomFlags", activity.CustomFlags);
-            command.Parameters.AddWithValue("@UserId", activity.UserId);
-            command.Parameters.AddWithValue("@SourceMachine", _machineName);
-            command.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -211,8 +230,10 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         private TaskActivity ReadFromDatabase(SqlDataReader reader)
         {
             //Id DescriptionId Remarks StartDate EndDate Duration CrossTabDescriptionId CustomFlags UserId SourceMachine OriginalDate
-            TaskActivity ta = new TaskActivity();
-            ta.Id = reader.GetGuid(0);
+            TaskActivity ta = new TaskActivity
+            {
+                Id = reader.GetGuid(0)
+            };
             Debug.Assert(ta.Id != null, "The TaskActivity Guid cannot be null.");
 
             ta.TaskDescription

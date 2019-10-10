@@ -1,7 +1,7 @@
-using System;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -26,11 +26,11 @@ namespace BritishMicro.TaskClerk.UI
         {
             base.OnTaskClerkInit();
             textBoxBackupDirectory.Text =
-                (string) Engine.SettingsProvider.Get("BackupDirectory", textBoxBackupDirectory.Text);
+                (string)Engine.SettingsProvider.Get("BackupDirectory", textBoxBackupDirectory.Text);
             textBoxRestoreDirectory.Text =
-                (string) Engine.SettingsProvider.Get("RestoreDirectory", textBoxRestoreDirectory.Text);
+                (string)Engine.SettingsProvider.Get("RestoreDirectory", textBoxRestoreDirectory.Text);
             comboBoxBackupFrequency.Text =
-                (string) Engine.SettingsProvider.Get("BackupFrequency", comboBoxBackupFrequency.Text);
+                (string)Engine.SettingsProvider.Get("BackupFrequency", comboBoxBackupFrequency.Text);
             DateTime lastBackup = (DateTime)Engine.SettingsProvider.Get("LastBackup", DateTime.MinValue);
             labelLastBackup.Text = lastBackup.ToString("f");
 

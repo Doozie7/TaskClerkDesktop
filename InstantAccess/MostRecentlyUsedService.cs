@@ -9,12 +9,10 @@
 //	Author: Paul Jackson (paul@compilewith.net)
 //          Architect
 //----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-
 using BritishMicro.TaskClerk.Plugins;
 using BritishMicro.TaskClerk.Providers;
-using System.Collections;
+using System;
+using System.Collections.Generic;
 
 namespace BritishMicro.TaskClerk.InstantAccess
 {
@@ -47,7 +45,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         public static TaskDescription[] FindTopMostRecentlyUsed(int maximum)
         {
             MostRecentlyUsedService service = MostRecentlyUsedService._current;
-            if(service == null)
+            if (service == null)
                 return new TaskDescription[] { };
 
             return service.InternalFindTopMostRecentlyUsed(maximum);
@@ -61,7 +59,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         public static TaskDescription[] FindTopMostFrequentlyUsed(int maximum)
         {
             MostRecentlyUsedService service = MostRecentlyUsedService._current;
-            if(service == null)
+            if (service == null)
                 return new TaskDescription[] { };
 
             return service.InternalFindTopMostFrequentlyUsed(maximum);
@@ -78,13 +76,13 @@ namespace BritishMicro.TaskClerk.InstantAccess
             TaskDescriptionsProvider provider = this.Engine.TaskDescriptionsProvider;
             List<TaskDescription> localList = new List<TaskDescription>(maximum);
 
-            foreach(MostRecentlyUsedItem mruItem in this._items)
+            foreach (MostRecentlyUsedItem mruItem in this._items)
             {
                 TaskDescription description = provider.FindDescription(mruItem.Id);
-                if(description != null)
+                if (description != null)
                     localList.Add(description);
 
-                if(localList.Count == maximum)
+                if (localList.Count == maximum)
                     break;
             }
 
@@ -105,13 +103,13 @@ namespace BritishMicro.TaskClerk.InstantAccess
             MostRecentlyUsedItem[] items = this._items.ToArray();
             Array.Sort(items, MostRecentlyUsedItem.UsageComparer);
 
-            foreach(MostRecentlyUsedItem mruItem in items)
+            foreach (MostRecentlyUsedItem mruItem in items)
             {
                 TaskDescription description = provider.FindDescription(mruItem.Id);
-                if(description != null)
+                if (description != null)
                     localList.Add(description);
 
-                if(localList.Count == maximum)
+                if (localList.Count == maximum)
                     break;
             }
 
@@ -157,12 +155,12 @@ namespace BritishMicro.TaskClerk.InstantAccess
         {
             TaskDescription description = e.TaskActivity.TaskDescription;
             MostRecentlyUsedItem targetItem = this._items.Find(
-                delegate(MostRecentlyUsedItem item)
+                delegate (MostRecentlyUsedItem item)
                 {
                     return item.Id.Equals(description.Id);
                 });
 
-            if(targetItem == null)
+            if (targetItem == null)
                 targetItem = new MostRecentlyUsedItem(description.Id);
 
             this._items.Remove(targetItem);

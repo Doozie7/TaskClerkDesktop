@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
@@ -24,10 +20,12 @@ namespace BritishMicro.TaskClerk.UI
         public NewTaskDescriptionDialog(TaskDescription parent)
         {
             InitializeComponent();
-            _taskDescription = new TaskDescription();
-            _taskDescription.Color = Color.Black;
-            _taskDescription.Name = string.Empty;
-            _taskDescription.NoNagMinutes = 0;
+            _taskDescription = new TaskDescription
+            {
+                Color = Color.Black,
+                Name = string.Empty,
+                NoNagMinutes = 0
+            };
             if (parent != null)
             {
                 this.buttonColorPicker.BackColor = Color.FromArgb(parent.Color.A - 2, parent.Color);
@@ -75,6 +73,6 @@ namespace BritishMicro.TaskClerk.UI
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }	
+        }
     }
 }

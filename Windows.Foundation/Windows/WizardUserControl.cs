@@ -26,7 +26,7 @@ namespace BritishMicro.Windows
         /// <summary>
         /// The PrepareContents operation is called when the control is made visible.
         /// </summary>
-        public virtual void PrepareContents() {}
+        public virtual void PrepareContents() { }
 
     }
 }

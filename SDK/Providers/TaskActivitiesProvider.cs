@@ -77,7 +77,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public Collection<DateTime> DiscoverDateMetrics(MetricQuestion question)
         {
-            TaskActivityDiscoverDateMetricsEventArgs tasdea 
+            TaskActivityDiscoverDateMetricsEventArgs tasdea
                 = new TaskActivityDiscoverDateMetricsEventArgs(ProviderDiscoverDateMetrics(question));
             OnDiscoveringDateMetricsEvent(tasdea);
             return tasdea.StoredDays;
@@ -146,9 +146,9 @@ namespace BritishMicro.TaskClerk.Providers
             DateTime timerStart = DateTime.Now;
             Collection<TaskActivity> activities = ProviderLoadActivities(start, end, allowedTaskDescriptions);
             RaiseTimingEvent(MethodInfo.GetCurrentMethod(), timerStart);
-            
+
             TaskActivityLoadEventArgs talea = new TaskActivityLoadEventArgs(start, end, allowedTaskDescriptions, activities);
-            OnLoadingActivitiesEvent(talea);            
+            OnLoadingActivitiesEvent(talea);
             return activities;
         }
 
@@ -165,7 +165,7 @@ namespace BritishMicro.TaskClerk.Providers
 
             TaskActivitySaveEventArgs tasea = new TaskActivitySaveEventArgs(activities);
             OnSavingActivitiesEvent(new TaskActivitySaveEventArgs(activities));
-            
+
             DateTime timerStart = DateTime.Now;
             ProviderSaveActivities(tasea.TaskActivities);
             RaiseTimingEvent(MethodInfo.GetCurrentMethod(), timerStart);
@@ -314,11 +314,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void OnBackingUpTaskActivitiesEvent(EventArgs e)
         {
-            EventHandler<EventArgs> handler = BackingUpTaskActivities;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            BackingUpTaskActivities?.Invoke(this, e);
         }
 
         #endregion
@@ -336,11 +332,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityDiscoverDateMetricsEventArgs"/> instance containing the event data.</param>
         private void OnDiscoveringDateMetricsEvent(TaskActivityDiscoverDateMetricsEventArgs e)
         {
-            EventHandler<TaskActivityDiscoverDateMetricsEventArgs> handler = DiscoveringDateMetrics;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            DiscoveringDateMetrics?.Invoke(this, e);
         }
 
         #endregion
@@ -358,11 +350,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityLoadEventArgs"/> instance containing the event data.</param>
         private void OnLoadingActivitiesEvent(TaskActivityLoadEventArgs e)
         {
-            EventHandler<TaskActivityLoadEventArgs> handler = LoadingActivities;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            LoadingActivities?.Invoke(this, e);
         }
 
         #endregion
@@ -380,11 +368,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivitySaveEventArgs"/> instance containing the event data.</param>
         private void OnSavingActivitiesEvent(TaskActivitySaveEventArgs e)
         {
-            EventHandler<TaskActivitySaveEventArgs> handler = SavingActivities;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            SavingActivities?.Invoke(this, e);
         }
 
         #endregion
@@ -402,11 +386,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityEventArgs"/> instance containing the event data.</param>
         private void OnBeginActivityEvent(TaskActivityEventArgs e)
         {
-            EventHandler<TaskActivityEventArgs> handler = BeginningActivity;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            BeginningActivity?.Invoke(this, e);
         }
 
         #endregion
@@ -424,11 +404,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityEventArgs"/> instance containing the event data.</param>
         private void OnCompletingActivityEvent(TaskActivityEventArgs e)
         {
-            EventHandler<TaskActivityEventArgs> handler = CompletingActivity;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            CompletingActivity?.Invoke(this, e);
         }
 
         #endregion
@@ -446,11 +422,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityEventArgs"/> instance containing the event data.</param>
         private void OnRemovingActivityEvent(TaskActivityEventArgs e)
         {
-            EventHandler<TaskActivityEventArgs> handler = RemovingActivity;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            RemovingActivity?.Invoke(this, e);
         }
 
         #endregion
@@ -468,11 +440,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="BritishMicro.TaskClerk.TaskActivityEventArgs"/> instance containing the event data.</param>
         private void OnTaskActivitiesChangedEvent(TaskActivityEventArgs e)
         {
-            EventHandler<TaskActivityEventArgs> handler = TaskActivitiesChanged;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            TaskActivitiesChanged?.Invoke(this, e);
         }
 
         #endregion

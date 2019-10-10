@@ -65,18 +65,18 @@ namespace BritishMicro.TaskClerk.Plugins
                 case "OnTaskClerkInit":
                     OnTaskClerkInit();
                     break;
-                    //case "OnTaskClerkShow":
-                    //    OnTaskClerkShow();
-                    //    break;
-                    //case "OnTaskClerkHide":
-                    //    OnTaskClerkHide();
-                    //    break;
-                    //case "OnTaskClerkSaveState":
-                    //    OnTaskClerkSaveState();
-                    //    break;
-                    //case "OnTaskClerkDumpState":
-                    //    OnTaskClerkDumpState();
-                    //    break;
+                //case "OnTaskClerkShow":
+                //    OnTaskClerkShow();
+                //    break;
+                //case "OnTaskClerkHide":
+                //    OnTaskClerkHide();
+                //    break;
+                //case "OnTaskClerkSaveState":
+                //    OnTaskClerkSaveState();
+                //    break;
+                //case "OnTaskClerkDumpState":
+                //    OnTaskClerkDumpState();
+                //    break;
                 default:
                     break;
             }

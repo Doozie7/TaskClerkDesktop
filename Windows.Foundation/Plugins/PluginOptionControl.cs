@@ -1,7 +1,7 @@
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using BritishMicro.TaskClerk.Properties;
 
 namespace BritishMicro.TaskClerk.Plugins
 {
@@ -15,7 +15,7 @@ namespace BritishMicro.TaskClerk.Plugins
         private bool _isAdvanced;
         private int _displayOrder;
         private Image _image;
-        private Image _defaultImage;
+        private readonly Image _defaultImage;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PluginOptionControl"/> class.

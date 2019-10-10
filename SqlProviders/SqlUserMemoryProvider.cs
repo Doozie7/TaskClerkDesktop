@@ -6,21 +6,21 @@
 //----------------------------------------------------------------------
 
 using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
-using System.Configuration;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BritishMicro.TaskClerk.Providers.Sql
 {
     public class SqlUserMemoryProvider : UserMemoryProvider
     {
         private ConnectionStringSettings _connectionSettings;
-        private static string loadAllStatement
+        private static readonly string loadAllStatement
             = @"select SettingKey, SettingValue from tc_UserMemory where UserId = @userId";
 
-        private static string writeStatement = @"up_WriteUserMemory";
+        private static readonly string writeStatement = @"up_WriteUserMemory";
 
         /// <summary>
         /// The OnInit method provides implimenters with an opertunity to
@@ -97,11 +97,13 @@ namespace BritishMicro.TaskClerk.Providers.Sql
                 using (SqlConnection connection = new SqlConnection(_connectionSettings.ConnectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand(writeStatement, connection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand command = new SqlCommand(writeStatement, connection)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     command.Parameters.AddWithValue("@SettingKey", key);
                     command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                    command.Parameters.AddWithValue("@SettingValue", buffer);                    
+                    command.Parameters.AddWithValue("@SettingValue", buffer);
                     command.ExecuteNonQuery();
                 }
             }
@@ -127,8 +129,10 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         /// <returns></returns>
         private static Object DeserializeObject(byte[] source)
         {
-            MemoryStream memoryStream = new MemoryStream(source);
-            memoryStream.Position = 0;
+            MemoryStream memoryStream = new MemoryStream(source)
+            {
+                Position = 0
+            };
             BinaryFormatter bf = new BinaryFormatter();
             return bf.Deserialize(memoryStream);
         }

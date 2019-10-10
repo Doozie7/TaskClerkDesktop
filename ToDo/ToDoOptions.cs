@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
 {
@@ -33,7 +30,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
                 _reminderStrings = fromOptions.ReminderStrings;
                 _groupStrings = fromOptions.GroupStrings;
                 _defaultTaskDescription = fromOptions.DefaultTaskDescription;
-            }            
+            }
         }
 
         public string ReminderStrings
@@ -42,7 +39,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             set { _reminderStrings = value; }
         }
 
-        
+
 
         public string GroupStrings
         {
@@ -55,9 +52,8 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             get { return _defaultTaskDescription; }
             set { _defaultTaskDescription = value; }
         }
-	
-	
-	
+
+
+
     }
 }
-        

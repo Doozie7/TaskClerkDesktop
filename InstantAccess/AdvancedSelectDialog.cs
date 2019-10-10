@@ -10,9 +10,9 @@
 //          Architect
 //----------------------------------------------------------------------
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.InstantAccess
 {
@@ -36,7 +36,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
 
             this._dateTimePickerStartTime.Value = DateTime.Now;
             this._dateTimePickerStartTime.MaxDate = DateTime.Now;
-            
+
             BuildTree();
         }
 
@@ -54,8 +54,10 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// </summary>
         private void BuildTree()
         {
-            TreeNode rootNode = new TreeNode("Task Descriptions");
-            rootNode.Tag = AppContext.Current.TaskDescriptionsProvider.TaskDescriptions;
+            TreeNode rootNode = new TreeNode("Task Descriptions")
+            {
+                Tag = AppContext.Current.TaskDescriptionsProvider.TaskDescriptions
+            };
             rootNode.ExpandAll();
 
             Stack<TreeNode> treeNodeStack = new Stack<TreeNode>();
@@ -68,19 +70,19 @@ namespace BritishMicro.TaskClerk.InstantAccess
             {
                 TreeNode parent = treeNodeStack.Pop();
                 parent.Expand();
-                
-                if(parent.Tag != null)
+
+                if (parent.Tag != null)
                 {
                     IList<TaskDescription> descriptions = parent.Tag as IList<TaskDescription>;
-                    foreach(TaskDescription description in descriptions)
+                    foreach (TaskDescription description in descriptions)
                     {
                         TreeNode child = new TreeNode(description.Name);
                         parent.Nodes.Add(child);
                         child.Tag = description;
-                        if(description.IsEvent) 
+                        if (description.IsEvent)
                             child.NodeFont = new Font(this.Font, FontStyle.Italic);
 
-                        if(description.Children != null && description.Children.Count > 0)
+                        if (description.Children != null && description.Children.Count > 0)
                         {
                             child.NodeFont = new Font(this.Font, FontStyle.Bold);
                             child.Tag = description.Children;
@@ -89,7 +91,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
                     }
                 }
             }
-            while(treeNodeStack.Count > 0);
+            while (treeNodeStack.Count > 0);
         }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
         private void _dateTimePickerStartTime_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 this._isChangeingTime = true;
                 this._mouseStartPos = e.Y;
@@ -127,10 +129,10 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
         private void _dateTimePickerStartTime_MouseMove(object sender, MouseEventArgs e)
         {
-            if(this._isChangeingTime)
+            if (this._isChangeingTime)
             {
                 DateTime modifiedTime = this._startTime.AddMinutes(this._mouseStartPos - e.Y);
-                if(modifiedTime <= this._dateTimePickerStartTime.MaxDate)
+                if (modifiedTime <= this._dateTimePickerStartTime.MaxDate)
                     this._dateTimePickerStartTime.Value = modifiedTime;
             }
         }
@@ -142,7 +144,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="e">The <see cref="System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
         private void _dateTimePickerStartTime_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
                 this._isChangeingTime = false;
         }
 

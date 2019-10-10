@@ -5,14 +5,14 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Plugins;
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using BritishMicro.TaskClerk.Plugins;
-using BritishMicro.TaskClerk.Properties;
 
 namespace BritishMicro.TaskClerk.Providers
 {
@@ -50,7 +50,7 @@ namespace BritishMicro.TaskClerk.Providers
 
                         foreach (Type type in foundAssembly.GetTypes())
                         {
-                            if(!type.IsDefined(pluginAttributeType, true) ||
+                            if (!type.IsDefined(pluginAttributeType, true) ||
                                 type.IsAbstract ||
                                 Resources.ExcludePluginList.Contains(type.Name))
                             {
@@ -90,7 +90,7 @@ namespace BritishMicro.TaskClerk.Providers
             foreach (FileInfo fi in removeFileList)
             {
                 files.RemoveAll(
-                    delegate(FileInfo fileInfo) { return fi.Name == fileInfo.Name; }
+                    delegate (FileInfo fileInfo) { return fi.Name == fileInfo.Name; }
                     );
             }
             return files.ToArray();

@@ -1,9 +1,9 @@
+using BritishMicro.TaskClerk.Plugins;
+using BritishMicro.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Plugins;
-using BritishMicro.Windows;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -16,7 +16,7 @@ namespace BritishMicro.TaskClerk.UI
 
         private void ExportForm_Load(object sender, EventArgs e)
         {
-            if (AppContext.Current.PluginsProvider.CountOfType(typeof (PluginExporter)) == 0)
+            if (AppContext.Current.PluginsProvider.CountOfType(typeof(PluginExporter)) == 0)
             {
                 MessageBox.Show(
                     "No plugins of type [PluginExporter] were found.",
@@ -60,8 +60,7 @@ namespace BritishMicro.TaskClerk.UI
             LoadableItem loadableItem = _selectedExporter;
             if (loadableItem != null)
             {
-                PluginExporter exporter = loadableItem.CreateInstance() as PluginExporter;
-                if (exporter != null)
+                if (loadableItem.CreateInstance() is PluginExporter exporter)
                 {
                     exporter.AcceptData(_startDateAndTime, _endDateAndTime, appropriateActivities.ToArray(), null);
                     exporter.BeforeExecuteSummary();
@@ -133,7 +132,7 @@ namespace BritishMicro.TaskClerk.UI
             get { return _selectedTaskDescriptions; }
             set { _selectedTaskDescriptions = value; }
         }
-	
+
 
 
     }

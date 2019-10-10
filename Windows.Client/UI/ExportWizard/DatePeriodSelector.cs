@@ -1,11 +1,11 @@
-using System;
 using BritishMicro.Windows;
+using System;
 
 namespace BritishMicro.TaskClerk.UI
 {
     internal partial class DatePeriodSelector : WizardUserControl
     {
-        private ExportForm _mainForm;
+        private readonly ExportForm _mainForm;
 
         public DatePeriodSelector(ExportForm mainForm)
         {

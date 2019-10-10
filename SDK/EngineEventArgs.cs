@@ -14,7 +14,7 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class EngineEventArgs : EventArgs
     {
-        private TaskClerkEngine _context;
+        private readonly TaskClerkEngine _context;
 
         private EngineEventArgs()
         {

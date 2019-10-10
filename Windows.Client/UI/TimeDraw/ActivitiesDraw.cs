@@ -7,7 +7,7 @@ namespace BritishMicro.TaskClerk.UI
 {
     internal partial class ActivitiesDraw : UserControl
     {
-        private static object syncLoc = new object();
+        private static readonly object syncLoc = new object();
 
         private Collection<TaskActivity> _taskActivities;
         private TaskActivity _selectedTaskActivity;
@@ -38,8 +38,7 @@ namespace BritishMicro.TaskClerk.UI
                     _selectedTaskActivity = value;
                     foreach (TaskActivity taskActivity in _taskActivities)
                     {
-                        ActivityPanel panel = (ActivityPanel)Controls[taskActivity.Id.ToString()] as ActivityPanel;
-                        if (panel != null)
+                        if ((ActivityPanel)Controls[taskActivity.Id.ToString()] is ActivityPanel panel)
                         {
                             if (taskActivity == _selectedTaskActivity)
                             {
@@ -101,34 +100,36 @@ namespace BritishMicro.TaskClerk.UI
                 return;
             }
 
-            float width = (float) ClientRectangle.Width;
-            float step = width/(24*60);
-            float startPosX = ((taskActivity.StartDate.Hour*60) + taskActivity.StartDate.Minute)*step;
-            float endPosX = ((taskActivity.EndDate.Hour*60) + taskActivity.EndDate.Minute)*step;
+            float width = (float)ClientRectangle.Width;
+            float step = width / (24 * 60);
+            float startPosX = ((taskActivity.StartDate.Hour * 60) + taskActivity.StartDate.Minute) * step;
+            float endPosX = ((taskActivity.EndDate.Hour * 60) + taskActivity.EndDate.Minute) * step;
             float startPosY = ClientRectangle.Height;
             float endPosY = ClientRectangle.Height;
             if (taskActivity.TaskDescription.IsEvent)
             {
-                startPosY = startPosY/4;
-                endPosY = (endPosY/3)*2;
+                startPosY = startPosY / 4;
+                endPosY = (endPosY / 3) * 2;
                 endPosX += 1;
             }
             else
             {
-                startPosY = startPosY/3;
-                endPosY = (endPosY/3)*2;
+                startPosY = startPosY / 3;
+                endPosY = (endPosY / 3) * 2;
             }
 
             Rectangle rect = new Rectangle(
-                (int) startPosX,
-                (int) startPosY,
-                (int) endPosX - (int) startPosX,
-                (int) endPosY - (int) startPosY);
+                (int)startPosX,
+                (int)startPosY,
+                (int)endPosX - (int)startPosX,
+                (int)endPosY - (int)startPosY);
 
-            ActivityPanel ap = new ActivityPanel(taskActivity, rect, step);
-            ap.Name = taskActivity.Id.ToString();
-            ap.Parent = this;
-            ap.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            ActivityPanel ap = new ActivityPanel(taskActivity, rect, step)
+            {
+                Name = taskActivity.Id.ToString(),
+                Parent = this,
+                Anchor = AnchorStyles.Top | AnchorStyles.Left
+            };
             Controls.Add(ap);
         }
     }

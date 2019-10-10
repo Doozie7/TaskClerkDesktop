@@ -1,3 +1,5 @@
+using BritishMicro.TaskClerk.Plugins;
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,9 +10,6 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using BritishMicro.TaskClerk.Plugins;
-using BritishMicro.TaskClerk.Properties;
-using System.Drawing.Printing;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -23,7 +22,7 @@ namespace BritishMicro.TaskClerk.UI
     {
         private Size _formSize;
         private TreeNode _ensureVisibleNode;
-        private TaskClerkEngine _engine;
+        private readonly TaskClerkEngine _engine;
         //private TaskActivity _currentActivity;
         private Collection<DateTime> _days;
 
@@ -41,7 +40,7 @@ namespace BritishMicro.TaskClerk.UI
             webSiteToolStripMenuItem.Image = Resources.Home;
             statusPurchased.Image = Resources.Lock;
             statusRegistered.Image = Resources.Key;
-            
+
             if (DesignMode == false)
             {
                 LoadToolMenuPlugins();
@@ -53,15 +52,16 @@ namespace BritishMicro.TaskClerk.UI
             int InsertPoint = toolsToolStripMenuItem.DropDownItems.IndexOf(toolsSepEnd);
             foreach (LoadableItem pluginItem in _engine.PluginsProvider.Plugins)
             {
-                if (pluginItem.IsSubclassOf(typeof (PluginToolMenuItem)))
+                if (pluginItem.IsSubclassOf(typeof(PluginToolMenuItem)))
                 {
-                    PluginToolMenuItem addinItem = pluginItem.CreateInstance() as PluginToolMenuItem;
-                    if (addinItem != null)
+                    if (pluginItem.CreateInstance() is PluginToolMenuItem addinItem)
                     {
                         addinItem.PluginInit(_engine, toolsToolStripMenuItem);
-                        ToolStripMenuItem menuItem = new ToolStripMenuItem(addinItem.Text);
-                        menuItem.Tag = addinItem;
-                        menuItem.Image = addinItem.Image;
+                        ToolStripMenuItem menuItem = new ToolStripMenuItem(addinItem.Text)
+                        {
+                            Tag = addinItem,
+                            Image = addinItem.Image
+                        };
                         menuItem.Click += delegate { addinItem.OnClick(EventArgs.Empty); };
                         toolsToolStripMenuItem.DropDownItems.Insert(InsertPoint, menuItem);
                     }
@@ -127,7 +127,7 @@ namespace BritishMicro.TaskClerk.UI
 
                 _days = _engine.TaskActivitiesProvider.DiscoverDateMetrics(
                     BritishMicro.TaskClerk.Providers.TaskActivitiesProvider.MetricQuestion.AvailableDays);
-                
+
                 UpdateStatusBarText();
 
                 RebuildTree();
@@ -262,18 +262,22 @@ namespace BritishMicro.TaskClerk.UI
                 throw new ArgumentNullException("Unable to determine the current user.");
             }
 
-            TreeNode root = new TreeNode(userName);
-            root.Name = SafeName(userName);
-            root.ImageIndex = 1;
-            root.SelectedImageIndex = 1;
+            TreeNode root = new TreeNode(userName)
+            {
+                Name = SafeName(userName),
+                ImageIndex = 1,
+                SelectedImageIndex = 1
+            };
             foreach (DateTime dt in _days)
             {
-                TreeNode year = new TreeNode(dt.Year.ToString());
-                year.Tag = new List<DateTime>();
+                TreeNode year = new TreeNode(dt.Year.ToString())
+                {
+                    Tag = new List<DateTime>()
+                };
                 DateTime syd = new DateTime(dt.Year, 1, 1);
                 DateTime eyd = new DateTime(dt.AddYears(1).Year, 1, 1).AddDays(-1);
-                ((List<DateTime>) year.Tag).Add(syd);
-                ((List<DateTime>) year.Tag).Add(eyd);
+                ((List<DateTime>)year.Tag).Add(syd);
+                ((List<DateTime>)year.Tag).Add(eyd);
                 year.ToolTipText = string.Format("{0:dd MMMM yyyy} to {1:dd MMMM yyyy}", syd, eyd);
                 foreach (TreeNode tn in root.Nodes)
                 {
@@ -290,12 +294,14 @@ namespace BritishMicro.TaskClerk.UI
                 }
                 found = 0;
 
-                TreeNode month = new TreeNode(string.Format("{0:MMMM}", dt));
-                month.Tag = new List<DateTime>();
+                TreeNode month = new TreeNode(string.Format("{0:MMMM}", dt))
+                {
+                    Tag = new List<DateTime>()
+                };
                 DateTime smd = new DateTime(dt.Year, dt.Month, 1);
                 DateTime emd = new DateTime(dt.AddMonths(1).Year, dt.AddMonths(1).Month, 1).AddDays(-1);
-                ((List<DateTime>) month.Tag).Add(smd);
-                ((List<DateTime>) month.Tag).Add(emd);
+                ((List<DateTime>)month.Tag).Add(smd);
+                ((List<DateTime>)month.Tag).Add(emd);
                 month.ToolTipText = string.Format("{0:dd MMMM yyyy} to {1:dd MMMM yyyy}", smd, emd);
                 foreach (TreeNode tn in year.Nodes)
                 {
@@ -312,8 +318,10 @@ namespace BritishMicro.TaskClerk.UI
                 }
                 found = 0;
 
-                TreeNode day = new TreeNode(dt.ToString("dd - dddd"));
-                day.Tag = dt;
+                TreeNode day = new TreeNode(dt.ToString("dd - dddd"))
+                {
+                    Tag = dt
+                };
                 foreach (TreeNode tn in month.Nodes)
                 {
                     if (tn.Text == day.Text)
@@ -390,7 +398,7 @@ namespace BritishMicro.TaskClerk.UI
         {
             if ((treeView.SelectedNode != null)
                 && (treeView.SelectedNode.Tag != null)
-                && (treeView.SelectedNode.Tag.GetType() == typeof (DateTime)))
+                && (treeView.SelectedNode.Tag.GetType() == typeof(DateTime)))
             {
                 splitContainerDetail.Visible = false;
             }
@@ -451,10 +459,10 @@ namespace BritishMicro.TaskClerk.UI
 
             if ((treeView.SelectedNode != null) && (treeView.SelectedNode.Tag != null))
             {
-                if (treeView.SelectedNode.Tag.GetType() == typeof (DateTime))
+                if (treeView.SelectedNode.Tag.GetType() == typeof(DateTime))
                 {
                     if (e.TaskActivity.StartDate.ToShortDateString() !=
-                        ((DateTime) treeView.SelectedNode.Tag).ToShortDateString())
+                        ((DateTime)treeView.SelectedNode.Tag).ToShortDateString())
                     {
                         RebuildTree(treeView.SelectedNode.Name);
                     }
@@ -489,7 +497,7 @@ namespace BritishMicro.TaskClerk.UI
                 {
                     using (MemoryStream memoryStream = new MemoryStream())
                     {
-                        new XmlSerializer(typeof (List<TaskActivity>)).Serialize(memoryStream, selectedActivities);
+                        new XmlSerializer(typeof(List<TaskActivity>)).Serialize(memoryStream, selectedActivities);
                         memoryStream.Position = 0;
                         using (StreamReader streamReader = new StreamReader(memoryStream))
                         {
@@ -503,16 +511,16 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if ((treeView.SelectedNode != null) && (treeView.SelectedNode.Tag != null))
                 {
-                    if (treeView.SelectedNode.Tag.GetType() == typeof (DateTime))
+                    if (treeView.SelectedNode.Tag.GetType() == typeof(DateTime))
                     {
-                        DateTime date = (DateTime) treeView.SelectedNode.Tag;
+                        DateTime date = (DateTime)treeView.SelectedNode.Tag;
                         Collection<TaskActivity> selectedActivities =
                             _engine.TaskActivitiesProvider.LoadActivities(date);
                         if (selectedActivities.Count > 0)
                         {
                             using (MemoryStream memoryStream = new MemoryStream())
                             {
-                                new XmlSerializer(typeof (List<TaskActivity>)).Serialize(memoryStream,
+                                new XmlSerializer(typeof(List<TaskActivity>)).Serialize(memoryStream,
                                                                                          selectedActivities);
                                 memoryStream.Position = 0;
                                 using (StreamReader streamReader = new StreamReader(memoryStream))
@@ -536,7 +544,7 @@ namespace BritishMicro.TaskClerk.UI
                 {
                     using (StringReader sr = new StringReader(clipboardText))
                     {
-                        entries = (List<TaskActivity>) new XmlSerializer(typeof (List<TaskActivity>)).Deserialize(sr);
+                        entries = (List<TaskActivity>)new XmlSerializer(typeof(List<TaskActivity>)).Deserialize(sr);
                     }
                     if (entries != null)
                     {
@@ -567,17 +575,18 @@ namespace BritishMicro.TaskClerk.UI
 
         private void AddNewTaskActivity(object sender, EventArgs e)
         {
-            if (treeView.SelectedNode.Tag.GetType() == typeof (DateTime))
+            if (treeView.SelectedNode.Tag.GetType() == typeof(DateTime))
             {
-                DateTime workingWithDate = (DateTime) treeView.SelectedNode.Tag;
+                DateTime workingWithDate = (DateTime)treeView.SelectedNode.Tag;
                 TaskDescription taskDescription = _engine.TaskDescriptionsProvider.TaskDescriptions[0];
                 TaskActivity pastTaskActivity = new TaskActivity(
                     taskDescription,
-                    _engine.IdentityProvider.Principal.Identity.Name);
-
-                pastTaskActivity.StartDate = workingWithDate;
-                pastTaskActivity.EndDate = workingWithDate;
-                pastTaskActivity.Remarks = "Inserted";
+                    _engine.IdentityProvider.Principal.Identity.Name)
+                {
+                    StartDate = workingWithDate,
+                    EndDate = workingWithDate,
+                    Remarks = "Inserted"
+                };
                 _engine.TaskActivitiesProvider.CompleteActivity(pastTaskActivity);
                 RefreshViews(workingWithDate);
             }
@@ -742,7 +751,7 @@ namespace BritishMicro.TaskClerk.UI
                 _engine.SettingsProvider.Set("VerticalSplitterDistance",
                         splitContainerDetail.SplitterDistance,
                         PersistHint.AcrossSessions);
-                _engine.SettingsProvider.Set("HorizontalSplitterDistance", 
+                _engine.SettingsProvider.Set("HorizontalSplitterDistance",
                         splitContainer.SplitterDistance,
                         PersistHint.AcrossSessions);
             }

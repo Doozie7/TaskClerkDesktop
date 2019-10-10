@@ -17,18 +17,18 @@ namespace BritishMicro.TaskClerk.Plugins
     [Serializable]
     public class LoadableItem
     {
-        private FileInfo _assemblyFile;
+        private readonly FileInfo _assemblyFile;
         private RuntimeTypeHandle _typeHandle;
         private bool _enabled;
-        private DateTime _loadTime;
+        private readonly DateTime _loadTime;
         /// <summary>
         /// description
         /// </summary>
-        private string _description;
+        private readonly string _description;
         /// <summary>
         /// local display name
         /// </summary>
-        private string _displayName;
+        private readonly string _displayName;
 
         /// <summary>
         /// Hidden constructor
@@ -45,25 +45,18 @@ namespace BritishMicro.TaskClerk.Plugins
         /// <param name="enabled"></param>
         public LoadableItem(FileInfo assemblyFile, Type type, bool enabled)
         {
-            if (assemblyFile == null)
-            {
-                throw new ArgumentNullException("assemblyFile");
-            }
-
             if (type == null)
             {
                 throw new ArgumentNullException("type");
             }
 
-            _assemblyFile = assemblyFile;
+            _assemblyFile = assemblyFile ?? throw new ArgumentNullException("assemblyFile");
             _typeHandle = type.TypeHandle;
             _enabled = enabled;
             _loadTime = DateTime.Now;
 
-            DescriptionAttribute[] descriptions =
-                type.GetCustomAttributes(typeof (DescriptionAttribute), false) as DescriptionAttribute[];
 
-            if (descriptions != null)
+            if (type.GetCustomAttributes(typeof(DescriptionAttribute), false) is DescriptionAttribute[] descriptions)
             {
                 if (descriptions.Length == 1)
                 {
@@ -71,10 +64,8 @@ namespace BritishMicro.TaskClerk.Plugins
                 }
             }
 
-            DisplayNameAttribute[] diaplayNames =
-                type.GetCustomAttributes(typeof(DisplayNameAttribute), false) as DisplayNameAttribute[];
 
-            if (diaplayNames != null)
+            if (type.GetCustomAttributes(typeof(DisplayNameAttribute), false) is DisplayNameAttribute[] diaplayNames)
             {
                 if (diaplayNames.Length == 1)
                 {

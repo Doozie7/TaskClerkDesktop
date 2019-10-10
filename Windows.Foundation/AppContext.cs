@@ -1,18 +1,11 @@
+using BritishMicro.TaskClerk.Properties;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Plugins;
-using BritishMicro.TaskClerk.Properties;
-using Microsoft.Win32;
-using Timer=System.Threading.Timer;
-using System.Security;
 
 namespace BritishMicro.TaskClerk
 {
@@ -51,7 +44,7 @@ namespace BritishMicro.TaskClerk
         private const string STRING_APPINSTANCECREATEDATE = "AppInstanceCreateDate";
 
         private bool _descriptionExplorerVisible;
-        
+
         /// <summary>
         /// Initialises the application context, this is private because I only want
         /// one per application instance (Singleton)
@@ -114,11 +107,11 @@ namespace BritishMicro.TaskClerk
 
             this.HeartBeat += AppContext_HeartBeat;
 
-            bool startTaskActivity = (bool) SettingsProvider.Get("StartTaskEnabled", false);
+            bool startTaskActivity = (bool)SettingsProvider.Get("StartTaskEnabled", false);
             if (startTaskActivity == true)
             {
                 TaskDescription taskDescription =
-                    (TaskDescription) SettingsProvider.Get("StartTaskDescription", TaskDescription.Empty);
+                    (TaskDescription)SettingsProvider.Get("StartTaskDescription", TaskDescription.Empty);
                 if (taskDescription.IsNotEmpty())
                 {
                     HandleNewTaskActivity(taskDescription, DateTime.Now);
@@ -145,7 +138,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         void AppContext_HeartBeat(object sender, EventArgs e)
         {
-            Trace.TraceInformation(string.Format("AppContext:AppContext_HeartBeat Event @ {0}", DateTime.Now.ToShortTimeString() ));
+            Trace.TraceInformation(string.Format("AppContext:AppContext_HeartBeat Event @ {0}", DateTime.Now.ToShortTimeString()));
         }
 
         /// <summary>
@@ -156,11 +149,11 @@ namespace BritishMicro.TaskClerk
             base.StopEngine();
 
             SettingsProvider.Set("AppEndTime", DateTime.Now, PersistHint.AcrossSessions);
-            bool stopTaskActivity = (bool) SettingsProvider.Get("StopTaskEnabled", false);
+            bool stopTaskActivity = (bool)SettingsProvider.Get("StopTaskEnabled", false);
             if (stopTaskActivity == true)
             {
                 TaskDescription taskDescription =
-                    (TaskDescription) SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty);
+                    (TaskDescription)SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty);
                 if (taskDescription.IsNotEmpty())
                 {
                     HandleNewTaskActivity(taskDescription, DateTime.Now);
@@ -176,12 +169,10 @@ namespace BritishMicro.TaskClerk
         /// <param name="lastHeartBeat">The last heart beat.</param>
         private void ForcedShutDownDetected(DateTime lastHeartBeat)
         {
-            bool stopTaskActivity = (bool) SettingsProvider.Get("StopTaskEnabled", false);
+            bool stopTaskActivity = (bool)SettingsProvider.Get("StopTaskEnabled", false);
             if (stopTaskActivity == true)
             {
-                TaskDescription taskDescription =
-                    SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty) as TaskDescription;
-                if (taskDescription != null && taskDescription.IsNotEmpty())
+                if (SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty) is TaskDescription taskDescription && taskDescription.IsNotEmpty())
                 {
                     HandleNewTaskActivity(taskDescription, lastHeartBeat); //.AddMinutes(5));
                     Trace.TraceInformation("AppContext:ForcedShutDownDetected");
@@ -190,7 +181,7 @@ namespace BritishMicro.TaskClerk
                 {
                     Trace.TraceInformation("AppContext:ForcedShutDownDetected - Not handled");
                 }
-            }            
+            }
         }
 
         /// <summary>
@@ -198,8 +189,8 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         private void BackupData()
         {
-            string frequency = (string) SettingsProvider.Get("BackupFrequency", "Never");
-            DateTime lastBackup = (DateTime) SettingsProvider.Get("LastBackup", DateTime.MinValue);
+            string frequency = (string)SettingsProvider.Get("BackupFrequency", "Never");
+            DateTime lastBackup = (DateTime)SettingsProvider.Get("LastBackup", DateTime.MinValue);
             if (AppContext.Current.TaskActivitiesProvider.Backup(frequency, lastBackup))
             {
                 AppContext.Current.SettingsProvider.Set("LastBackup", DateTime.Now, PersistHint.AcrossSessions);
@@ -223,7 +214,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="taskDescription">The task description.</param>
         /// <param name="crossTabTaskDescription">The task description for cross tab.</param>
         /// <param name="effectiveDateTime">The effective date time.</param>
-        public void HandleNewTaskActivity(TaskDescription taskDescription, TaskDescription crossTabTaskDescription, 
+        public void HandleNewTaskActivity(TaskDescription taskDescription, TaskDescription crossTabTaskDescription,
             DateTime effectiveDateTime)
         {
             if (taskDescription == null)
@@ -251,9 +242,11 @@ namespace BritishMicro.TaskClerk
                 }
 
                 // create a new task activity
-                TaskActivity newActivity = new TaskActivity(taskDescription, IdentityProvider.Principal.Identity.Name);
-                newActivity.StartDate = effectiveDateTime;
-                if(crossTabTaskDescription != null) 
+                TaskActivity newActivity = new TaskActivity(taskDescription, IdentityProvider.Principal.Identity.Name)
+                {
+                    StartDate = effectiveDateTime
+                };
+                if (crossTabTaskDescription != null)
                     newActivity.CrosstabTaskDescription = crossTabTaskDescription;
                 SettingsProvider.Set(STRING_CURRENTTASK, newActivity, PersistHint.AcrossSessions);
                 TaskActivitiesProvider.BeginActivity(newActivity);
@@ -280,11 +273,11 @@ namespace BritishMicro.TaskClerk
             if (_descriptionExplorerVisible == false)
             {
                 _descriptionExplorerVisible = true;
-                Type type = (Type) SettingsProvider.Get("TaskDescriptionsExplorer");
+                Type type = (Type)SettingsProvider.Get("TaskDescriptionsExplorer");
                 Current.ShowForm(type);
                 _descriptionExplorerVisible = false;
             }
-            return (TaskDescription) SettingsProvider.Get("SelectedTaskDescription", TaskDescription.Empty);
+            return (TaskDescription)SettingsProvider.Get("SelectedTaskDescription", TaskDescription.Empty);
         }
 
         /// <summary>
@@ -300,15 +293,14 @@ namespace BritishMicro.TaskClerk
             }
 
             DialogResult dr = DialogResult.Ignore;
-            Form form = (Form) Activator.CreateInstance(formType) as Form;
-            if (form != null)
+            if ((Form)Activator.CreateInstance(formType) is Form form)
             {
-                form.ClientSize = (Size) SettingsProvider.Get(
+                form.ClientSize = (Size)SettingsProvider.Get(
                                              string.Format("{0}ClientSize", formType.Name), form.Size);
-                form.Location = (Point) SettingsProvider.Get(
+                form.Location = (Point)SettingsProvider.Get(
                                             string.Format("{0}Location", formType.Name), form.Location);
 
-                form.WindowState = (FormWindowState) SettingsProvider.Get(
+                form.WindowState = (FormWindowState)SettingsProvider.Get(
                                                          string.Format("{0}FormWindowState", formType.Name),
                                                          FormWindowState.Normal);
 
@@ -400,11 +392,11 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         public void SuspendApplication()
         {
-            bool suspendTaskActivity = (bool) SettingsProvider.Get("SuspendTaskEnabled", false);
+            bool suspendTaskActivity = (bool)SettingsProvider.Get("SuspendTaskEnabled", false);
             if (suspendTaskActivity == true)
             {
                 TaskDescription taskDescription =
-                    (TaskDescription) SettingsProvider.Get("SuspendTaskDescription", TaskDescription.Empty);
+                    (TaskDescription)SettingsProvider.Get("SuspendTaskDescription", TaskDescription.Empty);
                 if (taskDescription.IsNotEmpty())
                 {
                     HandleNewTaskActivity(taskDescription, DateTime.Now);
@@ -422,12 +414,12 @@ namespace BritishMicro.TaskClerk
             {
                 // Get all Title attributes on this assembly
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 // If there is at least one Title attribute
                 if (attributes.Length > 0)
                 {
                     // Select the first one
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute) attributes[0];
+                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
                     // If it is not an empty string, return it
                     if (titleAttribute.Title.Length > 0)
                         return titleAttribute.Title;
@@ -456,12 +448,12 @@ namespace BritishMicro.TaskClerk
             {
                 // Get all Description attributes on this assembly
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyDescriptionAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
                 // If there aren't any Description attributes, return an empty string
                 if (attributes.Length == 0)
                     return "";
                 // If there is a Description attribute, return its value
-                return ((AssemblyDescriptionAttribute) attributes[0]).Description;
+                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
         }
 
@@ -475,12 +467,12 @@ namespace BritishMicro.TaskClerk
             {
                 // Get all Product attributes on this assembly
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyProductAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 // If there aren't any Product attributes, return an empty string
                 if (attributes.Length == 0)
                     return "";
                 // If there is a Product attribute, return its value
-                return ((AssemblyProductAttribute) attributes[0]).Product;
+                return ((AssemblyProductAttribute)attributes[0]).Product;
             }
         }
 
@@ -494,12 +486,12 @@ namespace BritishMicro.TaskClerk
             {
                 // Get all Copyright attributes on this assembly
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 // If there aren't any Copyright attributes, return an empty string
                 if (attributes.Length == 0)
                     return "";
                 // If there is a Copyright attribute, return its value
-                return ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
+                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
 
@@ -513,12 +505,12 @@ namespace BritishMicro.TaskClerk
             {
                 // Get all Company attributes on this assembly
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyCompanyAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 // If there aren't any Company attributes, return an empty string
                 if (attributes.Length == 0)
                     return "";
                 // If there is a Company attribute, return its value
-                return ((AssemblyCompanyAttribute) attributes[0]).Company;
+                return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
     }

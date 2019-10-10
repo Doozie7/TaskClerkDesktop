@@ -5,7 +5,6 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
-using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 

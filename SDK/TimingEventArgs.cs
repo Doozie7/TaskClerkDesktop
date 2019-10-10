@@ -8,9 +8,9 @@ namespace BritishMicro.TaskClerk.Providers
     /// </summary>
     public class TimingEventArgs : EventArgs
     {
-        private MethodBase _method;
-        private DateTime _timerStart;
-        private DateTime _timerEnd;
+        private readonly MethodBase _method;
+        private readonly DateTime _timerStart;
+        private readonly DateTime _timerEnd;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimingEventArgs"/> class.
@@ -66,6 +66,6 @@ namespace BritishMicro.TaskClerk.Providers
         public TimeSpan Duration
         {
             get { return _timerEnd.Subtract(_timerStart); }
-        }	
+        }
     }
 }

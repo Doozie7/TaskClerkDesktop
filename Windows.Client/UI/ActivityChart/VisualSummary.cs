@@ -25,7 +25,7 @@ namespace BritishMicro.TaskClerk.UI
             set
             {
                 totalMinutesTextBox.Text = value.ToString("0", CultureInfo.InvariantCulture);
-                decimal hours = value/60;
+                decimal hours = value / 60;
                 totalHoursTextBox.Text = hours.ToString("0.00", CultureInfo.InvariantCulture);
             }
         }

@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing.Printing;
 using System.Drawing;
-using BritishMicro.TaskClerk.Windows;
+using System.Drawing.Printing;
 
 namespace BritishMicro.TaskClerk.Plugins
 {
@@ -14,11 +11,11 @@ namespace BritishMicro.TaskClerk.Plugins
     public class PluginPrintFormatter : PrintDocument
     {
 
-        private TaskClerkEngine _engine;
-        private PrintConfiguration _config;
+        private readonly TaskClerkEngine _engine;
+        private readonly PrintConfiguration _config;
         private int _currentPageNumber;
         private Font _font;
-        private bool _cancel;    
+        private bool _cancel;
 
 
         /// <summary>
@@ -77,7 +74,7 @@ namespace BritishMicro.TaskClerk.Plugins
         {
             get { return _cancel; }
             set { _cancel = value; }
-        }	
+        }
 
         /// <summary>
         /// Raises the <see cref="E:System.Drawing.Printing.PrintDocument.PrintPage"></see> event. It is called before a page prints.
@@ -101,7 +98,7 @@ namespace BritishMicro.TaskClerk.Plugins
         /// </summary>
         /// <param name="e">The <see cref="System.Drawing.Printing.PrintPageEventArgs"/> instance containing the event data.</param>
         protected virtual Rectangle DrawHeader(PrintPageEventArgs e)
-        {throw new NotImplementedException();}
+        { throw new NotImplementedException(); }
 
         /// <summary>
         /// Draws the footer.
@@ -116,7 +113,7 @@ namespace BritishMicro.TaskClerk.Plugins
         /// <param name="e">The <see cref="System.Drawing.Printing.PrintPageEventArgs"/> instance containing the event data.</param>
         /// <param name="rectangle">The rectangle.</param>
         protected virtual void DrawContent(PrintPageEventArgs e, Rectangle rectangle)
-        {throw new NotImplementedException();}
+        { throw new NotImplementedException(); }
 
         /// <summary>
         /// Recalculates the content rectangle after the Header and Footer have been drawn.
@@ -125,7 +122,7 @@ namespace BritishMicro.TaskClerk.Plugins
         /// <param name="headerRectangle">The header rectangle.</param>
         /// <param name="footerRectangle">The footer rectangle.</param>
         /// <returns></returns>
-        protected virtual Rectangle CalculateContentRectangle(System.Drawing.Printing.PrintPageEventArgs e, 
+        protected virtual Rectangle CalculateContentRectangle(System.Drawing.Printing.PrintPageEventArgs e,
             Rectangle headerRectangle, Rectangle footerRectangle)
         {
             Rectangle contentRec = new Rectangle(e.MarginBounds.X,

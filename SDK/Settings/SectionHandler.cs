@@ -47,8 +47,8 @@ namespace BritishMicro.TaskClerk.Settings
 
             using (Stream memory = new MemoryStream(Encoding.UTF8.GetBytes(section.OuterXml)))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof (ConfigurationSection));
-                config = (ConfigurationSection) serializer.Deserialize(memory);
+                XmlSerializer serializer = new XmlSerializer(typeof(ConfigurationSection));
+                config = (ConfigurationSection)serializer.Deserialize(memory);
             }
 
             //Debug.Assert(config == null, "The config section is null, this will cause configuration faults.");

@@ -12,8 +12,8 @@ namespace BritishMicro.TaskClerk.UI
     {
         private TaskDescription _currentTaskDescription;
         private TreeNode _currentNode;
-        private bool _showTreeFaults;
-        private bool _throwTreeFaults;
+        private readonly bool _showTreeFaults;
+        private readonly bool _throwTreeFaults;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDescriptionsExplorer"/> class.
@@ -27,8 +27,8 @@ namespace BritishMicro.TaskClerk.UI
 
         private void TaskDescriptionsExplorer_Load(object sender, EventArgs e)
         {
-            treeView.Font = (Font) AppContext.Current.SettingsProvider.Get("GeneralFont", Font);
-            propertyGrid.Font = (Font) AppContext.Current.SettingsProvider.Get("GeneralFont", Font);
+            treeView.Font = (Font)AppContext.Current.SettingsProvider.Get("GeneralFont", Font);
+            propertyGrid.Font = (Font)AppContext.Current.SettingsProvider.Get("GeneralFont", Font);
 
             //clear the context variable
             AppContext.Current.SettingsProvider.Set(
@@ -37,7 +37,7 @@ namespace BritishMicro.TaskClerk.UI
                 PersistHint.AcrossSessions);
 
             TaskActivity currentTaskactivity =
-                (TaskActivity) AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty);
+                (TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty);
             if (currentTaskactivity.IsNotEmpty())
             {
                 _currentTaskDescription = currentTaskactivity.TaskDescription;
@@ -46,14 +46,14 @@ namespace BritishMicro.TaskClerk.UI
             // Set Owner Draw Mode to Text
             if ((null == Site) || (!Site.DesignMode))
             {
-                if ((bool) AppContext.Current.SettingsProvider.Get("Advanced Draw on Descriptions Tree", true))
+                if ((bool)AppContext.Current.SettingsProvider.Get("Advanced Draw on Descriptions Tree", true))
                 {
                     treeView.DrawMode = TreeViewDrawMode.OwnerDrawText;
                 }
             }
             ReBuildTree(AppContext.Current.TaskDescriptionsProvider.TaskDescriptions);
 
-            buttonUse.Visible = !(bool) AppContext.Current.SettingsProvider.Get("HideUseButton", false);
+            buttonUse.Visible = !(bool)AppContext.Current.SettingsProvider.Get("HideUseButton", false);
 
             Activate();
         }
@@ -64,15 +64,19 @@ namespace BritishMicro.TaskClerk.UI
             treeView.Nodes.Clear();
 
             //create a root
-            TreeNode root = new TreeNode("Task Descriptions", imageList.Images.Count - 1, imageList.Images.Count - 1);
-            root.Tag = rootDescriptions;
+            TreeNode root = new TreeNode("Task Descriptions", imageList.Images.Count - 1, imageList.Images.Count - 1)
+            {
+                Tag = rootDescriptions
+            };
             treeView.Nodes.Add(root);
 
             foreach (TaskDescription taskDescription in rootDescriptions)
             {
-                TreeNode treeNode = new TreeNode(taskDescription.Name);
-                treeNode.ToolTipText = taskDescription.Description;
-                treeNode.Tag = taskDescription;
+                TreeNode treeNode = new TreeNode(taskDescription.Name)
+                {
+                    ToolTipText = taskDescription.Description,
+                    Tag = taskDescription
+                };
                 BuildTree(taskDescription, treeNode);
                 treeView.Nodes[0].Nodes.Add(treeNode);
                 treeNode.EnsureVisible();
@@ -94,9 +98,11 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (child != null)
                 {
-                    TreeNode node = new TreeNode(child.Name);
-                    node.Tag = child;
-                    node.ToolTipText = child.Description;
+                    TreeNode node = new TreeNode(child.Name)
+                    {
+                        Tag = child,
+                        ToolTipText = child.Description
+                    };
                     rootNode.Nodes.Add(node);
                     if (child.Children != null)
                     {
@@ -121,10 +127,9 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (treeView.SelectedNode.Tag != null)
                 {
-                    if (treeView.SelectedNode.Tag.GetType() == typeof (TaskDescription))
+                    if (treeView.SelectedNode.Tag.GetType() == typeof(TaskDescription))
                     {
-                        TaskDescription td = treeView.SelectedNode.Tag as TaskDescription;
-                        if (td != null)
+                        if (treeView.SelectedNode.Tag is TaskDescription td)
                         {
                             propertyGrid.SelectedObject = td;
                             treeView.SelectedNode.Text = td.Name;
@@ -155,10 +160,9 @@ namespace BritishMicro.TaskClerk.UI
             if ((treeView.SelectedNode != null) && (treeView.SelectedNode.Nodes.Count == 0))
             {
                 if ((treeView.SelectedNode.Tag != null) &&
-                    (treeView.SelectedNode.Tag.GetType() == typeof (TaskDescription)))
+                    (treeView.SelectedNode.Tag.GetType() == typeof(TaskDescription)))
                 {
-                    TaskDescription td = treeView.SelectedNode.Tag as TaskDescription;
-                    if (td != null)
+                    if (treeView.SelectedNode.Tag is TaskDescription td)
                     {
                         if (td.IsDateBetweenValidPeriod(DateTime.Now) == false)
                         {
@@ -182,24 +186,27 @@ namespace BritishMicro.TaskClerk.UI
         {
             if (treeView.SelectedNode != null)
             {
-                NewTaskDescriptionDialog ntdd 
+                NewTaskDescriptionDialog ntdd
                     = new NewTaskDescriptionDialog(treeView.SelectedNode.Tag as TaskDescription);
                 if (ntdd.ShowDialog(this) == DialogResult.OK)
                 {
-                    TaskDescription taskDescription = new TaskDescription();
-                    taskDescription.Id = Guid.NewGuid();
-                    taskDescription.Name = ntdd.TaskDescription.Name;
-                    taskDescription.Color = ntdd.TaskDescription.Color;
-                    taskDescription.NoNagMinutes = ntdd.TaskDescription.NoNagMinutes;
-                    taskDescription.IsEvent = false;
+                    TaskDescription taskDescription = new TaskDescription
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = ntdd.TaskDescription.Name,
+                        Color = ntdd.TaskDescription.Color,
+                        NoNagMinutes = ntdd.TaskDescription.NoNagMinutes,
+                        IsEvent = false
+                    };
 
-                    TreeNode treeNode = new TreeNode(taskDescription.Name);
-                    treeNode.Tag = taskDescription;
+                    TreeNode treeNode = new TreeNode(taskDescription.Name)
+                    {
+                        Tag = taskDescription
+                    };
                     if ((treeView.SelectedNode.Tag != null) &&
                         (treeView.SelectedNode.Tag.GetType() == typeof(TaskDescription)))
                     {
-                        TaskDescription td = treeView.SelectedNode.Tag as TaskDescription;
-                        if (td != null)
+                        if (treeView.SelectedNode.Tag is TaskDescription td)
                         {
                             td.Children.Add(taskDescription);
                             treeView.SelectedNode.Nodes.Add(treeNode);
@@ -221,9 +228,9 @@ namespace BritishMicro.TaskClerk.UI
         {
             if (propertyGrid.SelectedObject != null)
             {
-                if (propertyGrid.SelectedObject.GetType() == typeof (TaskDescription))
+                if (propertyGrid.SelectedObject.GetType() == typeof(TaskDescription))
                 {
-                    TaskDescription currentTaskDescription = (TaskDescription) propertyGrid.SelectedObject;
+                    TaskDescription currentTaskDescription = (TaskDescription)propertyGrid.SelectedObject;
                     treeView.SelectedNode.Text = currentTaskDescription.Name;
                     AppContext.Current.TaskDescriptionsProvider.SaveDescriptions();
                     if (currentTaskDescription.IsDateBetweenValidPeriod(DateTime.Now) == false)
@@ -252,10 +259,10 @@ namespace BritishMicro.TaskClerk.UI
             if (treeView.SelectedNode.Tag != null)
             {
                 TreeNode parentNode = treeView.SelectedNode.Parent;
-                if (treeView.SelectedNode.Tag.GetType() == typeof (TaskDescription))
+                if (treeView.SelectedNode.Tag.GetType() == typeof(TaskDescription))
                 {
                     AppContext.Current.TaskDescriptionsProvider.RemoveDescription(
-                        (TaskDescription) treeView.SelectedNode.Tag);
+                        (TaskDescription)treeView.SelectedNode.Tag);
                     treeView.SelectedNode.Remove();
                     ReBuildTree(AppContext.Current.TaskDescriptionsProvider.TaskDescriptions);
                     treeView.SelectedNode = FindTaskDescription(parentNode.Text, treeView.Nodes);
@@ -353,20 +360,20 @@ namespace BritishMicro.TaskClerk.UI
 
         private void treeView_DragDrop(object sender, DragEventArgs e)
         {
-            Point pt = ((TreeView) sender).PointToClient(new Point(e.X, e.Y));
-            TreeNode destination = ((TreeView) sender).GetNodeAt(pt);
-            TreeNode movingNode = (TreeNode) e.Data.GetData("System.Windows.Forms.TreeNode");
+            Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
+            TreeNode destination = ((TreeView)sender).GetNodeAt(pt);
+            TreeNode movingNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
 
             if (MoveNode(movingNode, destination, false))
             {
-                AppContext.Current.TaskDescriptionsProvider.RemoveDescription((TaskDescription) movingNode.Tag);
-                if (destination.Tag.GetType() == typeof (TaskDescription))
+                AppContext.Current.TaskDescriptionsProvider.RemoveDescription((TaskDescription)movingNode.Tag);
+                if (destination.Tag.GetType() == typeof(TaskDescription))
                 {
-                    ((TaskDescription) destination.Tag).Children.Add((TaskDescription) movingNode.Tag);
+                    ((TaskDescription)destination.Tag).Children.Add((TaskDescription)movingNode.Tag);
                 }
                 else
                 {
-                    AppContext.Current.TaskDescriptionsProvider.TaskDescriptions.Add((TaskDescription) movingNode.Tag);
+                    AppContext.Current.TaskDescriptionsProvider.TaskDescriptions.Add((TaskDescription)movingNode.Tag);
                 }
                 AppContext.Current.TaskDescriptionsProvider.SaveDescriptions();
             }
@@ -420,17 +427,17 @@ namespace BritishMicro.TaskClerk.UI
 
             //if (destination != null)
             //{
-                TreeNode clonedNode = (TreeNode) nodeToMove.Clone();
-                clonedNode.Tag = nodeToMove.Tag;
-                clonedNode.Checked = false;
-                destination.Nodes.Add(clonedNode);
-                if (linking == false)
-                {
-                    nodeToMove.Remove();
-                }
-                clonedNode.EnsureVisible();
-                clonedNode.TreeView.SelectedNode = clonedNode;
-                result = true;
+            TreeNode clonedNode = (TreeNode)nodeToMove.Clone();
+            clonedNode.Tag = nodeToMove.Tag;
+            clonedNode.Checked = false;
+            destination.Nodes.Add(clonedNode);
+            if (linking == false)
+            {
+                nodeToMove.Remove();
+            }
+            clonedNode.EnsureVisible();
+            clonedNode.TreeView.SelectedNode = clonedNode;
+            result = true;
             //}
 
             return result;
@@ -506,7 +513,7 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (e.Bounds.X > 0)
                 {
-                    if ((e.Node != null) && (e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof (TaskDescription)))
+                    if ((e.Node != null) && (e.Node.Tag != null) && (e.Node.Tag.GetType() == typeof(TaskDescription)))
                     {
                         e.Graphics.FillRectangle(new SolidBrush(treeView.BackColor), e.Bounds);
                         TextRenderer.DrawText(e.Graphics, td.Name, font, new Point(e.Bounds.X, e.Bounds.Y), color);
@@ -531,8 +538,7 @@ namespace BritishMicro.TaskClerk.UI
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TaskDescription taskDescription = treeView.SelectedNode.Tag as TaskDescription;
-            if (taskDescription != null)
+            if (treeView.SelectedNode.Tag is TaskDescription taskDescription)
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -541,7 +547,7 @@ namespace BritishMicro.TaskClerk.UI
                     {
                         using (FileStream fileStream = fileInfo.Open(FileMode.Create, FileAccess.Write))
                         {
-                            XmlSerializer s = new XmlSerializer(typeof (TaskDescription));
+                            XmlSerializer s = new XmlSerializer(typeof(TaskDescription));
                             s.Serialize(fileStream, taskDescription);
                             if (DialogResult.OK == MessageBox.Show(
                                                        "Task Descriptions saved to\n" + fileInfo.FullName +
@@ -573,10 +579,9 @@ namespace BritishMicro.TaskClerk.UI
                 FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
                 using (FileStream fileStream = fileInfo.Open(FileMode.Open, FileAccess.Read))
                 {
-                    XmlSerializer s = new XmlSerializer(typeof (TaskDescription));
-                    TaskDescription imported = (TaskDescription) s.Deserialize(fileStream);
-                    TaskDescription taskDescription = treeView.SelectedNode.Tag as TaskDescription;
-                    if (taskDescription != null)
+                    XmlSerializer s = new XmlSerializer(typeof(TaskDescription));
+                    TaskDescription imported = (TaskDescription)s.Deserialize(fileStream);
+                    if (treeView.SelectedNode.Tag is TaskDescription taskDescription)
                     {
                         taskDescription.Children.Add(imported);
                         AppContext.Current.TaskDescriptionsProvider.SaveDescriptions();

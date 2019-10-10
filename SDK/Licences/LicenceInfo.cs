@@ -1,6 +1,7 @@
+using System.ComponentModel;
 using System.IO;
 using System.Xml;
-using System.ComponentModel;
+using System.Xml.XPath;
 
 namespace BritishMicro.TaskClerk
 {
@@ -11,7 +12,7 @@ namespace BritishMicro.TaskClerk
     public class LicenseInfo
     {
 
-        private XmlDocument _licenseDoc;
+        private readonly XmlDocument _licenseDoc;
         private License _license;
 
         /// <summary>
@@ -29,12 +30,12 @@ namespace BritishMicro.TaskClerk
         internal void Initalise(License license)
         {
             this._license = license;
-            string licenseFile 
-                = Path.GetDirectoryName(typeof(TaskClerkEngine).Module.FullyQualifiedName) 
+            string licenseFile
+                = Path.GetDirectoryName(typeof(TaskClerkEngine).Module.FullyQualifiedName)
                 + @"\" + typeof(TaskClerkEngine).FullName + ".lic";
             if (File.Exists(licenseFile))
             {
-                using (Stream stream 
+                using (Stream stream
                     = new FileStream(licenseFile, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     using (StreamReader reader = new StreamReader(stream))
@@ -60,7 +61,7 @@ namespace BritishMicro.TaskClerk
         /// Gets the license xml doc.
         /// </summary>
         /// <value>The license doc.</value>
-        public XmlDocument LicenseDoc
+        public IXPathNavigable LicenseDoc
         {
             get { return _licenseDoc; }
         }

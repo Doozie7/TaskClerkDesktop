@@ -26,7 +26,7 @@ namespace BritishMicro.Windows
         /// <param name="hWnd">The handle to the window that requests to be the foreground window.</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
-        [return : MarshalAs(UnmanagedType.Bool)]
+        [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace BritishMicro.Windows
         /// <param name="vk">The vk.</param>
         /// <returns></returns>
         [DllImport("user32.dll", SetLastError = true, EntryPoint = "RegisterHotKey")]
-        [return : MarshalAs(UnmanagedType.Bool)]
+        [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, KeyCategories fsModifiers, Keys vk);
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace BritishMicro.Windows
         /// <param name="id">The id.</param>
         /// <returns></returns>
         [DllImport("user32.dll", SetLastError = true, EntryPoint = "UnregisterHotKey")]
-        [return : MarshalAs(UnmanagedType.Bool)]
+        [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         /// <summary>

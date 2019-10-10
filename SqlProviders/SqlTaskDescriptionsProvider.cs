@@ -5,17 +5,12 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Providers.Sql.Properties;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using System.Data;
-using System.Diagnostics;
 using System.IO;
-using BritishMicro.TaskClerk.Providers.Sql.Properties;
 using System.Xml.Serialization;
-using System.Threading;
 
 namespace BritishMicro.TaskClerk.Providers.Sql
 {
@@ -26,10 +21,10 @@ namespace BritishMicro.TaskClerk.Providers.Sql
     {
 
         private string _connectionString;
-        private static string loadDescriptionsStatement = "up_ReadDescriptions";
-        private static string saveDescriptionStatement = "up_WriteDescription";
-        private static string removeDescriptionStatement = "up_RemoveDescription";
-        private static string archiveDescriptionsStatement = "up_ArchiveDescriptions";
+        private const string loadDescriptionsStatement = "up_ReadDescriptions";
+        private const string saveDescriptionStatement = "up_WriteDescription";
+        private const string removeDescriptionStatement = "up_RemoveDescription";
+        private const string archiveDescriptionsStatement = "up_ArchiveDescriptions";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SqlTaskDescriptionsProvider"/> class.
@@ -60,13 +55,17 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(loadDescriptionsStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand(loadDescriptionsStatement, connection)
                 {
-                    FromDbReader(reader, descriptions);
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        FromDbReader(reader, descriptions);
+                    }
                 }
             }
 
@@ -149,11 +148,15 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(removeDescriptionStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                command.Parameters.AddWithValue("@Id", taskDescription.Id);
-                command.ExecuteScalar();
+                using (SqlCommand command = new SqlCommand(removeDescriptionStatement, connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    command.Parameters.AddWithValue("@Id", taskDescription.Id);
+                    command.ExecuteScalar();
+                }
             }
         }
 
@@ -165,10 +168,14 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand(archiveDescriptionsStatement, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-                command.ExecuteScalar();
+                using (SqlCommand command = new SqlCommand(archiveDescriptionsStatement, connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                    command.ExecuteScalar();
+                }
             }
         }
 
@@ -179,9 +186,11 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         /// <returns></returns>
         private void FromDbReader(SqlDataReader reader, Collection<TaskDescription> descriptions)
         {
-            TaskDescription td = new TaskDescription();
-            td.Id = reader.GetGuid(0);
-            td.Name = reader.GetString(2);
+            TaskDescription td = new TaskDescription
+            {
+                Id = reader.GetGuid(0),
+                Name = reader.GetString(2)
+            };
             if (!reader.IsDBNull(3))
             {
                 td.Description = reader.GetString(3);
@@ -227,7 +236,7 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             else
             {
                 descriptions.Add(td);
-            }            
+            }
         }
 
         /// <summary>
@@ -238,46 +247,50 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         /// <param name="parent">The parent.</param>
         private void SaveToDb(SqlConnection connection, TaskDescription description, TaskDescription parent)
         {
-            SqlCommand command = new SqlCommand(saveDescriptionStatement, connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
-            command.Parameters.AddWithValue("@Id", description.Id);
-            if (parent != null)
+            using (SqlCommand command = new SqlCommand(saveDescriptionStatement, connection)
             {
-                command.Parameters.AddWithValue("@ParentId", parent.Id);
-            }
-            command.Parameters.AddWithValue("@Name", description.Name);
-            if (description.Description != null)
+                CommandType = System.Data.CommandType.StoredProcedure
+            })
             {
-                command.Parameters.AddWithValue("@Description", description.Description);
+                command.Parameters.AddWithValue("@UserId", Engine.IdentityProvider.Principal.Identity.Name);
+                command.Parameters.AddWithValue("@Id", description.Id);
+                if (parent != null)
+                {
+                    command.Parameters.AddWithValue("@ParentId", parent.Id);
+                }
+                command.Parameters.AddWithValue("@Name", description.Name);
+                if (description.Description != null)
+                {
+                    command.Parameters.AddWithValue("@Description", description.Description);
+                }
+                command.Parameters.AddWithValue("@NoNagMinutes", description.NoNagMinutes);
+                command.Parameters.AddWithValue("@Colour", description.Colour);
+                command.Parameters.AddWithValue("@Sequence", description.Sequence);
+                command.Parameters.AddWithValue("@CustomFlags", description.CustomFlags);
+                command.Parameters.AddWithValue("@IsPrivate", description.IsPrivate);
+                command.Parameters.AddWithValue("@IsCategory", description.IsCategory);
+                command.Parameters.AddWithValue("@IsEvent", description.IsEvent);
+                if (description.GroupName != null)
+                {
+                    command.Parameters.AddWithValue("@GroupName", description.GroupName);
+                }
+                command.Parameters.AddWithValue("@MenuColumn", description.MenuColumn);
+                command.Parameters.AddWithValue("@Url", description.Url);
+                if (description.Server != null)
+                {
+                    command.Parameters.AddWithValue("@Server", description.Server);
+                }
+                if (description.ValidFromDate != DateTime.MinValue)
+                {
+                    command.Parameters.AddWithValue("@ValidFromDate", description.ValidFromDate);
+                }
+                if (description.ValidToDate != DateTime.MinValue)
+                {
+                    command.Parameters.AddWithValue("@ValidToDate", description.ValidToDate);
+                }
+                command.Parameters.AddWithValue("@Enabled", description.Enabled);
+                command.ExecuteScalar();
             }
-            command.Parameters.AddWithValue("@NoNagMinutes", description.NoNagMinutes);
-            command.Parameters.AddWithValue("@Colour", description.Colour);
-            command.Parameters.AddWithValue("@Sequence", description.Sequence);
-            command.Parameters.AddWithValue("@CustomFlags", description.CustomFlags);
-            command.Parameters.AddWithValue("@IsPrivate", description.IsPrivate);
-            command.Parameters.AddWithValue("@IsCategory", description.IsCategory);
-            command.Parameters.AddWithValue("@IsEvent", description.IsEvent);
-            if (description.GroupName != null)
-            {
-                command.Parameters.AddWithValue("@GroupName", description.GroupName);
-            }
-            command.Parameters.AddWithValue("@MenuColumn", description.MenuColumn);
-            command.Parameters.AddWithValue("@Url", description.Url);
-            if (description.Server != null)
-            {
-                command.Parameters.AddWithValue("@Server", description.Server);
-            }
-            if (description.ValidFromDate != DateTime.MinValue)
-            {
-                command.Parameters.AddWithValue("@ValidFromDate", description.ValidFromDate);
-            }
-            if (description.ValidToDate != DateTime.MinValue)
-            {
-                command.Parameters.AddWithValue("@ValidToDate", description.ValidToDate);
-            }
-            command.Parameters.AddWithValue("@Enabled", description.Enabled);
-            command.ExecuteScalar();
         }
     }
 }

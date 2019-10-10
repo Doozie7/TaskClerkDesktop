@@ -131,7 +131,7 @@ namespace BritishMicro.TaskClerk.Providers
         public void RemoveDescription(TaskDescription description)
         {
             TaskDescription parent = null;
-            foreach(TaskDescription child in TaskDescriptions)
+            foreach (TaskDescription child in TaskDescriptions)
             {
                 parent = FindParentInHierarchy(child, description);
                 if (parent != null)
@@ -159,8 +159,10 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public TaskDescription FindDescription(Guid id)
         {
-            TaskDescription test = new TaskDescription();
-            test.Id = id;
+            TaskDescription test = new TaskDescription
+            {
+                Id = id
+            };
             test = InternalFindById(test, TaskDescriptions);
             if (test == null)
             {
@@ -176,8 +178,10 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public TaskDescription FindDescription(string name)
         {
-            TaskDescription test = new TaskDescription();
-            test.Name = name;
+            TaskDescription test = new TaskDescription
+            {
+                Name = name
+            };
             test = InternalFindByName(test, TaskDescriptions);
             if (test == null)
             {
@@ -250,8 +254,10 @@ namespace BritishMicro.TaskClerk.Providers
         /// <returns></returns>
         public static TaskDescription FindChildInHierarchy(Collection<TaskDescription> descriptions, Guid id)
         {
-            TaskDescription toFind = new TaskDescription();
-            toFind.Id = id;
+            TaskDescription toFind = new TaskDescription
+            {
+                Id = id
+            };
             return FindChildInHierarchy(descriptions, toFind);
         }
 
@@ -423,11 +429,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e"></param>
         private void OnLoadingAllItemsEvent(TaskDescriptionsEventArgs e)
         {
-            EventHandler<TaskDescriptionsEventArgs> handler = LoadingAllItems;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            LoadingAllItems?.Invoke(this, e);
         }
 
         #endregion
@@ -445,11 +447,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e"></param>
         private void OnSavingAllItemsEvent(TaskDescriptionsEventArgs e)
         {
-            EventHandler<TaskDescriptionsEventArgs> handler = SavingAllItems;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            SavingAllItems?.Invoke(this, e);
         }
 
         #endregion
@@ -467,11 +465,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e"></param>
         private void OnAddingItemEvent(TaskDescriptionEventArgs e)
         {
-            EventHandler<TaskDescriptionEventArgs> handler = AddingItem;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            AddingItem?.Invoke(this, e);
         }
 
         #endregion
@@ -489,11 +483,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e"></param>
         private void OnRemovingItemEvent(TaskDescriptionEventArgs e)
         {
-            EventHandler<TaskDescriptionEventArgs> handler = RemovingItem;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            RemovingItem?.Invoke(this, e);
         }
 
         #endregion
@@ -511,11 +501,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e"></param>
         protected virtual void OnTaskDescriptionsChangedEvent(EventArgs e)
         {
-            EventHandler<EventArgs> handler = TaskDescriptionsChangedEvent;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            TaskDescriptionsChangedEvent?.Invoke(this, e);
         }
 
         #endregion

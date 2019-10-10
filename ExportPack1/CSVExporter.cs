@@ -1,10 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
 using System.ComponentModel;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.ExportPack1
 {
@@ -21,10 +19,12 @@ namespace BritishMicro.TaskClerk.ExportPack1
         /// </summary>
         public override void Execute()
         {
-            SaveFileDialog fd = new SaveFileDialog();
-            fd.Filter = "Comma Delimited (*.csv)|*.csv|All files (*.*)|*.*";
-            fd.FilterIndex = 1;
-            fd.RestoreDirectory = true;
+            SaveFileDialog fd = new SaveFileDialog
+            {
+                Filter = "Comma Delimited (*.csv)|*.csv|All files (*.*)|*.*",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
 
             if (DialogResult.OK == fd.ShowDialog())
             {
@@ -79,7 +79,7 @@ namespace BritishMicro.TaskClerk.ExportPack1
                 {
                     s = (char)34 + s + (char)34;
                 }
-                s += ", "; 
+                s += ", ";
             }
             return s;
         }

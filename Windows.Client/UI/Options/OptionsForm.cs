@@ -1,13 +1,13 @@
+using BritishMicro.TaskClerk.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk.Plugins;
 
 namespace BritishMicro.TaskClerk.UI
 {
     internal partial class OptionsForm : Form
     {
-        private List<PluginOptionControl> _optionControls;
+        private readonly List<PluginOptionControl> _optionControls;
 
         public OptionsForm()
         {
@@ -15,10 +15,10 @@ namespace BritishMicro.TaskClerk.UI
             _optionControls = new List<PluginOptionControl>();
             foreach (LoadableItem li in AppContext.Current.PluginsProvider.Plugins)
             {
-                if (li.IsSubclassOf(typeof (PluginOptionControl)))
+                if (li.IsSubclassOf(typeof(PluginOptionControl)))
                 {
                     Type type = li.ReturnType();
-                    PluginOptionControl poc = (PluginOptionControl) li.CreateInstance();
+                    PluginOptionControl poc = (PluginOptionControl)li.CreateInstance();
                     poc.TaskClerkInit(AppContext.Current, this);
                     _optionControls.Add(poc);
                 }
@@ -60,9 +60,11 @@ namespace BritishMicro.TaskClerk.UI
                     displayName = obc.GetType().Name;
                 }
 
-                ListViewItem lvi = new ListViewItem(displayName);
-                lvi.Tag = obc;
-                lvi.ImageKey = obc.Name;
+                ListViewItem lvi = new ListViewItem(displayName)
+                {
+                    Tag = obc,
+                    ImageKey = obc.Name
+                };
                 if (obc.IsAdvanced == false)
                 {
                     listViewSelector.Items.Add(lvi);
@@ -83,8 +85,7 @@ namespace BritishMicro.TaskClerk.UI
 
         private void listViewSelector_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            PluginOptionControl obc = e.Item.Tag as PluginOptionControl;
-            if (obc != null)
+            if (e.Item.Tag is PluginOptionControl obc)
             {
                 if (e.IsSelected == true)
                 {

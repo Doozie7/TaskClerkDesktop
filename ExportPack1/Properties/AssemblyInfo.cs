@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -22,7 +21,7 @@ using System.Runtime.InteropServices;
 //across programming languages. Good design dictates that all assemblies 
 //explicitly indicate CLS compliance with CLSCompliantAttribute. 
 //If the attribute is not present on an assembly, the assembly is not compliant.
-[assembly:CLSCompliant(true)]
+[assembly: CLSCompliant(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("748f4456-9f4b-4db7-88d2-4eadd85d0c8b")]

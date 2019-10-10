@@ -30,7 +30,7 @@ namespace BritishMicro.Windows
                                                  int x, int y, int nWidth, int nHeight, HWND hwndParent, HANDLE hMenu,
                                                  HANDLE hInstance, IntPtr lpParam);
 
-        private HANDLE m_hwndRule;
+        private readonly HANDLE m_hwndRule;
         private const int FixedHeight = 2;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace BritishMicro.Windows
             Height = FixedHeight;
 
             // Create the native window that will display as a horizontal rule.
-            m_hwndRule = (IntPtr) CreateWindowEx(
+            m_hwndRule = (IntPtr)CreateWindowEx(
                                       0, "static", "",
                                       WS_CHILD | WS_VISIBLE | SS_ETCHEDHORZ,
                                       0, 0, Width, Height, Handle,

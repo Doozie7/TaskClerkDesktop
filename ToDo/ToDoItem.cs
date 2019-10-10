@@ -1,11 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using BritishMicro.TaskClerk;
 
 namespace BritishMicro.TaskClerk.ToDoPlugin
 {
@@ -17,7 +12,7 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
         private bool _isChangeingProgress;
         private int _mouseStartPos;
         private DateTime _startTime;
-        private ToDoTask _todoTask;
+        private readonly ToDoTask _todoTask;
 
         public ToDoItem() : this(new ToDoTask())
         {
@@ -167,10 +162,10 @@ namespace BritishMicro.TaskClerk.ToDoPlugin
             {
                 decimal val = numericUpDownPriority.Value + this._mouseStartPos - e.Y;
 
-                if(val < numericUpDownPriority.Minimum)
+                if (val < numericUpDownPriority.Minimum)
                     val = numericUpDownPriority.Minimum;
 
-                if(val > numericUpDownPriority.Maximum)
+                if (val > numericUpDownPriority.Maximum)
                     val = numericUpDownPriority.Maximum;
 
                 numericUpDownPriority.Value = val;

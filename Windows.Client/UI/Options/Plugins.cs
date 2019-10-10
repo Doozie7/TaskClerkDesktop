@@ -1,9 +1,9 @@
-using System;
-using System.Diagnostics;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -29,8 +29,10 @@ namespace BritishMicro.TaskClerk.UI
             base.OnTaskClerkInit();
             foreach (LoadableItem li in Engine.PluginsProvider.Plugins)
             {
-                ListViewItem lvi = new ListViewItem(li.ReturnType().FullName);
-                lvi.Tag = li;
+                ListViewItem lvi = new ListViewItem(li.ReturnType().FullName)
+                {
+                    Tag = li
+                };
                 if (li.Enabled)
                 {
                     lvi.Checked = true;
@@ -66,19 +68,18 @@ namespace BritishMicro.TaskClerk.UI
                 if (pluginsListView.SelectedItems[0].Tag != null)
                 {
                     textBoxDescription.Text =
-                        ((LoadableItem) pluginsListView.SelectedItems[0].Tag).Description;
+                        ((LoadableItem)pluginsListView.SelectedItems[0].Tag).Description;
                 }
             }
         }
 
         private void pluginsListView_DoubleClick(object sender, EventArgs e)
         {
-            LoadableItem li = pluginsListView.SelectedItems[0].Tag as LoadableItem;
-            if (li != null)
+            if (pluginsListView.SelectedItems[0].Tag is LoadableItem li)
             {
                 MessageBox.Show(
-                    li.ReturnType().ToString() + "\n" + 
-                    "The plugins description is \n" + (li.Description != null?li.Description.ToString():"") + "\n" + 
+                    li.ReturnType().ToString() + "\n" +
+                    "The plugins description is \n" + (li.Description != null ? li.Description.ToString() : "") + "\n" +
                     "The plugin was found in the following file\n" + li.AssemblyFile.FullName, "Detail", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

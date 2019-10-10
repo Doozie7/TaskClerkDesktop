@@ -26,7 +26,7 @@ namespace BritishMicro.TaskClerk.UI
 
         private GraphicsPath RoundedRectandlePath(Rectangle rectangle, int radius)
         {
-            int diameter = 2*radius;
+            int diameter = 2 * radius;
             Rectangle arcRectangle = new Rectangle(rectangle.Location, new Size(diameter, diameter));
             GraphicsPath path = new GraphicsPath();
 

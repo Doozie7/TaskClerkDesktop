@@ -1,13 +1,12 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
 using BritishMicro.TaskClerk.Properties;
 using BritishMicro.TaskClerk.Providers;
 using BritishMicro.TaskClerk.UI;
+using System;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk
 {
@@ -16,7 +15,7 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     internal partial class HiddenForm : Form
     {
-        private string[] _args;
+        private readonly string[] _args;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HiddenForm"/> class.
@@ -40,7 +39,7 @@ namespace BritishMicro.TaskClerk
             Hide();
             ConfigureCulture();
             ShowCurrentStatus();
-            AppContext.Current.TaskActivitiesProvider.BeginningActivity 
+            AppContext.Current.TaskActivitiesProvider.BeginningActivity
                 += new EventHandler<TaskActivityEventArgs>(UpdateNotifyToolTip);
             UpdateNotifyToolTip(this, new TaskActivityEventArgs(AppContext.Current.CurrentActivity));
         }
@@ -53,26 +52,26 @@ namespace BritishMicro.TaskClerk
         private void InitialiseEnvironment()
         {
             notifyIcon.BalloonTipText = Resources.BalloonTipText;
-            notifyIcon.BalloonTipIcon = (ToolTipIcon) Enum.Parse(typeof (ToolTipIcon),
+            notifyIcon.BalloonTipIcon = (ToolTipIcon)Enum.Parse(typeof(ToolTipIcon),
                                                                  Resources.BalloonTipIcon);
             notifyIcon.BalloonTipTitle = Resources.BalloonTipTitle;
             notifyIcon.ContextMenu = contextMenu;
             notifyIcon.Text = Resources.NotifyToolTip;
 
             //Insert the Explorer types into the context
-            AppContext.Current.SettingsProvider.Set("TaskActivitiesExplorer", typeof (TaskActivitiesExplorer),
+            AppContext.Current.SettingsProvider.Set("TaskActivitiesExplorer", typeof(TaskActivitiesExplorer),
                                                     PersistHint.ThisSession);
-            AppContext.Current.SettingsProvider.Set("TaskDescriptionsExplorer", typeof (TaskDescriptionsExplorer),
+            AppContext.Current.SettingsProvider.Set("TaskDescriptionsExplorer", typeof(TaskDescriptionsExplorer),
                                                     PersistHint.ThisSession);
-            AppContext.Current.SettingsProvider.Set("OptionsExplorer", typeof (OptionsForm), PersistHint.ThisSession);
-            ((WindowsUIProvider) AppContext.Current.UIProvider).NotifyIcon = notifyIcon;
+            AppContext.Current.SettingsProvider.Set("OptionsExplorer", typeof(OptionsForm), PersistHint.ThisSession);
+            ((WindowsUIProvider)AppContext.Current.UIProvider).NotifyIcon = notifyIcon;
 
             //Registration Service
             AppContext.Current.SettingsProvider.Set("RegistrationServer", Resources.RegistrationServer,
                                                     PersistHint.AcrossSessions);
 
             //Setup the nag message
-            SetupNag((TaskActivity) AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
+            SetupNag((TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
 
             RebuildDynamicMenu();
             LoadNotifyMenuPlugins();
@@ -147,8 +146,10 @@ namespace BritishMicro.TaskClerk
             menuItemChangeActivity.MenuItems.Add(menuitemSeperator);
 
             //Add More...
-            MenuItem menuitemMoreActivities = new MenuItem(Resources.TaskDescriptionMenuText);
-            menuitemMoreActivities.Name = "menuitemMoreActivities";
+            MenuItem menuitemMoreActivities = new MenuItem(Resources.TaskDescriptionMenuText)
+            {
+                Name = "menuitemMoreActivities"
+            };
             menuItemChangeActivity.MenuItems.Add(menuitemMoreActivities);
             menuitemMoreActivities.Click += new EventHandler(ShowTaskSelector);
         }
@@ -164,9 +165,7 @@ namespace BritishMicro.TaskClerk
             {
                 if (pluginItem.IsSubclassOf(typeof(PluginNotifyMenuItem)))
                 {
-                    PluginNotifyMenuItem addinItem = pluginItem.CreateInstance() as PluginNotifyMenuItem;
-
-                    if (addinItem != null)
+                    if (pluginItem.CreateInstance() is PluginNotifyMenuItem addinItem)
                     {
                         addinItem.PluginInit(engContext, contextMenu);
                         //addinItem.MenuItem.Tag = addinItem;
@@ -186,11 +185,9 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         private static void ConfigureCulture()
         {
-            CultureInfo cultureInfo =
-                CultureInfo.CreateSpecificCulture(
-                    (string) AppContext.Current.SettingsProvider.Get(
-                                 "CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name)) as CultureInfo;
-            if (cultureInfo == null)
+            if (!(CultureInfo.CreateSpecificCulture(
+                    (string)AppContext.Current.SettingsProvider.Get(
+                                 "CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name)) is CultureInfo cultureInfo))
             {
                 AppContext.Current.SettingsProvider.Set(
                     "CurrentUserCulture",
@@ -213,8 +210,7 @@ namespace BritishMicro.TaskClerk
         {
             foreach (MenuItem mi in contextMenu.MenuItems)
             {
-                PluginNotifyMenuItem pnmi = mi.Tag as PluginNotifyMenuItem;
-                if (pnmi != null)
+                if (mi.Tag is PluginNotifyMenuItem pnmi)
                 {
                     if ((pnmi.MenuText != null) && (pnmi.MenuText.Length > 0))
                     {
@@ -242,9 +238,11 @@ namespace BritishMicro.TaskClerk
                 {
                     if (child != null)
                     {
-                        MenuItem menuItem = new MenuItem(child.Name);
-                        menuItem.Tag = child;
-                        menuItem.Enabled = child.IsValid();
+                        MenuItem menuItem = new MenuItem(child.Name)
+                        {
+                            Tag = child,
+                            Enabled = child.IsValid()
+                        };
                         if (child.IsEvent)
                         {
                             menuItem.Text = "[" + child.Name + "]";
@@ -268,10 +266,10 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         private void ShowCurrentStatus()
         {
-            string message = null;
             TaskActivity current =
-                (TaskActivity) AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty) as
+                (TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty) as
                 TaskActivity;
+            string message;
             if ((current.IsNotEmpty()) && (current.TaskDescription.IsNotEmpty()))
             {
                 message = current.ToSummaryString();
@@ -290,13 +288,13 @@ namespace BritishMicro.TaskClerk
         /// <param name="e"></param>
         private void ShowNagBalloonTip(object sender, EventArgs e)
         {
-            string message = null;
             TaskActivity current =
                 (TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty) as
                 TaskActivity;
+            string message;
             if ((current.IsNotEmpty()) && (current.TaskDescription.IsNotEmpty()))
             {
-                message = string.Format(CultureInfo.InvariantCulture, Resources.NagMessage,current.TaskDescription.Name, current.Duration);
+                message = string.Format(CultureInfo.InvariantCulture, Resources.NagMessage, current.TaskDescription.Name, current.Duration);
             }
             else
             {
@@ -325,8 +323,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="e"></param>
         private void ShowTaskSelector(object sender, EventArgs e)
         {
-            MenuItem menuItem = sender as MenuItem;
-            if (menuItem != null)
+            if (sender is MenuItem menuItem)
             {
                 menuItem.Enabled = false;
                 UncheckTaskMenu(menuItemChangeActivity);
@@ -336,7 +333,7 @@ namespace BritishMicro.TaskClerk
                 {
                     AppContext.Current.HandleNewTaskActivity(selectedTask, DateTime.Now);
                     SetupNag(
-                        (TaskActivity) AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
+                        (TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
                 }
                 RebuildDynamicMenu();
                 CheckTaskMenu();
@@ -352,10 +349,9 @@ namespace BritishMicro.TaskClerk
         private void ChangeTask(object sender, EventArgs e)
         {
             UncheckTaskMenu(menuItemChangeActivity);
-            MenuItem menuItem = (MenuItem) sender as MenuItem;
-            if (menuItem != null)
+            if ((MenuItem)sender is MenuItem menuItem)
             {
-                TaskDescription selected = (TaskDescription) menuItem.Tag;
+                TaskDescription selected = (TaskDescription)menuItem.Tag;
                 if (selected.IsDateBetweenValidPeriod(DateTime.Now) == false)
                 {
                     MessageBox.Show(
@@ -371,7 +367,7 @@ namespace BritishMicro.TaskClerk
                     return;
                 }
                 AppContext.Current.HandleNewTaskActivity(selected, DateTime.Now);
-                SetupNag((TaskActivity) AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
+                SetupNag((TaskActivity)AppContext.Current.SettingsProvider.Get("CurrentActivity", TaskActivity.Empty));
             }
             CheckTaskMenu();
         }
@@ -385,8 +381,8 @@ namespace BritishMicro.TaskClerk
             nagtimer.Enabled = false;
             if ((activity.IsNotEmpty()) & (activity.TaskDescription.NoNagMinutes > 0))
             {
-                int MILLISECOND_MULTIPLIER = 60*1000;
-                nagtimer.Interval = activity.TaskDescription.NoNagMinutes*MILLISECOND_MULTIPLIER;
+                int MILLISECOND_MULTIPLIER = 60 * 1000;
+                nagtimer.Interval = activity.TaskDescription.NoNagMinutes * MILLISECOND_MULTIPLIER;
                 nagtimer.Enabled = true;
             }
         }
@@ -410,7 +406,7 @@ namespace BritishMicro.TaskClerk
         private void CheckTaskMenu()
         {
             TaskDescription selectedTask =
-                (TaskDescription) AppContext.Current.SettingsProvider.Get(
+                (TaskDescription)AppContext.Current.SettingsProvider.Get(
                                       "SelectedTaskDescription", TaskDescription.Empty) as TaskDescription;
             if (selectedTask.IsNotEmpty())
             {
@@ -433,8 +429,8 @@ namespace BritishMicro.TaskClerk
             MenuItem foundMenuItem = null;
             if (
                 (parent.Tag != null) &&
-                (parent.Tag.GetType() == typeof (TaskDescription)) &&
-                (((TaskDescription) parent.Tag).Id == uniqueId)
+                (parent.Tag.GetType() == typeof(TaskDescription)) &&
+                (((TaskDescription)parent.Tag).Id == uniqueId)
                 )
             {
                 return parent;

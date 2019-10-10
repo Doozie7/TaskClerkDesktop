@@ -13,7 +13,7 @@ namespace BritishMicro.TaskClerk.UI
     {
         private TaskActivity _workingWithObject;
         private bool _isReadyForEdit;
-        private TaskClerkEngine _engine;
+        private readonly TaskClerkEngine _engine;
 
         public PropertiesForm()
         {
@@ -41,17 +41,19 @@ namespace BritishMicro.TaskClerk.UI
         {
             set
             {
-                _workingWithObject = new TaskActivity();
-                _workingWithObject.Id = value.Id;
-                _workingWithObject.TaskDescription = value.TaskDescription;
-                _workingWithObject.CrosstabTaskDescription = value.CrosstabTaskDescription;
-                _workingWithObject.StartDate = value.StartDate;
-                _workingWithObject.EndDate = value.EndDate;
-                _workingWithObject.Duration = value.Duration;
-                _workingWithObject.CustomFlags = value.CustomFlags;
-                _workingWithObject.OriginalDate = value.OriginalDate;
-                _workingWithObject.Remarks = value.Remarks;
-                _workingWithObject.UserId = value.UserId;
+                _workingWithObject = new TaskActivity
+                {
+                    Id = value.Id,
+                    TaskDescription = value.TaskDescription,
+                    CrosstabTaskDescription = value.CrosstabTaskDescription,
+                    StartDate = value.StartDate,
+                    EndDate = value.EndDate,
+                    Duration = value.Duration,
+                    CustomFlags = value.CustomFlags,
+                    OriginalDate = value.OriginalDate,
+                    Remarks = value.Remarks,
+                    UserId = value.UserId
+                };
 
                 Collection<TaskActivity> single = new Collection<TaskActivity>();
                 single.Add(_workingWithObject);
@@ -91,7 +93,7 @@ namespace BritishMicro.TaskClerk.UI
         {
             if (_isReadyForEdit == true)
             {
-                DateTime previousValue = (DateTime) ((DateTimePicker) sender).Tag;
+                DateTime previousValue = (DateTime)((DateTimePicker)sender).Tag;
                 if ((previousValue.Minute == 0) || (previousValue.Minute == 59))
                 {
                     TimeSpan previousDiff = dateTimePickerStartTime.Value - previousValue;
@@ -104,8 +106,8 @@ namespace BritishMicro.TaskClerk.UI
                         dateTimePickerStartTime.Value = dateTimePickerStartTime.Value.Add(new TimeSpan(1, 0, 0));
                     }
                 }
-                TimeSpan diff = ((DateTimePicker) dateTimePickerEndTime).Value - ((DateTimePicker) sender).Value;
-                numericUpDown.Value = (decimal) diff.TotalMinutes;
+                TimeSpan diff = ((DateTimePicker)dateTimePickerEndTime).Value - ((DateTimePicker)sender).Value;
+                numericUpDown.Value = (decimal)diff.TotalMinutes;
                 ObjectChanged(sender, e);
             }
             dateTimePickerStartTime.Tag = new DateTime(dateTimePickerStartTime.Value.Ticks);
@@ -115,7 +117,7 @@ namespace BritishMicro.TaskClerk.UI
         {
             if (_isReadyForEdit == true)
             {
-                DateTime previousValue = (DateTime) ((DateTimePicker) sender).Tag;
+                DateTime previousValue = (DateTime)((DateTimePicker)sender).Tag;
                 if ((previousValue.Minute == 0) || (previousValue.Minute == 59))
                 {
                     TimeSpan previousDiff = dateTimePickerEndTime.Value - previousValue;
@@ -128,8 +130,8 @@ namespace BritishMicro.TaskClerk.UI
                         dateTimePickerEndTime.Value = dateTimePickerEndTime.Value.Add(new TimeSpan(1, 0, 0));
                     }
                 }
-                TimeSpan diff = ((DateTimePicker) sender).Value - ((DateTimePicker) dateTimePickerStartTime).Value;
-                numericUpDown.Value = (decimal) diff.TotalMinutes;
+                TimeSpan diff = ((DateTimePicker)sender).Value - ((DateTimePicker)dateTimePickerStartTime).Value;
+                numericUpDown.Value = (decimal)diff.TotalMinutes;
                 ObjectChanged(sender, e);
             }
             dateTimePickerEndTime.Tag = new DateTime(dateTimePickerEndTime.Value.Ticks);
@@ -154,7 +156,7 @@ namespace BritishMicro.TaskClerk.UI
             if (_isReadyForEdit)
             {
                 _workingWithObject.Id = new Guid(textBoxActivityId.Text);
-                _workingWithObject.TaskDescription = (TaskDescription) textBoxTaskDescription.Tag;
+                _workingWithObject.TaskDescription = (TaskDescription)textBoxTaskDescription.Tag;
                 _workingWithObject.Remarks = textBoxRemarks.Text;
                 _workingWithObject.StartDate = new DateTime(
                     dateTimePickerStartDate.Value.Year,
@@ -170,7 +172,7 @@ namespace BritishMicro.TaskClerk.UI
                     dateTimePickerEndTime.Value.Hour,
                     dateTimePickerEndTime.Value.Minute,
                     0);
-                _workingWithObject.CrosstabTaskDescription = (TaskDescription) textBoxCrosstabTaskDescription.Tag;
+                _workingWithObject.CrosstabTaskDescription = (TaskDescription)textBoxCrosstabTaskDescription.Tag;
                 _workingWithObject.CustomFlags = Int32.Parse(textBoxFlags.Text);
                 _workingWithObject.OriginalDate = DateTime.Parse(textBoxOriginalDate.Text);
                 _workingWithObject.UserId = textBoxUserId.Text;
@@ -185,7 +187,7 @@ namespace BritishMicro.TaskClerk.UI
 
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePickerEndTime.Value = dateTimePickerStartTime.Value.AddMinutes((double) numericUpDown.Value);
+            dateTimePickerEndTime.Value = dateTimePickerStartTime.Value.AddMinutes((double)numericUpDown.Value);
         }
 
         /// <summary>

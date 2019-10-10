@@ -37,7 +37,7 @@ namespace BritishMicro.TaskClerk.UI
                     Visible =
                         (bool)AppContext.Current.SettingsProvider.Get("Show Recorded Activities Grid", true);
 
-                    sortColumn = (int) AppContext.Current.SettingsProvider.Get("RecordedTasksSortOnColumn", 0);
+                    sortColumn = (int)AppContext.Current.SettingsProvider.Get("RecordedTasksSortOnColumn", 0);
                     sortDirection = false; // (bool)AppContext.Current.SettingsProvider.Get("RecordedTasksSortDirection", 0);
 
                     _bindingSource = new BindingSource();
@@ -200,8 +200,7 @@ namespace BritishMicro.TaskClerk.UI
             List<TaskActivity> entries = new List<TaskActivity>();
             foreach (DataGridViewCell cell in dataGridView.SelectedCells)
             {
-                TaskActivity ta = cell.OwningRow.DataBoundItem as TaskActivity;
-                if (ta != null)
+                if (cell.OwningRow.DataBoundItem is TaskActivity ta)
                 {
                     if (!entries.Contains(ta))
                     {
@@ -231,8 +230,7 @@ namespace BritishMicro.TaskClerk.UI
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex >= 0))
             {
-                TaskActivity current = dataGridView.CurrentRow.DataBoundItem as TaskActivity;
-                if (current != null)
+                if (dataGridView.CurrentRow.DataBoundItem is TaskActivity current)
                 {
                     AppContext.Current.TaskActivitiesProvider.CompleteActivity(current, _effectiveDate);
                 }
@@ -256,9 +254,7 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (dataGridView.CurrentRow != null)
                 {
-                    TaskActivity current =
-                        dataGridView.CurrentRow.DataBoundItem as TaskActivity;
-                    if (current != null)
+                    if (dataGridView.CurrentRow.DataBoundItem is TaskActivity current)
                     {
                         activitiesDraw1.SelectedActivity = current;
                     }
@@ -279,8 +275,7 @@ namespace BritishMicro.TaskClerk.UI
                 TaskDescription taskDescription = AppContext.Current.ShowDescriptionExplorer();
                 if (taskDescription.IsNotEmpty())
                 {
-                    TaskActivity current = dataGridView.Rows[e.RowIndex].DataBoundItem as TaskActivity;
-                    if (current != null)
+                    if (dataGridView.Rows[e.RowIndex].DataBoundItem is TaskActivity current)
                     {
                         current.TaskDescription = taskDescription;
                         AppContext.Current.TaskActivitiesProvider.CompleteActivity(current);
@@ -318,10 +313,12 @@ namespace BritishMicro.TaskClerk.UI
                 TaskDescription taskDescription = AppContext.Current.TaskDescriptionsProvider.TaskDescriptions[0];
                 TaskActivity pastTaskActivity =
                     new TaskActivity(taskDescription,
-                                     AppContext.Current.IdentityProvider.Principal.Identity.Name);
-                pastTaskActivity.StartDate = selectedRowTime;
-                pastTaskActivity.EndDate = selectedRowTime.AddSeconds(1);
-                pastTaskActivity.Remarks = "Inserted";
+                                     AppContext.Current.IdentityProvider.Principal.Identity.Name)
+                    {
+                        StartDate = selectedRowTime,
+                        EndDate = selectedRowTime.AddSeconds(1),
+                        Remarks = "Inserted"
+                    };
                 AppContext.Current.TaskActivitiesProvider.CompleteActivity(pastTaskActivity);
                 SelectRow(pastTaskActivity);
             }
@@ -332,10 +329,12 @@ namespace BritishMicro.TaskClerk.UI
                 TaskDescription taskDescription = AppContext.Current.TaskDescriptionsProvider.TaskDescriptions[0];
                 TaskActivity pastTaskActivity =
                     new TaskActivity(taskDescription,
-                                     AppContext.Current.IdentityProvider.Principal.Identity.Name);
-                pastTaskActivity.StartDate = _effectiveDate;
-                pastTaskActivity.EndDate = _effectiveDate.AddSeconds(1);
-                pastTaskActivity.Remarks = "Inserted";
+                                     AppContext.Current.IdentityProvider.Principal.Identity.Name)
+                    {
+                        StartDate = _effectiveDate,
+                        EndDate = _effectiveDate.AddSeconds(1),
+                        Remarks = "Inserted"
+                    };
                 AppContext.Current.TaskActivitiesProvider.CompleteActivity(pastTaskActivity);
                 SelectRow(pastTaskActivity);
             }
@@ -348,8 +347,7 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (dataGridView.Rows[i].Selected == true)
                 {
-                    TaskActivity current = dataGridView.Rows[i].DataBoundItem as TaskActivity;
-                    if (current != null)
+                    if (dataGridView.Rows[i].DataBoundItem is TaskActivity current)
                     {
                         forDelete.Add(current);
                     }
@@ -366,7 +364,7 @@ namespace BritishMicro.TaskClerk.UI
             List<TaskActivity> selectedActivities = GetSelectedTaskActivities();
             using (MemoryStream memoryStream = new MemoryStream())
             {
-                new XmlSerializer(typeof (List<TaskActivity>)).Serialize(memoryStream, selectedActivities);
+                new XmlSerializer(typeof(List<TaskActivity>)).Serialize(memoryStream, selectedActivities);
                 memoryStream.Position = 0;
                 using (StreamReader streamReader = new StreamReader(memoryStream))
                 {
@@ -380,7 +378,7 @@ namespace BritishMicro.TaskClerk.UI
             List<TaskActivity> entries = null;
             using (StringReader sr = new StringReader(Clipboard.GetText()))
             {
-                entries = (List<TaskActivity>) new XmlSerializer(typeof (List<TaskActivity>)).Deserialize(sr);
+                entries = (List<TaskActivity>)new XmlSerializer(typeof(List<TaskActivity>)).Deserialize(sr);
             }
 
             if (entries != null)
@@ -395,11 +393,12 @@ namespace BritishMicro.TaskClerk.UI
 
         private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TaskActivity taskActivity = dataGridView.CurrentRow.DataBoundItem as TaskActivity;
-            if (taskActivity != null)
+            if (dataGridView.CurrentRow.DataBoundItem is TaskActivity taskActivity)
             {
-                PropertiesForm pf = new PropertiesForm();
-                pf.WorkingWithObject = taskActivity;
+                PropertiesForm pf = new PropertiesForm
+                {
+                    WorkingWithObject = taskActivity
+                };
                 pf.ShowDialog(this);
                 SelectRow(taskActivity);
             }
@@ -407,15 +406,13 @@ namespace BritishMicro.TaskClerk.UI
 
         private void alignToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TaskActivity next = null;
             TaskActivity current = null;
             int insequence = -100;
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
                 if (dataGridView.Rows[i].Selected == true)
                 {
-                    next = dataGridView.Rows[i].DataBoundItem as TaskActivity;
-                    if ((next != null) && (current != null))
+                    if ((dataGridView.Rows[i].DataBoundItem is TaskActivity next) && (current != null))
                     {
                         if (i - 1 == insequence)
                         {
@@ -438,7 +435,7 @@ namespace BritishMicro.TaskClerk.UI
                 dataGridView.Focus();
                 foreach (DataGridViewRow dgvr in dataGridView.Rows)
                 {
-                    if (((TaskActivity) dgvr.DataBoundItem).Id == taskActivity.Id)
+                    if (((TaskActivity)dgvr.DataBoundItem).Id == taskActivity.Id)
                     {
                         dgvr.Selected = true;
                         dataGridView.CurrentCell = dataGridView[1, dgvr.Index];
@@ -494,7 +491,7 @@ namespace BritishMicro.TaskClerk.UI
         {
             if (sortColumn != e.ColumnIndex)
             {
-                sortColumn = e.ColumnIndex;                
+                sortColumn = e.ColumnIndex;
             }
             else
             {

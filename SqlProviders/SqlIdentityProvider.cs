@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using BritishMicro.TaskClerk.Providers;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Security.Principal;
 using System.Diagnostics;
-using System.Configuration;
+using System.Security.Principal;
 
 namespace BritishMicro.TaskClerk.Providers.Sql
 {
@@ -15,8 +9,8 @@ namespace BritishMicro.TaskClerk.Providers.Sql
     /// </summary>
     public class SqlIdentityProvider : IdentityProvider
     {
-        private static string discoverIdentity = @"up_DiscoverIdentity";
-        private static string changePassword = @"up_ChangePassword";
+        private static readonly string discoverIdentity = @"up_DiscoverIdentity";
+        private static readonly string changePassword = @"up_ChangePassword";
         private string _connectionString;
 
         /// <summary>
@@ -50,15 +44,17 @@ namespace BritishMicro.TaskClerk.Providers.Sql
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(
-                    discoverIdentity, connection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                    discoverIdentity, connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 command.Parameters.AddWithValue("@UserName", username);
                 command.Parameters.AddWithValue("@Password", password);
 
                 this.Principal = new GenericPrincipal
                     (new GenericIdentity(string.Empty, this.ProviderName), null);
 
-                Debug.Assert(this.Principal.Identity.IsAuthenticated == false, 
+                Debug.Assert(this.Principal.Identity.IsAuthenticated == false,
                     "User should not be authenticated at this point _name.Length==0");
 
                 try
@@ -92,8 +88,10 @@ namespace BritishMicro.TaskClerk.Providers.Sql
                 {
                     connection.Open();
                     SqlCommand command = new SqlCommand(
-                        changePassword, connection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                        changePassword, connection)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     command.Parameters.AddWithValue("@UserName", username);
                     command.Parameters.AddWithValue("@OldPassword", oldpassword);
                     command.Parameters.AddWithValue("@NewPassword", newpassword);

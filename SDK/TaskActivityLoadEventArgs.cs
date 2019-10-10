@@ -15,10 +15,10 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class TaskActivityLoadEventArgs : EventArgs
     {
-        private Collection<TaskActivity> _activities;
-        private DateTime _start;
-        private DateTime _end;
-        private Collection<TaskDescription> _allowedTaskDescriptions;
+        private readonly Collection<TaskActivity> _activities;
+        private readonly DateTime _start;
+        private readonly DateTime _end;
+        private readonly Collection<TaskDescription> _allowedTaskDescriptions;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskActivityLoadEventArgs"/> class.

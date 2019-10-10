@@ -1,10 +1,9 @@
-using System;
 using BritishMicro.TaskClerk.Plugins;
-using System.Drawing;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Providers;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace BritishMicro.TaskClerk
 {
@@ -16,7 +15,7 @@ namespace BritishMicro.TaskClerk
     [TaskClerkPluginAttribute]
     class TimesheetPrintFormatter : PluginPrintFormatter
     {
-       
+
         DateTime _start;
         DateTime _end;
         Collection<TaskActivity> _taskActivities;
@@ -68,11 +67,11 @@ namespace BritishMicro.TaskClerk
             //e.Graphics.DrawRectangle(new Pen(SystemBrushes.ControlLight), headerRectangle);
 #endif
             e.Graphics.DrawString(
-                "TaskClerk - Timesheet Report", 
-                SystemFonts.DefaultFont, 
-                SystemBrushes.ControlLight, 
+                "TaskClerk - Timesheet Report",
+                SystemFonts.DefaultFont,
+                SystemBrushes.ControlLight,
                 headerRectangle);
-            
+
             string pageNumber = string.Format("Page {0}", CurrentPageNumber);
             SizeF size = e.Graphics.MeasureString(pageNumber, SystemFonts.DefaultFont);
 
@@ -198,7 +197,7 @@ namespace BritishMicro.TaskClerk
             introRectangle.Height = 400;
             Font font = new Font(SystemFonts.DefaultFont.FontFamily, 14f, FontStyle.Bold & FontStyle.Italic);
             string intro = string.Format("\n{0}\n{1} - {2}",
-                Engine.SettingsProvider.Get("CurrentUsersName", 
+                Engine.SettingsProvider.Get("CurrentUsersName",
                 this.Engine.IdentityProvider.Principal.Identity.Name), _start.ToString("f"), _end.ToString("f"));
             e.Graphics.DrawString(intro, font, SystemBrushes.ControlDarkDark, introRectangle);
 

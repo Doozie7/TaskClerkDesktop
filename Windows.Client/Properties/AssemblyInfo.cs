@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly : AssemblyTitle("TaskClerk.WindowsClient")]
-[assembly :
+[assembly: AssemblyTitle("TaskClerk.WindowsClient")]
+[assembly:
     AssemblyDescription(@"Clerk : A person employed to keep records or accounts or to perform general office work. TaskClerk records your tasks at your request. Right click on the icon in the notify section of the taskbar to change task.")]
-[assembly : AssemblyCompany("BritishMicro")]
-[assembly : AssemblyProduct("TaskClerk")]
+[assembly: AssemblyCompany("BritishMicro")]
+[assembly: AssemblyProduct("TaskClerk")]
 [assembly: AssemblyCopyright("Copyright © BritishMicro 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly : ComVisible(false)]
+[assembly: ComVisible(false)]
 
 //The Common Language Specification (CLS) defines naming restrictions, 
 //data types, and rules to which assemblies must conform if they are to be used 
 //across programming languages. Good design dictates that all assemblies 
 //explicitly indicate CLS compliance with CLSCompliantAttribute. 
 //If the attribute is not present on an assembly, the assembly is not compliant.
-[assembly : CLSCompliant(true)]
+[assembly: CLSCompliant(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly : Guid("ca43381c-d9b7-465d-8748-ec0901f6175f")]
+[assembly: Guid("ca43381c-d9b7-465d-8748-ec0901f6175f")]
 
 // Version information for an assembly consists of the following four values:
 //

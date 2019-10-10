@@ -1,15 +1,15 @@
+using BritishMicro.Windows;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Forms;
-using BritishMicro.Windows;
 
 namespace BritishMicro.TaskClerk.UI
 {
     internal partial class SelectedTaskDescriptions : WizardUserControl
     {
-        private List<TaskDescription> _exportList;
-        private ExportForm _mainForm;
+        private readonly List<TaskDescription> _exportList;
+        private readonly ExportForm _mainForm;
 
         public SelectedTaskDescriptions(ExportForm mainForm)
         {
@@ -18,7 +18,7 @@ namespace BritishMicro.TaskClerk.UI
             _exportList = new List<TaskDescription>();
             ReBuildTree(AppContext.Current.TaskDescriptionsProvider.TaskDescriptions);
             _mainForm.SelectedTaskDescriptions = _exportList;
-            
+
             labelCount.Text = string.Format(
                 CultureInfo.InvariantCulture,
                 "There are {0} TaskDescriptions currently selected.", _exportList.Count);
@@ -30,16 +30,20 @@ namespace BritishMicro.TaskClerk.UI
             treeviewTaskDescriptions.Nodes.Clear();
 
             //create a root
-            TreeNode root = new TreeNode("Task Descriptions");
-            root.Tag = rootDescriptions;
+            TreeNode root = new TreeNode("Task Descriptions")
+            {
+                Tag = rootDescriptions
+            };
             treeviewTaskDescriptions.Nodes.Add(root);
 
             foreach (TaskDescription taskDescription in rootDescriptions)
             {
-                TreeNode treeNode = new TreeNode(taskDescription.Name);
-                treeNode.ToolTipText = taskDescription.Description;
-                treeNode.Tag = taskDescription;
-                treeNode.Checked = !taskDescription.IsPrivate;
+                TreeNode treeNode = new TreeNode(taskDescription.Name)
+                {
+                    ToolTipText = taskDescription.Description,
+                    Tag = taskDescription,
+                    Checked = !taskDescription.IsPrivate
+                };
                 if (treeNode.Checked)
                 {
                     _exportList.Add(taskDescription);
@@ -54,10 +58,12 @@ namespace BritishMicro.TaskClerk.UI
         {
             foreach (TaskDescription child in parent.Children)
             {
-                TreeNode node = new TreeNode(child.Name);
-                node.Tag = child;
-                node.ToolTipText = child.Description;
-                node.Checked = !child.IsPrivate;
+                TreeNode node = new TreeNode(child.Name)
+                {
+                    Tag = child,
+                    ToolTipText = child.Description,
+                    Checked = !child.IsPrivate
+                };
                 if (node.Checked)
                 {
                     _exportList.Add(child);
@@ -72,10 +78,9 @@ namespace BritishMicro.TaskClerk.UI
 
         private void UpdateExportList(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag.GetType() == typeof (TaskDescription))
+            if (e.Node.Tag.GetType() == typeof(TaskDescription))
             {
-                TaskDescription taskDescription = e.Node.Tag as TaskDescription;
-                if (taskDescription != null)
+                if (e.Node.Tag is TaskDescription taskDescription)
                 {
                     if (e.Node.Checked == true)
                     {

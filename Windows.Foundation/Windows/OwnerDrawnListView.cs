@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Security.Permissions;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.Windows
 {

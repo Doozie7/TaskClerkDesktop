@@ -32,7 +32,7 @@ namespace BritishMicro.TaskClerk.Providers
         {
             this.ProviderName = this.GetType().Name;
         }
-                
+
         /// <summary>
         /// This method is called as soon as a valid Engine is added to the service. 
         /// The purpose of the IdentityProvider is too establish identity
@@ -76,8 +76,8 @@ namespace BritishMicro.TaskClerk.Providers
         {
             get
             {
-                if (this._principal != null 
-                    && this._principal.Identity != null 
+                if (this._principal != null
+                    && this._principal.Identity != null
                     && !string.IsNullOrEmpty(this._principal.Identity.Name))
                 {
                     return this._principal.Identity.Name;
@@ -115,13 +115,9 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void OnDiscoveredIdentity(EventArgs e)
         {
-            EventHandler<EventArgs> handler = DiscoveredIdentity;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            DiscoveredIdentity?.Invoke(this, e);
         }
 
         #endregion
-   }
+    }
 }

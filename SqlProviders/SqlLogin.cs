@@ -1,11 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace BritishMicro.TaskClerk.Providers.Sql
 {
@@ -14,7 +8,7 @@ namespace BritishMicro.TaskClerk.Providers.Sql
     /// </summary>
     internal partial class SqlLogin : Form
     {
-        private SqlIdentityProvider _sip;
+        private readonly SqlIdentityProvider _sip;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SqlLogin"/> class.
@@ -34,7 +28,7 @@ namespace BritishMicro.TaskClerk.Providers.Sql
         private void buttonOk_Click(object sender, EventArgs e)
         {
             labelError.Text = "";
-            string error = string.Empty;
+            string error;
             if (!groupBoxChangePassword.Enabled)
             {
                 error = _sip.AttemptLogin(textBoxUsername.Text, textBoxPassword.Text);

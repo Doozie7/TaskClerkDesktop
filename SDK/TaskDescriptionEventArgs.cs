@@ -5,8 +5,8 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
-using System;
 using BritishMicro.TaskClerk.Properties;
+using System;
 
 namespace BritishMicro.TaskClerk
 {
@@ -16,10 +16,6 @@ namespace BritishMicro.TaskClerk
     /// </summary>
     public class TaskDescriptionEventArgs : EventArgs
     {
-        /// <summary>
-        /// The Empty TaskDescription event Arg
-        /// </summary>
-        public new static TaskDescriptionEventArgs Empty = new TaskDescriptionEventArgs();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDescriptionEventArgs"/> class.
@@ -43,12 +39,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="parent">The parent.</param>
         public TaskDescriptionEventArgs(TaskDescription item, TaskDescription parent)
         {
-            if (item == null)
-            {
-                throw new InvalidOperationException(Resources.DescriptionCannotBeSetToNull);
-            }
-
-            _item = item;
+            _item = item ?? throw new InvalidOperationException(Resources.DescriptionCannotBeSetToNull);
             _parent = parent;
         }
 

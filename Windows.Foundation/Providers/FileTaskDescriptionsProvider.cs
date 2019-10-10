@@ -5,12 +5,11 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
-using System;
+using BritishMicro.TaskClerk.Properties;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
-using BritishMicro.TaskClerk.Properties;
-using System.Collections.ObjectModel;
 
 namespace BritishMicro.TaskClerk.Providers
 {

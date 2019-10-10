@@ -1,12 +1,11 @@
+using BritishMicro.TaskClerk.Plugins;
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Threading;
-using BritishMicro.TaskClerk.Plugins;
-using System.Diagnostics;
-using BritishMicro.TaskClerk.Properties;
-using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -34,9 +33,9 @@ namespace BritishMicro.TaskClerk.UI
             textboxUserName.Text =
                 (string)Engine.SettingsProvider.Get("CurrentUsersName", "Unknown");
             textboxEmailAddress.Text =
-                (string) Engine.SettingsProvider.Get("CurrentUserEmailAddress", "unknown@unknown");
+                (string)Engine.SettingsProvider.Get("CurrentUserEmailAddress", "unknown@unknown");
             textboxCulture.Text =
-                (string) Engine.SettingsProvider.Get("CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name);
+                (string)Engine.SettingsProvider.Get("CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name);
 
             checkBoxAutoStart.Checked = AppContext.Current.IsAutoStartRegistrySet(Assembly.GetEntryAssembly());
 
@@ -54,7 +53,7 @@ namespace BritishMicro.TaskClerk.UI
         {
             Thread.CurrentThread.CurrentCulture =
                 CultureInfo.CreateSpecificCulture(
-                    (string) Engine.SettingsProvider.Get("CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name));
+                    (string)Engine.SettingsProvider.Get("CurrentUserCulture", Thread.CurrentThread.CurrentCulture.Name));
             textboxCulture.Text = Thread.CurrentThread.CurrentCulture.Name;
         }
 

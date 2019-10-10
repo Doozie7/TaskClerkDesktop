@@ -1,13 +1,8 @@
+using BritishMicro.TaskClerk.Plugins;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Drawing.Printing;
-using BritishMicro.TaskClerk.Plugins;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -17,12 +12,12 @@ namespace BritishMicro.TaskClerk.UI
     public partial class PrintSetupDialog : Form
     {
 
-        private TaskClerkEngine _engine;
+        private readonly TaskClerkEngine _engine;
         private PrintDocument _document;
-        private PrintConfiguration _config;
+        private readonly PrintConfiguration _config;
 
-        private Collection<LoadableItem> _printFormatters;
-        
+        private readonly Collection<LoadableItem> _printFormatters;
+
         private Collection<TaskDescription> _taskDescriptions;
         private DateTime _start;
         private DateTime _end;
@@ -37,7 +32,7 @@ namespace BritishMicro.TaskClerk.UI
             InitializeComponent();
             _printFormatters = new Collection<LoadableItem>();
             _config = new PrintConfiguration();
-       }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PrintSetupDialog"/> class.
@@ -125,22 +120,26 @@ namespace BritishMicro.TaskClerk.UI
         /// </summary>
         /// <param name="rootDescriptions">The root descriptions.</param>
         private void PrepareDescriptionsTree(Collection<TaskDescription> rootDescriptions)
-        {            
+        {
             _taskDescriptions = new Collection<TaskDescription>();
-            
+
             //clear the tree
             treeviewTaskDescriptions.Nodes.Clear();
 
             //create a root
-            TreeNode root = new TreeNode("Task Descriptions");
-            root.Tag = rootDescriptions;
+            TreeNode root = new TreeNode("Task Descriptions")
+            {
+                Tag = rootDescriptions
+            };
             treeviewTaskDescriptions.Nodes.Add(root);
 
             foreach (TaskDescription taskDescription in rootDescriptions)
             {
-                TreeNode treeNode = new TreeNode(taskDescription.Name);
-                treeNode.ToolTipText = taskDescription.Description;
-                treeNode.Tag = taskDescription;
+                TreeNode treeNode = new TreeNode(taskDescription.Name)
+                {
+                    ToolTipText = taskDescription.Description,
+                    Tag = taskDescription
+                };
                 if (comboboxScheme.SelectedIndex == 0)
                 {
                     treeNode.Checked = !taskDescription.IsPrivate;
@@ -168,9 +167,11 @@ namespace BritishMicro.TaskClerk.UI
         {
             foreach (TaskDescription child in parent.Children)
             {
-                TreeNode node = new TreeNode(child.Name);
-                node.Tag = child;
-                node.ToolTipText = child.Description;
+                TreeNode node = new TreeNode(child.Name)
+                {
+                    Tag = child,
+                    ToolTipText = child.Description
+                };
                 if (comboboxScheme.SelectedIndex == 0)
                 {
                     node.Checked = !child.IsPrivate;
@@ -295,7 +296,7 @@ namespace BritishMicro.TaskClerk.UI
         /// </summary>
         /// <value>The config.</value>
         public PrintConfiguration Config
-        {   
+        {
             get { return _config; }
         }
 
@@ -327,8 +328,7 @@ namespace BritishMicro.TaskClerk.UI
             if (e.Node.Tag.GetType() == typeof(TaskDescription))
             {
                 comboboxScheme.SelectedIndex = 1;
-                TaskDescription taskDescription = e.Node.Tag as TaskDescription;
-                if (taskDescription != null)
+                if (e.Node.Tag is TaskDescription taskDescription)
                 {
                     if (e.Node.Checked == true)
                     {
@@ -406,7 +406,7 @@ namespace BritishMicro.TaskClerk.UI
             {
                 if (li.DisplayName == comboboxPrintFormat.Text)
                 {
-                    _document = li.CreateInstance( _engine, _config) as PluginPrintFormatter;
+                    _document = li.CreateInstance(_engine, _config) as PluginPrintFormatter;
                     textboxPrintFormatDescription.Text = li.Description;
                     if (((PluginPrintFormatter)_document).RequiresDateRange() == false)
                     {

@@ -71,11 +71,11 @@ namespace BritishMicro.TaskClerk.Providers
                         //  in a "Plugins" folder, this folder is not a "known path" and therefore
                         //  fails to load the assembly
                         AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-                        
+
                         ReplaceUsersSessionMemory((Hashtable)bf.Deserialize(fileStream));
                         //fileStream.Flush();
                     }
-                    catch(SerializationException ex)
+                    catch (SerializationException ex)
                     {
                         fileStream.Close();
                         SettingsFile.CopyTo(SettingsFile.FullName + "." + DateTime.Now.ToString("yyyyMMdd-HHmm") + ".corrupt");
@@ -83,7 +83,7 @@ namespace BritishMicro.TaskClerk.Providers
                         throw new InvalidOperationException(
                             "The Settings Store has become corrupt, Please restart TaskClerk.", ex);
                     }
-                    finally 
+                    finally
                     {
                         //  ...ensure that we unwire from the event once the deserialize process is complete
                         AppDomain.CurrentDomain.AssemblyResolve -= CurrentDomain_AssemblyResolve;

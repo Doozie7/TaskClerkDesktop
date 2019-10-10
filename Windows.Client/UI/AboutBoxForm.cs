@@ -1,9 +1,9 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
 using System.Text;
-using System.Globalization;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.UI
 {
@@ -24,12 +24,12 @@ namespace BritishMicro.TaskClerk.UI
             get
             {
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyProductAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyProductAttribute) attributes[0]).Product;
+                return ((AssemblyProductAttribute)attributes[0]).Product;
             }
         }
 
@@ -38,18 +38,18 @@ namespace BritishMicro.TaskClerk.UI
             get
             {
                 object[] attributes =
-                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
+                    Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
+                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
 
         private void AboutBoxForm_Load(object sender, EventArgs e)
         {
-            this.labelUINameAndVersion.Text = string.Format(CultureInfo.InvariantCulture, "{0} Version {1}\n{2}\nAll rights reserved.", 
+            this.labelUINameAndVersion.Text = string.Format(CultureInfo.InvariantCulture, "{0} Version {1}\n{2}\nAll rights reserved.",
                 AssemblyProduct, AssemblyVersion, AssemblyCopyright);
             listBoxInstalledComponents.Items.AddRange(AppContext.Current.ListProviders());
             listBoxInstalledComponents.Items.AddRange(AppContext.Current.PluginsProvider.ListPlugins());

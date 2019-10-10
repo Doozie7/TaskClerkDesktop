@@ -28,7 +28,8 @@ namespace BritishMicro.TaskClerk
         /// <summary>
         /// The empty TaskDescription.
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")] public static readonly TaskDescription Empty
+        [SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes")]
+        public static readonly TaskDescription Empty
             = new TaskDescription(new Guid("{90F23F7A-2156-4051-9BBF-AAA095E1BA64}"), "Empty");
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace BritishMicro.TaskClerk
         [Category("Appearance")]
         [Editor(
             "System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-            , typeof (UITypeEditor)), SettingsBindable(true)]
+            , typeof(UITypeEditor)), SettingsBindable(true)]
         [Description("A full description.")]
         public virtual string Description
         {
@@ -171,7 +172,7 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         /// <value>The color.</value>
         [Category("Appearance")]
-        [TypeConverter(typeof (ColorConverter))]
+        [TypeConverter(typeof(ColorConverter))]
         [XmlIgnore()]
         [Description(
             "The color that represents this Task Description, you can use the same color for other Task Descriptions.")]
@@ -196,7 +197,7 @@ namespace BritishMicro.TaskClerk
         [Browsable(false)]
         public string Colour
         {
-            get { return SerializeColor(Color); }
+            get => SerializeColor(Color);
             set
             {
                 Color = DeserializeColor(value);
@@ -227,7 +228,7 @@ namespace BritishMicro.TaskClerk
         /// <returns></returns>
         private static Color DeserializeColor(string color)
         {
-            string[] pieces = color.Split(new char[] {':'});
+            string[] pieces = color.Split(new char[] { ':' });
 
             if (pieces.Length == 2)
             {
@@ -591,7 +592,7 @@ namespace BritishMicro.TaskClerk
         {
             //Check for null and compare run-time types.
             if (obj == null || GetType() != obj.GetType()) return false;
-            TaskDescription working = (TaskDescription) obj;
+            TaskDescription working = (TaskDescription)obj;
             return (Id == working.Id);
         }
 
@@ -661,7 +662,7 @@ namespace BritishMicro.TaskClerk
 
         #region INotifyPropertyChanged Members
 
-        private event PropertyChangedEventHandler _changed;
+        private event PropertyChangedEventHandler Changed;
 
         /// <summary>
         /// Called when [property changed].
@@ -669,10 +670,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="property">The property.</param>
         protected void OnPropertyChanged(string property)
         {
-            if (null != _changed)
-            {
-                _changed(this, new PropertyChangedEventArgs(property));
-            }
+            Changed?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
         /// <summary>
@@ -680,8 +678,8 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged
         {
-            add { _changed += value; }
-            remove { _changed -= value; }
+            add { Changed += value; }
+            remove { Changed -= value; }
         }
 
         #endregion
@@ -694,12 +692,14 @@ namespace BritishMicro.TaskClerk
         {
             get
             {
-                TaskDescription result = new TaskDescription();
-                result.id = new Guid("AE73E2D8-C698-48ec-B125-C703A21DEA42");
-                result.color = Color.Black;
-                result.description = "This task description is used when the system cannot find the requested task description, this could happen when a task description has been deleted.";
-                result.name = "Unknown";
-                result.Server = "Unknown";
+                TaskDescription result = new TaskDescription
+                {
+                    id = new Guid("AE73E2D8-C698-48ec-B125-C703A21DEA42"),
+                    color = Color.Black,
+                    description = "This task description is used when the system cannot find the requested task description, this could happen when a task description has been deleted.",
+                    name = "Unknown",
+                    Server = "Unknown"
+                };
                 return result;
             }
         }

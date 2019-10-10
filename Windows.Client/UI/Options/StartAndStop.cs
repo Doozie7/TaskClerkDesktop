@@ -1,5 +1,5 @@
-using System;
 using BritishMicro.TaskClerk.Plugins;
+using System;
 using System.ComponentModel;
 
 namespace BritishMicro.TaskClerk.UI
@@ -24,40 +24,36 @@ namespace BritishMicro.TaskClerk.UI
         protected override void OnTaskClerkInit()
         {
             base.OnTaskClerkInit();
-            startCheckBox.Checked = (bool) Engine.SettingsProvider.Get("StartTaskEnabled", startCheckBox.Checked);
-            stopCheckBox.Checked = (bool) Engine.SettingsProvider.Get("StopTaskEnabled", stopCheckBox.Checked);
-            suspendCheckBox.Checked = (bool) Engine.SettingsProvider.Get("SuspendTaskEnabled", stopCheckBox.Checked);
+            startCheckBox.Checked = (bool)Engine.SettingsProvider.Get("StartTaskEnabled", startCheckBox.Checked);
+            stopCheckBox.Checked = (bool)Engine.SettingsProvider.Get("StopTaskEnabled", stopCheckBox.Checked);
+            suspendCheckBox.Checked = (bool)Engine.SettingsProvider.Get("SuspendTaskEnabled", stopCheckBox.Checked);
 
-            TaskDescription startTaskDescription = Engine.SettingsProvider.Get("StartTaskDescription", TaskDescription.Empty) as TaskDescription;
-            if (startTaskDescription != null)
+            if (Engine.SettingsProvider.Get("StartTaskDescription", TaskDescription.Empty) is TaskDescription startTaskDescription)
             {
                 startEventTextBox.Text = startTaskDescription.Name;
             }
 
-            TaskDescription startTaskDescription2 = Engine.SettingsProvider.Get("StartTaskDescription2", TaskDescription.Empty) as TaskDescription;
-            if (startTaskDescription2 != null)
+            if (Engine.SettingsProvider.Get("StartTaskDescription2", TaskDescription.Empty) is TaskDescription startTaskDescription2)
             {
                 startActivityTextBox.Text = startTaskDescription2.Name;
             }
 
-            TaskDescription stopTaskDescription = Engine.SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty) as TaskDescription;
-            if (stopTaskDescription != null)
+            if (Engine.SettingsProvider.Get("StopTaskDescription", TaskDescription.Empty) is TaskDescription stopTaskDescription)
             {
                 stopTaskTextBox.Text = stopTaskDescription.Name;
             }
 
-            TaskDescription suspendTaskDescription = Engine.SettingsProvider.Get("SuspendTaskDescription", TaskDescription.Empty) as TaskDescription;
-            if (suspendTaskDescription != null)
+            if (Engine.SettingsProvider.Get("SuspendTaskDescription", TaskDescription.Empty) is TaskDescription suspendTaskDescription)
             {
                 suspendTaskTextBox.Text = suspendTaskDescription.Name;
             }
 
-            dateTimePicker1.Value = (DateTime) Engine.SettingsProvider.Get("StartWorkingHours", dateTimePicker1.Value);
-            dateTimePicker2.Value = (DateTime) Engine.SettingsProvider.Get("StopWorkingHours", dateTimePicker2.Value);
+            dateTimePicker1.Value = (DateTime)Engine.SettingsProvider.Get("StartWorkingHours", dateTimePicker1.Value);
+            dateTimePicker2.Value = (DateTime)Engine.SettingsProvider.Get("StopWorkingHours", dateTimePicker2.Value);
             mainBreakStartDateTimePicker.Value =
-                (DateTime) Engine.SettingsProvider.Get("StartMainBreak", mainBreakStartDateTimePicker.Value);
+                (DateTime)Engine.SettingsProvider.Get("StartMainBreak", mainBreakStartDateTimePicker.Value);
             mainBreakEndDateTimePicker.Value =
-                (DateTime) Engine.SettingsProvider.Get("StopMainBreak", mainBreakEndDateTimePicker.Value);
+                (DateTime)Engine.SettingsProvider.Get("StopMainBreak", mainBreakEndDateTimePicker.Value);
 
             DayDuration_ValueChanged(this, EventArgs.Empty);
             BreakDuration_ValueChanged(this, EventArgs.Empty);

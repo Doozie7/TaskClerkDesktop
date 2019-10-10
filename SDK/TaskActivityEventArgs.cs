@@ -5,8 +5,8 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
-using System;
 using BritishMicro.TaskClerk.Properties;
+using System;
 
 namespace BritishMicro.TaskClerk
 {
@@ -21,8 +21,8 @@ namespace BritishMicro.TaskClerk
         public new static readonly TaskActivityEventArgs Empty
             = new TaskActivityEventArgs(TaskActivity.Empty, DateTime.MinValue);
 
-        private DateTime _effectiveDate;
-        private TaskActivity _activity;
+        private readonly DateTime _effectiveDate;
+        private readonly TaskActivity _activity;
         private bool _cancel;
 
         /// <summary>
@@ -39,12 +39,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="activity"></param>
         public TaskActivityEventArgs(TaskActivity activity)
         {
-            if (activity == null)
-            {
-                throw new InvalidOperationException(Resources.ActivityCannotBeSetToNull);
-            }
-
-            _activity = activity;
+            _activity = activity ?? throw new InvalidOperationException(Resources.ActivityCannotBeSetToNull);
             _effectiveDate = activity.StartDate;
         }
 
@@ -55,12 +50,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="effectiveDate"></param>
         public TaskActivityEventArgs(TaskActivity activity, DateTime effectiveDate)
         {
-            if (activity == null)
-            {
-                throw new InvalidOperationException(Resources.ActivityCannotBeSetToNull);
-            }
-
-            _activity = activity;
+            _activity = activity ?? throw new InvalidOperationException(Resources.ActivityCannotBeSetToNull);
             _effectiveDate = effectiveDate;
         }
 
@@ -89,6 +79,6 @@ namespace BritishMicro.TaskClerk
             get { return _cancel; }
             set { _cancel = value; }
         }
-	
+
     }
 }

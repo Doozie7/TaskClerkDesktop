@@ -10,10 +10,10 @@
 //          Architect
 //----------------------------------------------------------------------
 
-using System;
-using System.Windows.Forms;
 using BritishMicro.TaskClerk.Plugins;
 using BritishMicro.Windows;
+using System;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.InstantAccess
 {
@@ -57,9 +57,9 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="disposing">if set to <c>true</c> [disposing].</param>
         protected virtual void Dispose(bool disposing)
         {
-            if(disposing)
+            if (disposing)
             {
-                if(this._osHotKey != null)
+                if (this._osHotKey != null)
                 {
                     this._osHotKey.Dispose();
                 }
@@ -83,14 +83,14 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void osHotKey_HotKeyPress(object sender, EventArgs e)
         {
-            if(this._isWindowOpen)
+            if (this._isWindowOpen)
                 return;
 
             try
             {
                 this._isWindowOpen = true;
 
-                using(InstantAccessDialog iaf = new InstantAccessDialog())
+                using (InstantAccessDialog iaf = new InstantAccessDialog())
                 {
                     NativeMethods.SetForegroundWindow(iaf);
                     NativeMethods.SetFocus(iaf);

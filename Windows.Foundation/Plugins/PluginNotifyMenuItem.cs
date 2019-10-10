@@ -41,11 +41,7 @@ namespace BritishMicro.TaskClerk.Plugins
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         public virtual void OnClick(EventArgs e)
         {
-            EventHandler<EventArgs> handler = Click;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            Click?.Invoke(this, e);
         }
 
         private string _menuText;
@@ -67,7 +63,7 @@ namespace BritishMicro.TaskClerk.Plugins
         {
             get { return menuItem; }
         }
-	
+
 
     }
 }

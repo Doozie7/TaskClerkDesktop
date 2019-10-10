@@ -1,9 +1,8 @@
-using System;
 using BritishMicro.TaskClerk.Plugins;
-using System.Drawing;
-using System.ComponentModel;
-using System.Windows.Forms;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace BritishMicro.TaskClerk
 {
@@ -39,7 +38,7 @@ namespace BritishMicro.TaskClerk
         protected override void OnBeginPrint(System.Drawing.Printing.PrintEventArgs e)
         {
             _fontHeight = Font.Height + 4;
-            _totalDuration = 0;   
+            _totalDuration = 0;
 
             base.OnBeginPrint(e);
         }
@@ -63,10 +62,10 @@ namespace BritishMicro.TaskClerk
 #endif
             e.Graphics.DrawString(
                 "TaskClerk - Day Report",
-                Font, 
-                SystemBrushes.ControlLight, 
+                Font,
+                SystemBrushes.ControlLight,
                 headerRectangle);
-            
+
             string pageNumber = string.Format("Page {0}", CurrentPageNumber);
             SizeF size = e.Graphics.MeasureString(pageNumber, Font);
 

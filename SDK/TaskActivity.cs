@@ -5,13 +5,12 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Properties;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml.Serialization;
-using BritishMicro.TaskClerk.Properties;
 
 namespace BritishMicro.TaskClerk
 {
@@ -191,7 +190,7 @@ namespace BritishMicro.TaskClerk
                 {
                     ts = end.Subtract(end);
                 }
-                return Math.Abs((decimal) ts.TotalMinutes);
+                return Math.Abs((decimal)ts.TotalMinutes);
             }
             set
             {
@@ -302,7 +301,7 @@ namespace BritishMicro.TaskClerk
         [Category("CustomData")]
         public int CustomFlags
         {
-            get { return customFlags; }
+            get => customFlags;
             set
             {
                 if (customFlags != value)
@@ -413,7 +412,7 @@ namespace BritishMicro.TaskClerk
         {
             if (obj == null || GetType() != obj.GetType())
                 return false;
-            TaskActivity working = (TaskActivity) obj;
+            TaskActivity working = (TaskActivity)obj;
             bool result = (id == working.Id);
             return result;
         }
@@ -665,10 +664,7 @@ namespace BritishMicro.TaskClerk
         /// <param name="property"></param>
         protected void OnPropertyChanged(string property)
         {
-            if (null != _changed)
-            {
-                _changed(this, new PropertyChangedEventArgs(property));
-            }
+            _changed?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
         /// <summary>

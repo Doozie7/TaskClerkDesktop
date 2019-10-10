@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using System.Text;
 using BritishMicro.Windows;
+using System.Text;
 
 namespace BritishMicro.TaskClerk.UI
 {
     internal partial class ExportSummary : WizardUserControl
     {
 
-        private ExportForm _mainForm;
+        private readonly ExportForm _mainForm;
 
         public ExportSummary(ExportForm mainForm)
         {
@@ -15,7 +14,7 @@ namespace BritishMicro.TaskClerk.UI
             _mainForm = mainForm;
         }
 
-        public override void  PrepareContents()
+        public override void PrepareContents()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("The export engine will carry out the following,\n");

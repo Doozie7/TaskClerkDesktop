@@ -9,6 +9,7 @@
 //	Author: Paul Jackson (paul.jackson@britishmicro.com)
 //          Architect
 //----------------------------------------------------------------------
+using BritishMicro.TaskClerk.Providers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,6 @@ using System.IO;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using BritishMicro.TaskClerk.Providers;
 
 namespace BritishMicro.TaskClerk.InstantAccess
 {
@@ -28,7 +28,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
     {
         private const string InstantAccessDataFileName = "IAData.xml";
 
-        private List<TaskDescription> _pinnedTaskDescriptions;
+        private readonly List<TaskDescription> _pinnedTaskDescriptions;
         private bool _isDataAvailable;
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace BritishMicro.TaskClerk.InstantAccess
             {
                 using (Stream s = new FileStream(path, FileMode.OpenOrCreate))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof (InstantAccessData));
-                    target = (InstantAccessData) serializer.Deserialize(s);
+                    XmlSerializer serializer = new XmlSerializer(typeof(InstantAccessData));
+                    target = (InstantAccessData)serializer.Deserialize(s);
                     target._isDataAvailable = true;
                 }
             }
@@ -70,7 +70,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
             string path = Path.Combine(dataFolder.FullName, InstantAccessDataFileName);
             using (Stream s = new FileStream(path, FileMode.Create))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof (InstantAccessData));
+                XmlSerializer serializer = new XmlSerializer(typeof(InstantAccessData));
                 serializer.Serialize(s, this);
                 _isDataAvailable = true;
             }

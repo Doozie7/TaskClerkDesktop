@@ -5,9 +5,9 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Plugins;
 using System;
 using System.Diagnostics;
-using BritishMicro.TaskClerk.Plugins;
 using System.IO;
 
 namespace BritishMicro.TaskClerk

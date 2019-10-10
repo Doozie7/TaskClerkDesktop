@@ -5,9 +5,9 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Plugins;
 using System;
 using System.Collections.ObjectModel;
-using BritishMicro.TaskClerk.Plugins;
 
 namespace BritishMicro.TaskClerk.Providers
 {
@@ -46,7 +46,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// </summary>
         public abstract void ProviderDiscoverPlugins();
 
-        private Collection<LoadableItem> _plugins;
+        private readonly Collection<LoadableItem> _plugins;
 
         /// <summary>
         /// The Plugins available to the application
@@ -124,11 +124,7 @@ namespace BritishMicro.TaskClerk.Providers
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void OnDiscoveredPlugins(EventArgs e)
         {
-            EventHandler<EventArgs> handler = DiscoveredPlugins;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            DiscoveredPlugins?.Invoke(this, e);
         }
 
         #endregion

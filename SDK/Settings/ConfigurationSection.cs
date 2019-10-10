@@ -5,9 +5,9 @@
 //	Author: John Powell (john.powell@britishmicro.com)
 //----------------------------------------------------------------------
 
+using BritishMicro.TaskClerk.Providers;
 using System.Collections.ObjectModel;
 using System.Xml.Serialization;
-using BritishMicro.TaskClerk.Providers;
 
 namespace BritishMicro.TaskClerk.Settings
 {
@@ -21,8 +21,7 @@ namespace BritishMicro.TaskClerk.Settings
         /// The configuration element used in the application configuration file.
         /// </summary>
         public const string SectionName = "TaskClerk.Configuration";
-
-        private Collection<TaskClerkProvider> _providers;
+        private Collection<TaskClerkProvider> providers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigurationSection"/> class.
@@ -39,8 +38,9 @@ namespace BritishMicro.TaskClerk.Settings
         [XmlArrayItem("Provider")]
         public Collection<TaskClerkProvider> Providers
         {
-            get { return _providers; }
-            set { _providers = value; }
+            get { return providers; }
+            set { providers = value; }
         }
+
     }
 }

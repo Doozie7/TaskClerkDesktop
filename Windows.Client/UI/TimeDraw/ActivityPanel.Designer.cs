@@ -40,9 +40,9 @@ namespace BritishMicro.TaskClerk.UI
             this.panelRight.Cursor = System.Windows.Forms.Cursors.VSplit;
             resources.ApplyResources(this.panelRight, "panelRight");
             this.panelRight.Name = "panelRight";
-            this.panelRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelRight_MouseMove);
-            this.panelRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
-            this.panelRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            this.panelRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelRight_MouseMove);
+            this.panelRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_MouseDown);
+            this.panelRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel_MouseUp);
             // 
             // ActivityPanel
             // 
@@ -51,10 +51,10 @@ namespace BritishMicro.TaskClerk.UI
             this.Controls.Add(this.panelRight);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "ActivityPanel";
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelLeft_MouseMove);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelLeft_MouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_MouseDown);
             this.MouseHover += new System.EventHandler(this.ActivityPanel_MouseHover);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel_MouseUp);
             this.ResumeLayout(false);
 
         }

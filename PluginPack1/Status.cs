@@ -1,6 +1,6 @@
+using BritishMicro.TaskClerk.Plugins;
 using System;
 using System.ComponentModel;
-using BritishMicro.TaskClerk.Plugins;
 
 namespace BritishMicro.TaskClerk
 {
@@ -36,8 +36,8 @@ namespace BritishMicro.TaskClerk
         /// </summary>
         private void ShowCurrentStatus()
         {
-            string message = null;
             TaskActivity current = Engine.CurrentActivity;
+            string message;
             if ((current.IsNotEmpty()) && (current.TaskDescription.IsNotEmpty()))
             {
                 message = current.ToSummaryString();

@@ -9,7 +9,7 @@ namespace MetaTaskPlugin
 
         private Guid _taskDescriptionId = Guid.Empty;
         private int _percent;
-        
+
         public ExpandDescriptionItem()
         {
         }
@@ -20,16 +20,16 @@ namespace MetaTaskPlugin
             this._percent = percent;
         }
 
-        [XmlAttribute(AttributeName="taskDescriptionId")]
+        [XmlAttribute(AttributeName = "taskDescriptionId")]
         public Guid TaskDescriptionId
         {
-            get 
+            get
             {
-                return _taskDescriptionId; 
+                return _taskDescriptionId;
             }
-            set 
-            { 
-                _taskDescriptionId = value; 
+            set
+            {
+                _taskDescriptionId = value;
             }
         }
 

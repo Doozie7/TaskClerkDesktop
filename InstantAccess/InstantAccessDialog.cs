@@ -11,9 +11,8 @@
 //----------------------------------------------------------------------
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BritishMicro.TaskClerk.InstantAccess
 {
@@ -24,11 +23,11 @@ namespace BritishMicro.TaskClerk.InstantAccess
     {
         private const int MaximumItemCount = 5;
 
-        private TreeNode _nodeRoot;
-        private TreeNode _nodePinned;
-        private TreeNode _nodeMru;
-        private TreeNode _nodeMfu;
-        private InstantAccessData _data;
+        private readonly TreeNode _nodeRoot;
+        private readonly TreeNode _nodePinned;
+        private readonly TreeNode _nodeMru;
+        private readonly TreeNode _nodeMfu;
+        private readonly InstantAccessData _data;
         private bool _isAdvancedMode;
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
             this._nodePinned.Expand();
             this._nodeMru.Expand();
             this._nodeMfu.Expand();
-            
+
             this._data = InstantAccessData.Create();
 
             BuildTree();
@@ -74,20 +73,20 @@ namespace BritishMicro.TaskClerk.InstantAccess
         private void AppendTaskDescriptionsToNode(TreeNode parent, IEnumerable descriptions)
         {
             TaskActivity currentActivity = AppContext.Current.CurrentActivity;
-            TaskDescription currentDescription = 
+            TaskDescription currentDescription =
                 (currentActivity != null) ? currentActivity.TaskDescription : null;
-            
+
             parent.Nodes.Clear();
-            foreach(TaskDescription description in descriptions)
+            foreach (TaskDescription description in descriptions)
             {
                 TreeNode node = new TreeNode(description.Name);
                 parent.Nodes.Add(node);
 
                 node.Tag = description;
                 node.ToolTipText = description.Description;
-                if(description.IsEvent)
+                if (description.IsEvent)
                     node.NodeFont = new Font(this.Font, FontStyle.Italic);
-                if(description.Name == currentDescription.Name)
+                if (description.Name == currentDescription.Name)
                 {
                     node.NodeFont = new Font(this.Font, FontStyle.Strikeout);
                     node.ForeColor = SystemColors.InactiveCaptionText;
@@ -101,11 +100,11 @@ namespace BritishMicro.TaskClerk.InstantAccess
         private void BuildCurrentActivity()
         {
             TaskActivity activity = AppContext.Current.CurrentActivity;
-            if(activity != null && !activity.IsEmpty())
+            if (activity != null && !activity.IsEmpty())
             {
                 string message = activity.ToSummaryString().Replace("\r\n", " ");
                 int index = message.IndexOf("on the");
-                if(index != -1)
+                if (index != -1)
                 {
                     this._textBoxCurrentTask.Text = message.Substring(0, index);
                 }
@@ -122,12 +121,12 @@ namespace BritishMicro.TaskClerk.InstantAccess
         /// <param name="parent">The parent.</param>
         private static void Sort(TreeNode parent)
         {
-            if(parent.Nodes.Count == 0)
+            if (parent.Nodes.Count == 0)
                 return;
 
             TreeNode[] nodes = new TreeNode[parent.Nodes.Count];
             parent.Nodes.CopyTo(nodes, 0);
-            Array.Sort(nodes, delegate(TreeNode x, TreeNode y) 
+            Array.Sort(nodes, delegate (TreeNode x, TreeNode y)
             {
                 TaskDescription lhs = (TaskDescription)x.Tag;
                 TaskDescription rhs = (TaskDescription)y.Tag;
@@ -146,20 +145,19 @@ namespace BritishMicro.TaskClerk.InstantAccess
         private void UseTaskDescription()
         {
             TreeNode currentNode = this._treeViewActions.SelectedNode;
-            if(currentNode == null)
+            if (currentNode == null)
                 return;
 
-            if(currentNode.NodeFont != null && currentNode.NodeFont.Strikeout)
+            if (currentNode.NodeFont != null && currentNode.NodeFont.Strikeout)
                 return;
 
-            TaskDescription description = currentNode.Tag as TaskDescription;
-            if(description == null)
+            if (!(currentNode.Tag is TaskDescription description))
                 return;
 
-            if(this._isAdvancedMode)
+            if (this._isAdvancedMode)
             {
                 AdvancedSelectDialog dialog = new AdvancedSelectDialog(description);
-                if(dialog.ShowDialog(this) == DialogResult.OK)
+                if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     AppContext.Current.HandleNewTaskActivity(
                         dialog.Current,
@@ -215,7 +213,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         {
             this._isAdvancedMode = e.Shift;
 
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 UseTaskDescription();
         }
 
@@ -265,9 +263,9 @@ namespace BritishMicro.TaskClerk.InstantAccess
         private void pinToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TaskDescription selectedTask = AppContext.Current.ShowDescriptionExplorer();
-            if(selectedTask.IsNotEmpty())
+            if (selectedTask.IsNotEmpty())
             {
-                if(this._treeViewActions.Nodes.ContainsKey(selectedTask.Name))
+                if (this._treeViewActions.Nodes.ContainsKey(selectedTask.Name))
                     return;
 
                 this._data.AddPinnedTaskDescription(selectedTask);
@@ -284,7 +282,7 @@ namespace BritishMicro.TaskClerk.InstantAccess
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = this._treeViewActions.SelectedNode;
-            if(selectedNode == null || selectedNode.Parent != this._nodePinned)
+            if (selectedNode == null || selectedNode.Parent != this._nodePinned)
                 return;
 
             this._data.RemovePinnedTaskDescription(selectedNode.Tag as TaskDescription);
