@@ -52,6 +52,7 @@ namespace BritishMicro.TaskClerk.UI
             // 
             // contextMenuStripGraph
             // 
+            this.contextMenuStripGraph.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStripGraph.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.minutesToolStripMenuItem,
             this.hoursToolStripMenuItem,
@@ -119,6 +120,8 @@ namespace BritishMicro.TaskClerk.UI
             resources.ApplyResources(this.chart1, "chart1");
             this.chart1.BackColor = System.Drawing.Color.Transparent;
             this.chart1.BorderlineColor = System.Drawing.Color.Transparent;
+            this.chart1.BorderlineWidth = 0;
+            this.chart1.BorderSkin.BorderWidth = 0;
             chartArea1.BackColor = System.Drawing.Color.WhiteSmoke;
             chartArea1.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
             chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;

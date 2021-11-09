@@ -122,46 +122,46 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="minutesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="minutesToolStripMenuItem.Text" xml:space="preserve">
     <value>Minutes</value>
   </data>
   <data name="hoursToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="hoursToolStripMenuItem.Text" xml:space="preserve">
     <value>Hours</value>
   </data>
   <data name="percentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="percentToolStripMenuItem.Text" xml:space="preserve">
     <value>Percent (%)</value>
   </data>
   <data name="taskToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="taskToolStripMenuItem.Text" xml:space="preserve">
     <value>Task</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 6</value>
+    <value>289, 6</value>
   </data>
   <data name="groupByTaskToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="groupByTaskToolStripMenuItem.Text" xml:space="preserve">
     <value>Group by Task</value>
   </data>
   <data name="groupByTaskPerentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>292, 40</value>
   </data>
   <data name="groupByTaskPerentToolStripMenuItem.Text" xml:space="preserve">
     <value>Group by Category</value>
   </data>
   <data name="contextMenuStripGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 142</value>
+    <value>293, 250</value>
   </data>
   <data name="&gt;&gt;contextMenuStripGraph.Name" xml:space="preserve">
     <value>contextMenuStripGraph</value>
@@ -174,10 +174,13 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="chart1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 7</value>
+    <value>14, 13</value>
+  </data>
+  <data name="chart1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="chart1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>487, 335</value>
+    <value>974, 644</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chart1.TabIndex" type="System.Int32, mscorlib">
@@ -202,13 +205,16 @@
     <value>Bottom</value>
   </data>
   <data name="visualSummary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 348</value>
+    <value>6, 669</value>
+  </data>
+  <data name="visualSummary.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>12, 12, 12, 12</value>
   </data>
   <data name="visualSummary.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="visualSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>494, 38</value>
+    <value>988, 73</value>
   </data>
   <data name="visualSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -217,7 +223,7 @@
     <value>visualSummary</value>
   </data>
   <data name="&gt;&gt;visualSummary.Type" xml:space="preserve">
-    <value>BritishMicro.TaskClerk.UI.VisualSummary, TaskClerk, Version=1.0.1.109, Culture=neutral, PublicKeyToken=null</value>
+    <value>BritishMicro.TaskClerk.UI.VisualSummary, TaskClerk, Version=1.0.1.111, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;visualSummary.Parent" xml:space="preserve">
     <value>$this</value>
@@ -229,13 +235,16 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>12, 25</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 389</value>
+    <value>1000, 748</value>
   </data>
   <data name="&gt;&gt;minutesToolStripMenuItem.Name" xml:space="preserve">
     <value>minutesToolStripMenuItem</value>

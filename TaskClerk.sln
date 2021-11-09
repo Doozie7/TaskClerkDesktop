@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CF77252-7A57-444F-A92D-1F8FD28A0FBB}"
 	ProjectSection(SolutionItems) = preProject
@@ -36,9 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskClerk.UnitTests", "Task
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginPack2011", "PluginPack2011\PluginPack2011.csproj", "{28BF145B-775E-4971-8DB9-A6E50D2EB587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiProvider", "WebApiProvider\WebApiProvider.csproj", "{1A646697-A71D-40C7-82C0-51219E2CA80F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docs", "Docs\Docs.csproj", "{029C55A5-CEFD-4C73-9D13-BD79E289F609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Docs", "Docs\Docs.csproj", "{029C55A5-CEFD-4C73-9D13-BD79E289F609}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -180,16 +178,6 @@ Global
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{28BF145B-775E-4971-8DB9-A6E50D2EB587}.Release|x86.ActiveCfg = Release|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{1A646697-A71D-40C7-82C0-51219E2CA80F}.Release|x86.ActiveCfg = Release|Any CPU
 		{029C55A5-CEFD-4C73-9D13-BD79E289F609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{029C55A5-CEFD-4C73-9D13-BD79E289F609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{029C55A5-CEFD-4C73-9D13-BD79E289F609}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

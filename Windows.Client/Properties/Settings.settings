@@ -2,14 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BritishMicro.TaskClerk.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="IdentityProviderDataStore" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=MLABS-PJACKSON3\SQLEXPRESS;Initial Catalog=TaskClerkPrivate;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=MLABS-PJACKSON3\SQLEXPRESS;Initial Catalog=TaskClerkPrivate;Integrated Security=True</Value>
-    </Setting>
     <Setting Name="DefaultDataStore" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -17,6 +9,14 @@
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=intranet.messagelabs.com;Initial Catalog=TaskClerk_SYMC_094D1EE5-5470-4AD0-AE69-56C580400984;UID=jpowell;PWD=Wargame5</Value>
+    </Setting>
+    <Setting Name="IdentityProviderDataStore" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=MLABS-PJACKSON3\SQLEXPRESS;Initial Catalog=TaskClerkPrivate;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=MLABS-PJACKSON3\SQLEXPRESS;Initial Catalog=TaskClerkPrivate;Integrated Security=True</Value>
     </Setting>
     <Setting Name="Database1ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

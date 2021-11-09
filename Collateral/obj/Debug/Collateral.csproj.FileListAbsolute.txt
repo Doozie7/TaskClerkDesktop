@@ -59,3 +59,10 @@ C:\Source\BritishMicro\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll.last
 C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.dll
 C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.pdb
 C:\Source\BritishMicro\TaskClerkDesktop\Collateral\obj\Debug\Collateral.csprojAssemblyReference.cache
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\bin\Debug\Collateral.pdb
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll.CodeAnalysisLog.xml
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\bin\Debug\Collateral.dll.lastcodeanalysissucceeded
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\obj\Debug\Collateral.csproj.CoreCompileInputs.cache
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\obj\Debug\Collateral.dll
+C:\Users\Coats\Source\Repos\TaskClerkDesktop\Collateral\obj\Debug\Collateral.pdb

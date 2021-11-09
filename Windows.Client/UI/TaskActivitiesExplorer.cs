@@ -120,10 +120,10 @@ namespace BritishMicro.TaskClerk.UI
                     (int)_engine.SettingsProvider.Get(
                               "VerticalSplitterDistance", splitContainerDetail.SplitterDistance);
 
-                webBrowser.Url = new Uri(
-                    (string)_engine.SettingsProvider.Get(
-                              "WebStartPage", Resources.WebStartPage)
-                    );
+                //webBrowser.Url = new Uri(
+                //    (string)_engine.SettingsProvider.Get(
+                //              "WebStartPage", Resources.WebStartPage)
+                //    );
 
                 _days = _engine.TaskActivitiesProvider.DiscoverDateMetrics(
                     BritishMicro.TaskClerk.Providers.TaskActivitiesProvider.MetricQuestion.AvailableDays);

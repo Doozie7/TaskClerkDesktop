@@ -69,6 +69,7 @@ namespace BritishMicro.TaskClerk.UI
             this.productFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.splitContainerDetail = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
@@ -96,7 +97,6 @@ namespace BritishMicro.TaskClerk.UI
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -115,6 +115,8 @@ namespace BritishMicro.TaskClerk.UI
             // 
             // menuStrip
             // 
+            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -329,6 +331,12 @@ namespace BritishMicro.TaskClerk.UI
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // registerToolStripMenuItem
+            // 
+            this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
+            resources.ApplyResources(this.registerToolStripMenuItem, "registerToolStripMenuItem");
+            this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click_1);
+            // 
             // splitContainer
             // 
             resources.ApplyResources(this.splitContainer, "splitContainer");
@@ -376,6 +384,7 @@ namespace BritishMicro.TaskClerk.UI
             // 
             // contextMenuStripTree
             // 
+            this.contextMenuStripTree.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStripTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem1,
             this.pasteToolStripMenuItem1,
@@ -425,8 +434,8 @@ namespace BritishMicro.TaskClerk.UI
             // 
             resources.ApplyResources(this.webBrowser, "webBrowser");
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.TabStop = false;
-            this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser.ScriptErrorsSuppressed = true;
+            this.webBrowser.Url = new System.Uri("http://www.taskclerk.com/AppWebStart.ashx", System.UriKind.Absolute);
             // 
             // activityChart1
             // 
@@ -439,6 +448,7 @@ namespace BritishMicro.TaskClerk.UI
             // 
             resources.ApplyResources(this.toolStripNavigator, "toolStripNavigator");
             this.toolStripNavigator.CanOverflow = false;
+            this.toolStripNavigator.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1});
             this.toolStripNavigator.Name = "toolStripNavigator";
@@ -456,6 +466,7 @@ namespace BritishMicro.TaskClerk.UI
             // statusStrip
             // 
             this.statusStrip.ContextMenuStrip = this.contextMenuStripStatusBar;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.statusPurchased,
@@ -469,6 +480,7 @@ namespace BritishMicro.TaskClerk.UI
             // 
             // contextMenuStripStatusBar
             // 
+            this.contextMenuStripStatusBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStripStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBoxNewStart,
             this.commitToolStripMenuItem});
@@ -532,12 +544,6 @@ namespace BritishMicro.TaskClerk.UI
             // 
             resources.ApplyResources(this.printPreviewDialog, "printPreviewDialog");
             this.printPreviewDialog.Name = "printPreviewDialog";
-            // 
-            // registerToolStripMenuItem
-            // 
-            this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            resources.ApplyResources(this.registerToolStripMenuItem, "registerToolStripMenuItem");
-            this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click_1);
             // 
             // TaskActivitiesExplorer
             // 
@@ -617,7 +623,6 @@ namespace BritishMicro.TaskClerk.UI
         private System.Windows.Forms.StatusStrip statusStrip;
         private ToolStripStatusLabel statusRegistered;
         private Panel panel;
-        private WebBrowser webBrowser;
         private ToolStripStatusLabel statusPurchased;
         private RecordedTasks recordedTasks1;
         private ContextMenuStrip contextMenuStripStatusBar;
@@ -638,6 +643,7 @@ namespace BritishMicro.TaskClerk.UI
         private PrintDialog printDialog;
         private PrintPreviewDialog printPreviewDialog;
         private ToolStripMenuItem registerToolStripMenuItem;
+        private WebBrowser webBrowser;
     }
 }
 

@@ -19,7 +19,7 @@ namespace BritishMicro.TaskClerk.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -226,11 +226,8 @@ namespace BritishMicro.TaskClerk.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\deflang2057\deflangfe2057{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}}
-        ///{\colortbl ;\red0\green0\blue255;}
-        ///{\*\generator Msftedit 5.41.21.2500;}\viewkind4\uc1\pard\nowidctlpar\qc\b\f0\fs22 Copyright \&apos;a9 2001-2008 BritishMicro\par
-        ///\pard\nowidctlpar\b0\par
-        ///This software is provided &apos;as-is&apos;, without any express or implied warranty.  In no event will the authors be held liable for any damages arising from the use of this software. By using the software, you accept the following [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang2057\deflangfe2057\themelang2057\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fbidi \fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+        ///{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 00000000000000000000}Cambria Math;}{\flomajor\f31500\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Ro [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LicenceRes {
             get {
