@@ -83,6 +83,7 @@ namespace BritishMicro.TaskClerk.ExportPack1
                             sw.WriteLine("END:VEVENT");
                         }
                         sw.WriteLine("END:VCALENDAR");
+
                     }
                 }
                 catch (IOException ioe)
